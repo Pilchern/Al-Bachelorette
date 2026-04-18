@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#0a0612"/>
+<title>Casa Al-Mor</title>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiQ2FzYSBBbC1Nb3IiLCJzaG9ydF9uYW1lIjoiQ2FzYSBBbC1Nb3IiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzBhMDYxMiIsInRoZW1lX2NvbG9yIjoiIzBhMDYxMiJ9"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌴</text></svg>"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0612;--bg2:#120e1f;--bg3:#1a1430;
+  --pink:#ff2d87;--pink-soft:#ff6fb7;--coral:#ff6b5b;--peach:#ffaa7b;
+  --teal:#00d4aa;--teal-soft:#7ee8d0;--pool:#00c2ff;
+  --gold:#ffc857;--sunset:#ff8a5c;
+  --wine:#c2185b;--purple:#a855f7;
+  --text:#ffffff;--text-mid:#b8afd0;--text-dim:#6b6188;
+  --glass:rgba(255,255,255,.06);--glass2:rgba(255,255,255,.1);
+  --glow-pink:0 0 20px rgba(255,45,135,.3),0 0 60px rgba(255,45,135,.1);
+  --serif:'Playfair Display',Georgia,serif;--sans:'Outfit',-apple-system,sans-serif;
+  --r:16px;--r-lg:24px;
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(72px + var(--safe-b));-webkit-tap-highlight-color:transparent;position:relative}
+
+/* ── Neon tropical background layers ── */
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 10%, rgba(255,45,135,.28), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 85% 20%, rgba(168,85,247,.28), transparent 65%),
+    radial-gradient(ellipse 55% 35% at 15% 60%, rgba(0,212,170,.22), transparent 60%),
+    radial-gradient(ellipse 55% 40% at 90% 70%, rgba(255,200,87,.2), transparent 60%),
+    radial-gradient(ellipse 70% 30% at 50% 95%, rgba(255,107,91,.22), transparent 65%),
+    linear-gradient(180deg,#14081f 0%,#1a0a2e 30%,#0f0620 60%,#1a0a2e 100%);
+  background-size:200% 200%,200% 200%,220% 220%,200% 200%,200% 200%,100% 100%;
+  animation:auroraMove 22s ease-in-out infinite;
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,45,135,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,170,.05) 1px, transparent 1px);
+  background-size:44px 44px;
+  mask-image:linear-gradient(180deg,transparent,black 20%,black 80%,transparent);
+  -webkit-mask-image:linear-gradient(180deg,transparent,black 20%,black 80%,transparent);
+  opacity:.55;
+  animation:gridDrift 28s linear infinite;
+}
+body > *{position:relative;z-index:1}
+
+::selection{background:rgba(255,45,135,.4);color:#fff}
+::-webkit-scrollbar{width:0}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes gradMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes textGlow{0%,100%{text-shadow:0 0 10px rgba(255,45,135,.4)}50%{text-shadow:0 0 25px rgba(255,45,135,.7),0 0 50px rgba(255,45,135,.3)}}
+@keyframes neonPulse{0%,100%{border-color:rgba(255,45,135,.25)}50%{border-color:rgba(255,45,135,.6)}}
+@keyframes slideText{0%{opacity:0;transform:translateY(8px)}15%{opacity:1;transform:translateY(0)}85%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(-8px)}}
+@keyframes revealUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes auroraMove{
+  0%,100%{background-position:0% 0%,100% 0%,0% 100%,100% 100%,50% 100%,0 0}
+  50%{background-position:100% 50%,0% 50%,100% 0%,0% 0%,50% 50%,0 0}
+}
+@keyframes gridDrift{0%{background-position:0 0,0 0}100%{background-position:44px 44px,-44px 44px}}
+@keyframes driftUp{
+  0%{transform:translate3d(0,0,0) rotate(0deg);opacity:0}
+  10%{opacity:.7}
+  90%{opacity:.7}
+  100%{transform:translate3d(var(--drift-x,0),-110vh,0) rotate(var(--drift-r,20deg));opacity:0}
+}
+@keyframes sunPulse{
+  0%,100%{box-shadow:0 0 60px rgba(255,107,91,.55),0 0 120px rgba(255,45,135,.35),inset 0 -20px 40px rgba(255,200,87,.4)}
+  50%{box-shadow:0 0 90px rgba(255,107,91,.8),0 0 180px rgba(255,45,135,.5),inset 0 -20px 40px rgba(255,200,87,.6)}
+}
+@keyframes titleGlow{
+  0%,100%{filter:drop-shadow(0 0 18px rgba(255,45,135,.55)) drop-shadow(0 0 32px rgba(168,85,247,.35))}
+  50%{filter:drop-shadow(0 0 30px rgba(255,45,135,.9)) drop-shadow(0 0 60px rgba(0,212,170,.5))}
+}
+@keyframes scanline{
+  0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}
+}
+
+/* ── Scroll reveal ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ── Floating tropical particles ── */
+.tropics{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.tropic{position:absolute;bottom:-60px;font-size:clamp(1.4rem,4vw,1.8rem);filter:drop-shadow(0 0 14px rgba(255,45,135,.45));animation:driftUp linear infinite;opacity:.7;will-change:transform,opacity}
+
+/* ── Neon scanline across hero ── */
+.neon-scan{position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,45,135,.8),rgba(0,212,170,.8),transparent);box-shadow:0 0 20px rgba(255,45,135,.6),0 0 40px rgba(0,212,170,.4);pointer-events:none;animation:scanline 6s ease-in-out infinite;z-index:2}
+
+/* ── Card neon boost ── */
+.card{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+
+/* ── Bottom Nav ── */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:200;background:rgba(10,6,18,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:1px solid rgba(255,45,135,.1);padding:4px 0 calc(4px + var(--safe-b));display:flex;justify-content:space-around;align-items:center}
+.bnav-btn{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 14px;min-width:56px;min-height:48px;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;justify-content:center}
+.bnav-icon{font-size:clamp(1.2rem,4vw,1.4rem);transition:all .25s}
+.bnav-label{font-size:clamp(.55rem,1.8vw,.62rem);font-weight:600;letter-spacing:.3px;color:var(--text-dim);transition:all .25s}
+.bnav-btn.active .bnav-icon{transform:scale(1.2);filter:drop-shadow(0 0 10px rgba(255,45,135,.6))}
+.bnav-btn.active .bnav-label{color:var(--pink)}
+
+/* ── Sections ── */
+.sec{max-width:640px;margin:0 auto;padding:clamp(28px,6vw,44px) clamp(16px,4vw,24px) clamp(36px,8vw,56px)}
+.sec-hero{text-align:center;padding-top:clamp(36px,8vw,56px);padding-bottom:clamp(28px,6vw,44px)}
+.tag{font-size:clamp(.58rem,1.6vw,.65rem);color:var(--pink);letter-spacing:3px;text-transform:uppercase;font-weight:700;margin-bottom:6px}
+.sec-title{font-family:var(--serif);font-size:clamp(1.6rem,5.5vw,2rem);font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.15}
+.sec-title i{background:linear-gradient(135deg,var(--pink),var(--coral));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sec-sub{color:var(--text-mid);font-size:clamp(.82rem,2.5vw,.9rem);margin-bottom:clamp(20px,5vw,28px);line-height:1.65}
+
+/* ── Section color bands (amplified neon washes) ── */
+.sec-band-1{background:linear-gradient(180deg,transparent,rgba(255,45,135,.1) 30%,rgba(255,107,91,.08) 70%,transparent);position:relative}
+.sec-band-2{background:linear-gradient(180deg,transparent,rgba(0,212,170,.1) 30%,rgba(0,194,255,.08) 70%,transparent);position:relative}
+.sec-band-3{background:linear-gradient(180deg,transparent,rgba(255,200,87,.1) 30%,rgba(255,138,92,.08) 70%,transparent);position:relative}
+.sec-band-4{background:linear-gradient(180deg,transparent,rgba(168,85,247,.1) 30%,rgba(236,72,153,.08) 70%,transparent);position:relative}
+
+/* ── Hero (neon sunset) ── */
+.hero-bg{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(20,8,31,.4),rgba(26,10,46,.55) 50%,rgba(15,6,32,.65));background-size:100% 100%}
+.hero-bg::after{
+  content:'';position:absolute;left:0;right:0;bottom:0;height:30%;pointer-events:none;
+  background:
+    repeating-linear-gradient(180deg, transparent 0, transparent 6px, rgba(255,45,135,.05) 7px, rgba(255,45,135,.05) 8px),
+    linear-gradient(180deg,transparent 0%,rgba(10,6,18,.25) 70%,rgba(10,6,18,.5) 100%);
+  z-index:0;
+}
+.hero-bg > *{position:relative;z-index:1}
+.hero-palm{font-size:clamp(2.4rem,7vw,3.2rem);animation:float 3.5s ease-in-out infinite;display:inline-block;margin-bottom:10px;filter:drop-shadow(0 0 16px rgba(255,200,87,.5))}
+.hero-title{font-family:var(--serif);font-size:clamp(2.6rem,11vw,3.8rem);font-weight:700;line-height:1.05;margin-bottom:6px;animation:titleGlow 4s ease-in-out infinite}
+.hero-title span{background:linear-gradient(135deg,var(--pink),var(--coral),var(--peach),var(--gold),var(--teal),var(--pink));background-size:400% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 4s linear infinite}
+.hero-tagline{font-size:clamp(.85rem,2.5vw,.95rem);color:var(--text-mid);margin-bottom:6px;font-weight:300;animation:fadeUp .8s ease .3s both}
+.hero-loc{font-size:clamp(.65rem,2vw,.74rem);color:var(--gold);font-weight:600;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:clamp(28px,7vw,40px);animation:fadeUp .8s ease .5s both}
+
+/* ── Countdown ── */
+.cd-wrap{display:flex;justify-content:center;gap:clamp(8px,2.5vw,14px);flex-wrap:wrap;margin-bottom:clamp(24px,6vw,36px)}
+.cd-box{background:var(--glass);border:1px solid rgba(255,45,135,.2);border-radius:var(--r);padding:clamp(10px,3vw,16px) clamp(12px,3.5vw,18px);min-width:clamp(62px,18vw,76px);text-align:center;animation:neonPulse 3s ease infinite}
+.cd-num{font-family:var(--serif);font-size:clamp(1.6rem,5.5vw,2.2rem);font-weight:700;color:#fff;line-height:1;text-shadow:0 0 20px rgba(255,45,135,.4)}
+.cd-label{font-size:clamp(.5rem,1.5vw,.6rem);color:var(--text-dim);letter-spacing:2px;margin-top:4px;text-transform:uppercase}
+.villa-open{font-family:var(--serif);font-size:clamp(1.3rem,4.5vw,1.7rem);font-weight:700;color:var(--pink);animation:textGlow 2s ease infinite;margin-bottom:32px}
+
+/* ── I've Got a Text ── */
+.igt{background:linear-gradient(135deg,var(--pink),var(--wine));border-radius:var(--r);padding:clamp(14px,3.5vw,18px) clamp(16px,4vw,22px);margin-bottom:clamp(20px,5vw,28px);cursor:pointer;display:flex;align-items:center;gap:12px;box-shadow:var(--glow-pink);transition:all .25s;min-height:48px;text-align:left}
+.igt:active{transform:scale(.98)}
+.igt-icon{font-size:clamp(1.2rem,3.5vw,1.6rem);flex-shrink:0}
+.igt-label{font-size:clamp(.55rem,1.6vw,.6rem);letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:600}
+.igt-text{font-size:clamp(.82rem,2.4vw,.9rem);font-weight:600;color:#fff;margin-top:2px;min-height:1.2em}
+.igt-auto{display:flex;align-items:center;gap:6px;margin-top:4px}
+.igt-dot{width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.25)}
+.igt-dot.active{background:#fff}
+
+/* ── Preview Cards (auto-scroll marquee) ── */
+.scroll-row-wrap{overflow:hidden;margin:0 calc(-1 * clamp(16px,4vw,24px));padding:0 0 8px;position:relative}
+.scroll-row-wrap::before,.scroll-row-wrap::after{content:'';position:absolute;top:0;bottom:0;width:24px;z-index:2;pointer-events:none}
+.scroll-row-wrap::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.scroll-row-wrap::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+.scroll-row{display:flex;gap:clamp(10px,2.5vw,14px);animation:marquee 20s linear infinite;width:max-content}
+.scroll-row:hover,.scroll-row:active{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.prev-card{min-width:clamp(180px,48vw,210px);max-width:clamp(180px,48vw,210px);border-radius:var(--r-lg);padding:clamp(16px,4vw,22px);flex-shrink:0;border:1px solid rgba(255,255,255,.08);text-align:left;transition:transform .3s,box-shadow .3s}
+.prev-card:active{transform:scale(.97)}
+.prev-card.c1{background:linear-gradient(135deg,rgba(255,45,135,.22),rgba(255,45,135,.06));border-color:rgba(255,45,135,.15)}
+.prev-card.c2{background:linear-gradient(135deg,rgba(0,212,170,.22),rgba(0,212,170,.06));border-color:rgba(0,212,170,.15)}
+.prev-card.c3{background:linear-gradient(135deg,rgba(255,200,87,.22),rgba(255,200,87,.06));border-color:rgba(255,200,87,.15)}
+.prev-card.c4{background:linear-gradient(135deg,rgba(168,85,247,.22),rgba(168,85,247,.06));border-color:rgba(168,85,247,.15)}
+.pc-emoji{font-size:clamp(1.3rem,3.5vw,1.6rem);margin-bottom:8px}
+.pc-title{font-weight:700;font-size:clamp(.8rem,2.3vw,.9rem);color:#fff;margin-bottom:3px}
+.pc-desc{font-size:clamp(.7rem,2vw,.78rem);color:var(--text-mid);line-height:1.45}
+
+/* ── Stats ── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,2.5vw,12px);margin-top:clamp(20px,5vw,28px)}
+.stat{background:var(--glass);border-radius:var(--r);padding:clamp(12px,3.5vw,18px) 8px;text-align:center;border:1px solid rgba(255,255,255,.05)}
+.stat-num{font-family:var(--serif);font-size:clamp(1.2rem,4vw,1.6rem);font-weight:700;color:var(--pink)}
+.stat-label{font-size:clamp(.52rem,1.5vw,.6rem);color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+
+/* ── Carousel ── */
+.carousel{position:relative;overflow:hidden;margin:0 calc(-1 * clamp(16px,4vw,24px));padding:0 clamp(16px,4vw,24px);touch-action:pan-y}
+.carousel-track{display:flex;transition:transform .4s cubic-bezier(.25,.8,.25,1);will-change:transform}
+.carousel-slide{min-width:100%;display:flex;justify-content:center;padding:0 8px}
+.isle-card{width:clamp(260px,75vw,300px);border-radius:var(--r-lg);overflow:hidden;border:2px solid rgba(255,45,135,.2);transition:all .3s}
+.isle-top{padding:clamp(24px,6vw,36px) clamp(18px,5vw,28px) clamp(16px,4vw,22px);text-align:center}
+.isle-emoji{font-size:clamp(2.6rem,8vw,3.4rem);margin-bottom:8px}
+.isle-name{font-family:var(--serif);font-size:clamp(1.3rem,4.5vw,1.6rem);font-weight:700;color:#fff}
+.isle-role{font-size:clamp(.6rem,1.8vw,.7rem);letter-spacing:2px;text-transform:uppercase;font-weight:600;margin-top:4px}
+.isle-bottom{background:rgba(0,0,0,.3);padding:clamp(14px,3.5vw,18px) clamp(18px,5vw,28px) clamp(16px,4vw,22px);text-align:center}
+.isle-tagline{font-size:clamp(.82rem,2.4vw,.9rem);font-style:italic;color:var(--text-mid);line-height:1.5;margin-bottom:6px}
+.isle-detail{font-size:clamp(.68rem,2vw,.75rem);color:var(--text-dim)}
+.isle-arrives{display:inline-block;font-size:clamp(.54rem,1.6vw,.6rem);letter-spacing:1.5px;text-transform:uppercase;font-weight:600;padding:4px 12px;border-radius:100px;margin-top:8px}
+
+.carousel-nav{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:clamp(14px,4vw,22px)}
+.carousel-arrow{background:var(--glass2);border:1px solid rgba(255,255,255,.1);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;color:#fff;transition:all .2s}
+.carousel-arrow:active{background:rgba(255,45,135,.3);transform:scale(.92)}
+.carousel-dots{display:flex;gap:6px;align-items:center}
+.carousel-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .3s;cursor:pointer}
+.carousel-dot.active{background:var(--pink);box-shadow:0 0 10px rgba(255,45,135,.5);width:10px;height:10px}
+
+/* ── Itinerary ── */
+.day-btn{width:100%;background:var(--glass);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:clamp(14px,3.5vw,18px) clamp(16px,4vw,22px);cursor:pointer;text-align:left;transition:all .25s;margin-bottom:8px;font-family:var(--sans);color:#fff;min-height:48px}
+.day-btn.active{background:linear-gradient(135deg,rgba(255,45,135,.15),rgba(255,45,135,.05));border-color:rgba(255,45,135,.3);box-shadow:var(--glow-pink)}
+.day-label{font-family:var(--serif);font-size:clamp(.95rem,3vw,1.1rem);font-weight:700}
+.day-ep{font-size:clamp(.7rem,2vw,.78rem);margin-top:2px;color:var(--text-dim)}
+.day-btn.active .day-ep{color:var(--pink-soft)}
+.day-arrow{font-size:1.2rem;color:var(--text-dim);transition:transform .3s}
+.day-btn.active .day-arrow{transform:rotate(90deg);color:var(--pink)}
+.day-detail{background:var(--glass);border-radius:var(--r);padding:clamp(16px,4vw,22px);margin-bottom:14px;animation:fadeUp .35s ease;border:1px solid rgba(255,255,255,.04)}
+.day-islanders{font-size:clamp(.6rem,1.8vw,.68rem);color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;font-weight:600}
+.day-vibe{font-size:clamp(.78rem,2.2vw,.85rem);color:var(--text-mid);font-style:italic;margin-bottom:16px;line-height:1.55}
+.ev{display:flex;gap:clamp(10px,3vw,14px);padding:clamp(10px,3vw,14px) 0;align-items:flex-start}
+.ev+.ev{border-top:1px solid rgba(255,255,255,.04)}
+.ev-icon{font-size:clamp(1.2rem,3.5vw,1.5rem);flex-shrink:0}
+.ev-time{font-size:clamp(.62rem,1.8vw,.68rem);color:var(--pink);font-weight:700;letter-spacing:.5px}
+.ev-title{font-size:clamp(.86rem,2.5vw,.95rem);font-weight:700;color:#fff;margin-top:1px}
+.ev-desc{font-size:clamp(.76rem,2.2vw,.83rem);color:var(--text-mid);margin-top:2px;line-height:1.5}
+.ev-tip{font-size:clamp(.66rem,2vw,.72rem);color:var(--teal);font-weight:500;margin-top:4px}
+
+/* ── Venues ── */
+.vtab-row{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:18px;-webkit-overflow-scrolling:touch}
+.vtab-row::-webkit-scrollbar{display:none}
+.vtab{background:var(--glass);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:8px 16px;color:var(--text-dim);font-size:clamp(.65rem,2vw,.72rem);font-weight:600;cursor:pointer;transition:all .25s;font-family:var(--sans);white-space:nowrap;min-height:36px}
+.vtab.active{background:var(--pink);color:#fff;border-color:var(--pink);box-shadow:0 0 12px rgba(255,45,135,.3)}
+.venue{background:var(--glass);border-radius:var(--r);padding:clamp(14px,3.5vw,18px);border:1px solid rgba(255,255,255,.05);margin-bottom:10px}
+.venue-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.venue-cat{font-size:clamp(.55rem,1.6vw,.6rem);letter-spacing:2px;text-transform:uppercase;font-weight:700;margin-bottom:3px}
+.venue-name{font-family:var(--serif);font-size:clamp(.92rem,2.8vw,1.05rem);font-weight:700;color:#fff}
+.venue-desc{font-size:clamp(.76rem,2.2vw,.83rem);color:var(--text-mid);margin-top:4px;line-height:1.5}
+.venue-vibe{display:flex;gap:2px;flex-shrink:0;font-size:clamp(.7rem,2vw,.8rem)}
+.venue-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.vtag{font-size:clamp(.52rem,1.5vw,.58rem);padding:3px 10px;border-radius:100px;font-weight:600;letter-spacing:.3px;background:rgba(255,255,255,.06);color:var(--text-mid)}
+
+/* ── Villa Rules ── */
+.rules-list{display:flex;flex-direction:column;gap:clamp(8px,2.5vw,10px)}
+.rule-item{display:flex;align-items:flex-start;gap:clamp(10px,3vw,14px);background:var(--glass);border:1px solid rgba(255,45,135,.08);border-radius:var(--r);padding:clamp(14px,3.5vw,16px) clamp(14px,3.5vw,18px)}
+.rule-num-badge{min-width:clamp(28px,8vw,34px);height:clamp(28px,8vw,34px);border-radius:10px;background:linear-gradient(135deg,var(--pink),var(--wine));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:clamp(.75rem,2.2vw,.88rem);font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 0 12px rgba(255,45,135,.25)}
+.rule-text{font-size:clamp(.82rem,2.4vw,.88rem);color:var(--text-mid);line-height:1.6;padding-top:3px}
+
+/* ── Packing ── */
+.pack-section{margin-bottom:clamp(18px,4.5vw,24px)}
+.pack-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.pack-emoji{font-size:clamp(1rem,3vw,1.2rem)}
+.pack-title{font-weight:700;font-size:clamp(.82rem,2.4vw,.9rem);color:#fff;flex:1}
+.pack-prog{font-size:clamp(.6rem,1.8vw,.68rem);color:var(--teal);font-weight:600}
+.pack-bar{height:3px;background:rgba(255,255,255,.06);border-radius:3px;margin-bottom:10px;overflow:hidden}
+.pack-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--teal));border-radius:3px;transition:width .4s ease}
+.checklist{display:flex;flex-direction:column;gap:5px}
+.chk{display:flex;align-items:center;gap:10px;padding:clamp(10px,2.5vw,12px) clamp(12px,3vw,14px);background:var(--glass);border-radius:10px;border:1px solid rgba(255,255,255,.04);cursor:pointer;transition:all .2s;font-size:clamp(.8rem,2.3vw,.88rem);color:var(--text-mid);min-height:44px}
+.chk.checked{opacity:.35;text-decoration:line-through}
+.chk-box{width:22px;height:22px;border-radius:6px;border:2px solid rgba(255,45,135,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.7rem;transition:all .2s}
+.chk.checked .chk-box{background:var(--pink);border-color:var(--pink);color:#fff}
+
+/* ── Photo Ops ── */
+.photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,2.5vw,12px)}
+.photo-card{background:var(--glass);border-radius:var(--r);padding:clamp(12px,3.5vw,18px);border:1px solid rgba(255,255,255,.04);text-align:center}
+.photo-emoji{font-size:clamp(1.3rem,3.5vw,1.6rem);margin-bottom:5px}
+.photo-title{font-size:clamp(.76rem,2.2vw,.84rem);font-weight:700;color:#fff}
+.photo-desc{font-size:clamp(.66rem,1.8vw,.72rem);color:var(--text-dim);margin-top:3px;line-height:1.4}
+
+/* ── Logistics ── */
+.log-item{background:var(--glass);border-radius:var(--r);padding:clamp(14px,3.5vw,18px);border:1px solid rgba(255,255,255,.04);margin-bottom:10px}
+.log-label{font-size:clamp(.55rem,1.6vw,.6rem);letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:3px}
+.log-value{font-size:clamp(.82rem,2.4vw,.9rem);color:#fff;font-weight:600}
+.log-note{font-size:clamp(.74rem,2.2vw,.8rem);color:var(--text-mid);margin-top:3px;line-height:1.5}
+
+/* ── Confessional FAB ── */
+.fab{position:fixed;bottom:calc(72px + var(--safe-b) + 8px);right:16px;z-index:150;background:linear-gradient(135deg,var(--wine),var(--pink));width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 4px 20px rgba(255,45,135,.4);cursor:pointer;transition:all .25s;border:none}
+.fab:active{transform:scale(.88)}
+.fab-panel{position:fixed;bottom:calc(130px + var(--safe-b));right:16px;left:16px;z-index:150;background:var(--bg2);border:1px solid rgba(255,45,135,.2);border-radius:var(--r-lg);padding:clamp(18px,5vw,24px);max-width:380px;margin-left:auto;box-shadow:0 8px 40px rgba(0,0,0,.6);animation:fadeUp .3s ease}
+.fab-label{font-size:clamp(.55rem,1.6vw,.6rem);letter-spacing:3px;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:8px}
+.fab-prompt{font-family:var(--serif);font-size:clamp(.95rem,3vw,1.08rem);font-style:italic;color:#fff;line-height:1.5;margin-bottom:12px}
+.fab-next{background:var(--glass2);border:none;border-radius:100px;padding:10px 20px;color:var(--text-mid);font-size:clamp(.68rem,2vw,.75rem);font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .2s;min-height:40px}
+.fab-next:active{background:rgba(255,45,135,.2);color:#fff}
+
+/* ── Welcome / Card ── */
+.welcome{background:var(--glass);border:1px solid rgba(255,255,255,.06);border-radius:var(--r-lg);padding:clamp(18px,5vw,24px);margin-top:clamp(20px,5vw,28px);text-align:left}
+.welcome p{font-size:clamp(.82rem,2.4vw,.9rem);color:var(--text-mid);line-height:1.7}
+.welcome strong{color:var(--pink-soft)}
+.card{background:var(--glass);border-radius:var(--r-lg);padding:clamp(18px,5vw,24px);border:1px solid rgba(255,255,255,.05);margin-bottom:14px}
+.card p,.card div{font-size:clamp(.78rem,2.3vw,.85rem)}
+
+/* ── Weather ── */
+.weather-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,2.5vw,10px)}
+.wx-day{background:var(--glass);border-radius:var(--r);padding:clamp(12px,3vw,16px) 8px;text-align:center;border:1px solid rgba(255,255,255,.05)}
+.wx-label{font-size:clamp(.58rem,1.6vw,.65rem);color:var(--text-dim);font-weight:600;letter-spacing:.5px;margin-bottom:4px}
+.wx-icon{font-size:clamp(1.4rem,4vw,1.8rem);margin-bottom:4px}
+.wx-temp{font-family:var(--serif);font-size:clamp(1.1rem,3.5vw,1.4rem);font-weight:700;color:#fff}
+.wx-desc{font-size:clamp(.55rem,1.5vw,.62rem);color:var(--text-mid);margin-top:2px}
+.wx-note{font-size:clamp(.7rem,2vw,.78rem);color:var(--text-mid);margin-top:16px;line-height:1.6;text-align:center}
+.wx-loading{text-align:center;padding:24px;color:var(--text-dim);font-size:.82rem}
+
+/* ── Music Player ── */
+.music-bar{position:fixed;top:0;left:0;right:0;z-index:250;background:rgba(10,6,18,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:8px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,45,135,.1);transform:translateY(-100%);transition:transform .3s ease}
+.music-bar.show{transform:translateY(0)}
+.music-btn{background:linear-gradient(135deg,var(--pink),var(--wine));border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#fff;cursor:pointer;flex-shrink:0}
+.music-btn:active{transform:scale(.9)}
+.music-info{flex:1;min-width:0}
+.music-title{font-size:clamp(.68rem,2vw,.75rem);font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.music-sub{font-size:clamp(.55rem,1.5vw,.6rem);color:var(--text-dim)}
+.music-close{background:none;border:none;color:var(--text-dim);font-size:1rem;cursor:pointer;padding:8px}
+.music-fab{position:fixed;top:12px;right:16px;z-index:140;background:var(--glass2);border:1px solid rgba(255,255,255,.1);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;transition:all .2s}
+.music-fab:active{transform:scale(.9)}
+.music-fab.playing{background:rgba(255,45,135,.2);border-color:rgba(255,45,135,.3);animation:neonPulse 2s ease infinite}
+
+/* ── Confetti ── */
+.confetti-wrap{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:9999;overflow:hidden}
+.confetti-piece{position:absolute;width:10px;height:10px;top:-20px;border-radius:2px;animation:confettiFall linear forwards}
+@keyframes confettiFall{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+/* ── Quiz ── */
+.quiz-q{background:var(--glass);border:1px solid rgba(255,255,255,.06);border-radius:var(--r);padding:clamp(16px,4vw,22px);margin-bottom:10px}
+.quiz-prompt{font-family:var(--serif);font-size:clamp(.9rem,2.8vw,1rem);font-weight:700;color:#fff;margin-bottom:12px}
+.quiz-opts{display:flex;flex-direction:column;gap:6px}
+.quiz-opt{background:var(--glass2);border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 16px;cursor:pointer;font-size:clamp(.78rem,2.2vw,.85rem);color:var(--text-mid);transition:all .25s;min-height:44px;display:flex;align-items:center}
+.quiz-opt:active{transform:scale(.98)}
+.quiz-opt.correct{background:rgba(0,212,170,.15);border-color:var(--teal);color:var(--teal-soft)}
+.quiz-opt.wrong{background:rgba(255,107,91,.1);border-color:var(--coral);color:var(--coral)}
+.quiz-opt.selected{border-color:var(--pink);background:rgba(255,45,135,.1)}
+.quiz-result{text-align:center;padding:20px;font-size:clamp(.8rem,2.3vw,.88rem);color:var(--text-mid);line-height:1.6}
+.quiz-score{font-family:var(--serif);font-size:clamp(2rem,7vw,2.8rem);font-weight:700;color:var(--pink);margin-bottom:8px}
+
+/* ── Now Playing (live tracker) ── */
+.now-playing{background:linear-gradient(135deg,rgba(0,212,170,.12),rgba(0,212,170,.04));border:1px solid rgba(0,212,170,.2);border-radius:var(--r-lg);padding:clamp(16px,4vw,22px);margin-bottom:16px}
+.np-label{font-size:clamp(.55rem,1.6vw,.6rem);letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:var(--teal);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.np-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 1.5s ease infinite}
+.np-event{font-family:var(--serif);font-size:clamp(1rem,3vw,1.15rem);font-weight:700;color:#fff;margin-bottom:4px}
+.np-desc{font-size:clamp(.76rem,2.2vw,.83rem);color:var(--text-mid)}
+.np-next{font-size:clamp(.68rem,2vw,.75rem);color:var(--text-dim);margin-top:10px}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── Spotify ── */
+.spotify-card{background:linear-gradient(135deg,rgba(30,215,96,.1),rgba(30,215,96,.03));border:1px solid rgba(30,215,96,.15);border-radius:var(--r-lg);padding:clamp(18px,4.5vw,24px);text-align:center}
+.spotify-icon{font-size:2rem;margin-bottom:8px}
+.spotify-title{font-size:clamp(.88rem,2.6vw,.95rem);font-weight:700;color:#fff;margin-bottom:4px}
+.spotify-sub{font-size:clamp(.72rem,2vw,.8rem);color:var(--text-mid);margin-bottom:14px;line-height:1.5}
+.spotify-btn{display:inline-flex;align-items:center;gap:6px;background:#1DB954;color:#fff;border:none;border-radius:100px;padding:10px 22px;font-size:clamp(.72rem,2vw,.8rem);font-weight:700;cursor:pointer;font-family:var(--sans);min-height:44px;transition:all .2s}
+.spotify-btn:active{transform:scale(.95)}
+
+/* ── Install Banner ── */
+.install-banner{background:var(--glass);border:1px solid rgba(255,45,135,.1);border-radius:var(--r);padding:14px 18px;display:flex;align-items:center;gap:12px;margin-bottom:20px;cursor:pointer}
+.install-banner:active{transform:scale(.98)}
+.install-icon{font-size:1.3rem;flex-shrink:0}
+.install-text{font-size:clamp(.76rem,2.2vw,.84rem);color:var(--text-mid);flex:1}
+.install-text strong{color:#fff}
+.install-dismiss{background:none;border:none;color:var(--text-dim);font-size:.9rem;cursor:pointer;padding:4px}
+
+/* ── Quick Links ── */
+.quick-links{display:flex;gap:clamp(8px,2.5vw,10px);justify-content:center;flex-wrap:wrap;margin-bottom:clamp(20px,5vw,28px)}
+.ql-btn{display:flex;align-items:center;gap:6px;background:var(--glass2);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:10px 18px;font-size:clamp(.68rem,2vw,.76rem);color:#fff;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none;font-family:var(--sans);min-height:40px}
+.ql-btn:active{transform:scale(.95);background:rgba(255,45,135,.15);border-color:rgba(255,45,135,.3)}
+
+/* ── Couple of the Day ── */
+.cotd{background:linear-gradient(135deg,rgba(255,45,135,.12),rgba(168,85,247,.08));border:1px solid rgba(255,45,135,.15);border-radius:var(--r-lg);padding:clamp(18px,4.5vw,24px);text-align:center;margin-bottom:clamp(16px,4vw,22px);position:relative;overflow:hidden}
+.cotd::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(255,45,135,.05),transparent,rgba(168,85,247,.05),transparent);animation:cotdSpin 8s linear infinite}
+@keyframes cotdSpin{to{transform:rotate(360deg)}}
+.cotd-inner{position:relative;z-index:1}
+.cotd-emoji{font-size:clamp(2rem,6vw,2.6rem);margin-bottom:6px}
+.cotd-names{font-family:var(--serif);font-size:clamp(1.1rem,3.5vw,1.3rem);font-weight:700;color:#fff;margin-bottom:4px}
+.cotd-blurb{font-size:clamp(.76rem,2.2vw,.84rem);color:var(--text-mid);font-style:italic;line-height:1.5}
+
+/* ── Scotty Ticker ── */
+.scotty-ticker{background:linear-gradient(135deg,rgba(255,200,87,.1),rgba(255,200,87,.04));border:1px solid rgba(255,200,87,.12);border-radius:var(--r);padding:clamp(12px,3vw,16px) clamp(14px,3.5vw,18px);display:flex;align-items:center;gap:10px;margin-bottom:clamp(16px,4vw,20px);overflow:hidden}
+.scotty-avi{font-size:clamp(1.4rem,4vw,1.8rem);flex-shrink:0}
+.scotty-msg{font-size:clamp(.76rem,2.2vw,.84rem);color:var(--text-mid);font-style:italic;line-height:1.45;flex:1;min-width:0}
+.scotty-label{font-size:clamp(.52rem,1.5vw,.58rem);color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:2px}
+
+/* ── Bombshell Alert ── */
+.bombshell-flash{position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle,rgba(255,45,135,.3),transparent 70%);z-index:300;pointer-events:none;animation:bombFlash .8s ease forwards}
+@keyframes bombFlash{0%{opacity:1}100%{opacity:0}}
+.bombshell-badge{position:absolute;top:8px;right:8px;background:linear-gradient(135deg,var(--coral),var(--pink));color:#fff;font-size:clamp(.48rem,1.4vw,.55rem);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:100px;animation:bombPulse 1.5s ease infinite}
+@keyframes bombPulse{0%,100%{box-shadow:0 0 8px rgba(255,45,135,.4)}50%{box-shadow:0 0 20px rgba(255,45,135,.7)}}
+
+/* ── Hydration Toast ── */
+.hydrate-toast{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:250;background:linear-gradient(135deg,rgba(0,212,170,.9),rgba(0,194,255,.9));color:#fff;padding:12px 24px;border-radius:100px;font-size:clamp(.76rem,2.2vw,.84rem);font-weight:600;display:flex;align-items:center;gap:8px;box-shadow:0 4px 24px rgba(0,212,170,.3);animation:toastIn .4s ease,toastOut .4s ease 3.6s forwards}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(-20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes toastOut{to{opacity:0;transform:translateX(-50%) translateY(-20px)}}
+
+/* ── Morning Recap ── */
+.recap-card{background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(255,45,135,.08));border:1px solid rgba(168,85,247,.15);border-radius:var(--r-lg);padding:clamp(18px,4.5vw,24px);margin-bottom:clamp(16px,4vw,20px)}
+.recap-label{font-size:clamp(.55rem,1.6vw,.6rem);letter-spacing:2.5px;text-transform:uppercase;font-weight:700;color:var(--purple);margin-bottom:8px}
+.recap-title{font-family:var(--serif);font-size:clamp(1rem,3vw,1.15rem);font-weight:700;color:#fff;margin-bottom:8px}
+.recap-items{display:flex;flex-direction:column;gap:4px}
+.recap-item{font-size:clamp(.76rem,2.2vw,.83rem);color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5}
+.recap-item::before{content:'\2022';position:absolute;left:0;color:var(--purple)}
+
+/* ── Venue Maps Button ── */
+.venue-map{display:inline-flex;align-items:center;gap:4px;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.15);border-radius:100px;padding:6px 14px;font-size:clamp(.6rem,1.8vw,.68rem);color:var(--teal);font-weight:600;cursor:pointer;margin-top:8px;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+.venue-map:active{transform:scale(.95);background:rgba(0,212,170,.2)}
+
+/* ── Sparkle Animation ── */
+@keyframes sparkle{0%,100%{opacity:0;transform:scale(0) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(180deg)}}
+.sparkle-wrap{position:absolute;pointer-events:none;z-index:0}
+.sparkle{position:absolute;width:4px;height:4px;background:var(--gold);border-radius:50%;animation:sparkle 2s ease infinite}
+
+/* ── Floating Hearts ── */
+@keyframes heartFloat{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-80px) scale(.5)}}
+
+/* ── Entrance stagger ── */
+.stagger-1{animation-delay:.1s}.stagger-2{animation-delay:.2s}.stagger-3{animation-delay:.3s}.stagger-4{animation-delay:.4s}
+
+/* ── Glow hover for cards ── */
+@keyframes cardGlow{0%,100%{box-shadow:0 0 0 transparent}50%{box-shadow:0 0 20px rgba(255,45,135,.15)}}
+.isle-card{animation:cardGlow 4s ease infinite}
+
+/* ── Hero palm bounce ── */
+@keyframes palmBounce{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-12px) rotate(-5deg)}75%{transform:translateY(-6px) rotate(3deg)}}
+.hero-palm:active{animation:palmBounce .5s ease}
+.palm-wrap{position:relative;display:flex;flex-direction:column;align-items:center;width:100%;padding-top:42px;margin-bottom:6px}
+.palm-wrap .hero-palm{margin-bottom:0}
+.palm-bubble{position:absolute;top:0;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--pink),var(--coral));color:#fff;font-size:clamp(.58rem,1.7vw,.68rem);font-weight:800;letter-spacing:.5px;padding:7px 16px;border-radius:100px;white-space:nowrap;animation:bubbleBounce 1.5s ease infinite,fadeUp .5s ease .8s both;box-shadow:0 0 16px rgba(255,45,135,.4);pointer-events:none;text-transform:uppercase;z-index:2}
+.palm-bubble::after{content:'';position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-top:7px solid var(--coral);filter:drop-shadow(0 2px 4px rgba(255,45,135,.3))}
+@keyframes bubbleBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* ── Neon text flicker ── */
+@keyframes neonFlicker{0%,100%{opacity:1}92%{opacity:1}93%{opacity:.7}94%{opacity:1}96%{opacity:.8}97%{opacity:1}}
+
+/* ── Love Island Theme Button ── */
+.li-theme-btn{display:block;width:100%;max-width:320px;margin:0 auto clamp(20px,5vw,28px);padding:clamp(16px,4vw,22px) clamp(24px,6vw,32px);background:linear-gradient(135deg,var(--pink),var(--wine),var(--coral));background-size:200% 200%;animation:gradMove 4s ease infinite;border:2px solid rgba(255,255,255,.15);border-radius:var(--r-lg);font-family:var(--sans);font-size:clamp(1rem,3vw,1.15rem);font-weight:800;color:#fff;cursor:pointer;text-transform:uppercase;letter-spacing:2px;box-shadow:0 0 30px rgba(255,45,135,.4),0 0 60px rgba(255,45,135,.15);transition:all .25s;text-align:center;position:relative;overflow:hidden}
+.li-theme-btn::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent 0%,rgba(255,255,255,.1) 25%,transparent 50%);animation:cotdSpin 3s linear infinite}
+.li-theme-btn:active{transform:scale(.96);box-shadow:0 0 40px rgba(255,45,135,.6)}
+.li-theme-btn span{position:relative;z-index:1}
+
+/* ── Footer ── */
+.footer{text-align:center;padding:clamp(24px,6vw,36px) 20px 20px;max-width:640px;margin:0 auto}
+.footer p{color:var(--text-dim);font-size:clamp(.62rem,1.8vw,.7rem);letter-spacing:.3px}
+</style>
+</head>
+<body>
+<audio id="villa-audio" loop preload="auto"></audio>
+<div id="app"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script>
+const h=React.createElement,{useState,useEffect,useRef,useCallback}=React;
+
+/* ══════ DATA ══════ */
+const TRIP=new Date("2026-06-12T16:00:00");
+
+const ISLANDERS=[
+  {name:"Al",role:"The Bride",emoji:"👑",tagline:"About to be permanently coupled up. For real this time.",detail:"Villa Owner. The reason this whole villa exists. The main character.",arrives:"Friday",color:"#ff2d87",bg:"linear-gradient(135deg,#ff2d87,#c2185b)"},
+  {name:"Ashley",role:"The Bombshell",emoji:"🌟",tagline:"Maid of honor by title. Bombshell by nature. Probably missing her dogs right now.",detail:"The one holding this whole villa together and looking good doing it. Dog mom at heart.",arrives:"Friday",color:"#ffc857",bg:"linear-gradient(135deg,#ffc857,#e8a020)"},
+  {name:"Lori",role:"The Wild Card",emoji:"🔥",tagline:"You never know what's coming, but you know it's going to be good.",detail:"OG islander. Unpredictable energy. The one the group chat warns you about.",arrives:"Friday",color:"#ff6b5b",bg:"linear-gradient(135deg,#ff6b5b,#d44a3a)"},
+  {name:"Del",role:"The Bookstore Bombshell",emoji:"📚",tagline:"New mom by day. Bombshell by bachelorette weekend.",detail:"Owns a bookstore. Just had a baby. Still showed up. That's the energy.",arrives:"Friday",color:"#a855f7",bg:"linear-gradient(135deg,#a855f7,#7c3aed)"},
+  {name:"Eva",role:"The Loyal One",emoji:"💕",tagline:"Here for the right reasons, every single time.",detail:"100% genuine. Zero game-playing. The one you always want in your corner.",arrives:"Friday",color:"#ec4899",bg:"linear-gradient(135deg,#ec4899,#be185d)"},
+  {name:"Dariyan",role:"The Super Mom",emoji:"💪",tagline:"Left the baby, brought the energy. No regrets.",detail:"New mom who said yes to the villa anyway. Respect the commitment.",arrives:"Friday",color:"#f97316",bg:"linear-gradient(135deg,#f97316,#c2410c)"},
+  {name:"Melissa",role:"Casa Amor Arrival",emoji:"🌴",tagline:"Saturday surprise. Turning heads the second she walks in.",detail:"Late arrival, immediate impact. The villa won't know what hit it.",arrives:"Saturday",color:"#00d4aa",bg:"linear-gradient(135deg,#00d4aa,#0d9488)"},
+  {name:"Vanessa",role:"Casa Amor Arrival",emoji:"✨",tagline:"Fashionably late. Main character energy. No apologies.",detail:"Walked in like she owned the villa. And honestly? She might.",arrives:"Saturday",color:"#00c2ff",bg:"linear-gradient(135deg,#00c2ff,#0284c7)"},
+];
+
+const SCHEDULE=[
+  {day:"Friday",date:"June 12",ep:"Episode 1 — The Arrival",
+    islanders:["Al","Ashley","Lori","Del","Eva","Dariyan"],
+    vibe:"The OGs land. First night out in Bay View — cocktails, dinner, and a nightcap to christen the villa era.",
+    events:[
+      {time:"4 PM",title:"Arrive at Casa Al-Mor",desc:"Check in, unpack, explore, claim beds.",icon:"🏠",tip:"The villa is in Bay View — walkable to Friday night spots."},
+      {time:"~6 PM",title:"Drinks at At Random",desc:"Dark, moody speakeasy. No menu — tell them what you like.",icon:"🍸",tip:"Cash only. Bring some."},
+      {time:"~8 PM",title:"Dinner at Room Service",desc:"Bay View dinner. Group-friendly. Great start.",icon:"🍽️",tip:"Walking distance from the Airbnb."},
+      {time:"Late",title:"Lost Whale",desc:"Tropical bar with good vibes to end night one.",icon:"🐋",tip:"Also in Bay View. Easy walk home."},
+    ]},
+  {day:"Saturday",date:"June 13",ep:"Episode 2 — Casa Amor",
+    islanders:["Al","Ashley","Lori","Del","Eva","Dariyan","Melissa","Vanessa"],
+    vibe:"Full squad. Market morning, tiki boat afternoon, villa time, dinner, and Cathedral Square after dark.",
+    events:[
+      {time:"Morning",title:"Coffee & Breakfast",desc:"No rush. Fuel up for the day.",icon:"☕",tip:"See the Spots section for Bay View coffee recs."},
+      {time:"Late AM",title:"South Shore Farmers Market",desc:"Five-minute walk. Fresh air, flowers, snacks.",icon:"🌻",tip:"Open Saturday mornings. Casual stroll."},
+      {time:"12:30 PM",title:"Tiki Boat",desc:"Tiki bar on the water. Need we say more.",icon:"🚤",tip:"Arrive 10–15 min early. Sunscreen + sunglasses."},
+      {time:"~3 PM",title:"Villa Time",desc:"Snacks, drinks, refresh, naps — whatever you need.",icon:"🎲",tip:"No agenda. Just vibes."},
+      {time:"~7 PM",title:"Dinner at The Outsider",desc:"All 8 islanders together. Saturday night dinner.",icon:"🍽️"},
+      {time:"~10 PM",title:"Cathedral Square",desc:"Elsa's for martinis → Taylor's patio → Foy's → Sophie.",icon:"🌃",tip:"Walkable cluster. No strict order — just flow."},
+    ]},
+  {day:"Sunday",date:"June 14",ep:"Episode 3 — The Final",
+    islanders:["Everyone"],
+    vibe:"Morning debrief. Coffee. One more moment. Then back to reality.",
+    events:[
+      {time:"Morning",title:"Coffee & Breakfast",desc:"Last morning in the villa. Keep it easy.",icon:"☕"},
+      {time:"Later",title:"Head Home",desc:"The villa closes. The group chat lives on.",icon:"💛"},
+    ]},
+];
+
+const VENUES={
+  nightlife:[
+    {name:"At Random",cat:"Cocktails",desc:"Dark speakeasy. No menu — describe what you want. A Milwaukee institution.",tags:["Speakeasy","Cash Only"],color:"var(--wine)",vibe:"🍸🍸🍸"},
+    {name:"Lost Whale",cat:"Tropical Bar",desc:"Bay View's tropical bar. Tiki drinks, warm lighting, walking distance.",tags:["Tiki","Walk Home"],color:"var(--teal)",vibe:"🌴🌴"},
+    {name:"Boone & Crockett",cat:"Waterfront · DJ",desc:"On the water with a DJ, great patio, scenic views.",tags:["Waterfront","DJ","Patio"],color:"var(--coral)",vibe:"🔥🔥🔥"},
+    {name:"La Cage",cat:"Dance · Nightlife",desc:"Raised surfaces, good sound. When the group wants to dance.",tags:["Dancing","Late Night"],color:"var(--gold)",vibe:"💃💃💃"},
+    {name:"Pink Agave",cat:"Nightlife",desc:"Lively, fun, great energy. Solid stop or destination.",tags:["Group Friendly"],color:"var(--pink)",vibe:"🔥🔥"},
+    {name:"Revel",cat:"Hookah · Lounge",desc:"Hookah and lounge vibes. Something different.",tags:["Hookah","Chill"],color:"var(--purple)",vibe:"🌙🌙"},
+  ],
+  cathedral:[
+    {name:"Elsa's on the Park",cat:"Martinis",desc:"Classic martini spot. Glamour inside, patio outside.",tags:["Martinis","First Stop"],color:"var(--pool)",vibe:"🍸🍸🍸"},
+    {name:"Taylor's",cat:"Patio",desc:"Great outdoor seating. Warm nights, people-watching.",tags:["Patio","Casual"],color:"var(--coral)",vibe:"🌅🌅"},
+    {name:"Foy's",cat:"Bar Hop Stop",desc:"Pop in for one round, stay two.",tags:["Dive-ish","Fun"],color:"var(--gold)",vibe:"🍻🍻"},
+    {name:"Sophie",cat:"Bar",desc:"Another solid Cathedral Square option.",tags:["Cathedral Sq"],color:"var(--pink)",vibe:"✨✨"},
+    {name:"Station 1846",cat:"Bar",desc:"Worth a stop. Good drinks, good space.",tags:["Nearby"],color:"var(--teal)",vibe:"🍸🍸"},
+  ],
+  coffee:[
+    {name:"Colectivo Coffee",cat:"Quick Coffee",desc:"Milwaukee staple. Grab-and-go. Bay View location is close.",tags:["Near Villa","Grab & Go"],color:"var(--peach)",vibe:"☕☕"},
+    {name:"Stone Creek Coffee",cat:"Coffee + Pastries",desc:"Great roasts, nice atmosphere.",tags:["Pastries","Sit Down"],color:"var(--gold)",vibe:"☕☕☕"},
+    {name:"Interval",cat:"Specialty",desc:"For the coffee person. Small, intentional, excellent.",tags:["Specialty"],color:"var(--teal)",vibe:"☕☕☕"},
+    {name:"Farmers Market Coffee",cat:"Saturday Only",desc:"Grab coffee while walking the market.",tags:["Saturday","Market"],color:"var(--coral)",vibe:"☕"},
+  ],
+  breakfast:[
+    {name:"Honeypie Cafe",cat:"Brunch",desc:"Bay View brunch staple. Homemade pastries, hearty plates.",tags:["Bay View","Hangover Cure"],color:"var(--pink)",vibe:"🍳🍳🍳"},
+    {name:"SmallPie",cat:"Bakery · Light",desc:"Pies, quiche, pastries. Cute, lighter start.",tags:["Bakery","Aesthetic"],color:"var(--gold)",vibe:"🥐🥐"},
+    {name:"Classic Diner Energy",cat:"No-Fuss",desc:"Bay View diners. Eggs, coffee, carbs.",tags:["Diner","No Fuss"],color:"var(--coral)",vibe:"🍳🍳"},
+  ]
+};
+
+const VILLA_RULES=[
+  "What happens in the villa stays in the villa. Unless it's too funny — then it goes in the group chat.",
+  "The bride always has right of first refusal on the aux.",
+  "No phones at dinner. Photos before food are encouraged.",
+  "If someone says 'I've got a text,' everyone stops and listens.",
+  "Naps are not only allowed, they're respected.",
+  "No one gets left behind on a night out.",
+  "The maid of honor's word is final on logistics. Don't make Ash send a paragraph.",
+  "Confessionals are mandatory at least once.",
+  "Hydrate between episodes. Zero judgment.",
+  "Have fun. That's the only real rule.",
+];
+
+const PACKING={
+  essentials:{items:["Sunscreen","Sunglasses","Walking shoes","Going-out outfit(s)","Charger / portable charger","Cash (some bars are cash only)","ID"]},
+  villa:{items:["Swimsuit(s)","Coverup / sundress","Sandals / slides","Cozy villa outfit","Hair tools to share","Speaker"]},
+  tikiboat:{items:["Swimsuit you can wear out","Sunscreen (reapply)","Sunglasses","Towel","Waterproof phone pouch"]},
+  hangover:{items:["Advil / Tylenol","Liquid IV / electrolytes","Eye mask","Hair ties","Good snacks"]},
+};
+
+const IGT_MSGS=[
+  "The villa opens Friday at 4 PM. Don't be late, islanders.",
+  "Saturday's tiki boat departs at 12:30. Be ready by noon.",
+  "Melissa and Vanessa enter the villa Saturday. Bombshell energy.",
+  "At Random is cash only. Plan accordingly.",
+  "Saturday night: Cathedral Square. Martinis at Elsa's first.",
+  "The bride has first pick of beds. Villa rules.",
+  "Farmers market is a 5-minute walk from Casa Al-Mor.",
+  "Confession: someone hasn't packed yet. You know who you are.",
+];
+
+const CONFESSIONALS=[
+  "What's your honest first impression of the villa?",
+  "Who's going to cause the most drama this weekend?",
+  "What's your prediction for tonight?",
+  "Rate the weekend so far, 1 to 10.",
+  "What's the most unhinged thing that's happened?",
+  "If this weekend were a Love Island episode, what's the title?",
+  "What would your Love Island intro walk look like?",
+  "Any villa regrets so far?",
+  "Who's been the biggest surprise this weekend?",
+  "Describe the bride in three words.",
+  "What's one thing you're manifesting for tonight?",
+  "Drop a hot take about someone in this villa.",
+  "Which islander would you recouple with and why?",
+  "What's the best thing you've eaten or drunk this weekend?",
+  "If you could steal one item from another islander's suitcase, what is it?",
+  "Who in this villa gives the best advice?",
+  "Describe your ideal day in the villa in 15 seconds.",
+  "What's the group chat going to be talking about on Monday?",
+  "If the villa had a confessional diary room, what would you whisper into it right now?",
+  "Who showed up and showed out today?",
+  "Which moment from this trip will you still be laughing about in five years?",
+  "What's one thing about the bride that the groom probably doesn't know?",
+  "If you could add one person to this villa, who would it be?",
+  "What's your Love Island catchphrase?",
+  "Who is secretly the most competitive person here?",
+  "What song is the soundtrack to this weekend?",
+  "Rank your top 3 moments from the trip so far.",
+  "If there was a public vote right now, who's getting saved first?",
+  "What's one thing you want to do before the villa closes?",
+  "Give the bride one piece of marriage advice in under 10 seconds.",
+  "Who in this group would survive the longest on actual Love Island?",
+  "What's the most on-brand thing that's happened this weekend?",
+  "If this villa had a villain edit, who's getting it?",
+  "What's one thing that surprised you about this trip?",
+  "Record a 10-second hype video for the bride. Go.",
+];
+
+const PHOTOS=[
+  {emoji:"🌅",title:"Golden Hour",desc:"Sunset from Bay View."},
+  {emoji:"🚤",title:"Tiki Boat Crew",desc:"Full group on the boat."},
+  {emoji:"🍸",title:"First Drink",desc:"The toast that starts it."},
+  {emoji:"👑",title:"Bride Spotlight",desc:"A solo moment for Al."},
+  {emoji:"🌃",title:"Night Out",desc:"Cathedral Square candids."},
+  {emoji:"☕",title:"Morning After",desc:"Coffee. No filter."},
+  {emoji:"🪞",title:"Getting Ready",desc:"Pre-game mirror selfie."},
+  {emoji:"💛",title:"The Group Shot",desc:"All 8. Serious + silly."},
+];
+
+/* ══════ UTILS ══════ */
+function getCD(t){const d=t-new Date();if(d<=0)return{d:0,h:0,m:0,s:0,passed:!0};return{d:Math.floor(d/864e5),h:Math.floor(d/36e5%24),m:Math.floor(d/6e4%60),s:Math.floor(d/1e3%60),passed:!1}}
+
+// Scroll reveal hook
+function useReveal(){
+  const ref=useRef();
+  useEffect(()=>{
+    const el=ref.current;if(!el)return;
+    const obs=new IntersectionObserver(([e])=>{if(e.isIntersecting){el.classList.add("visible");obs.unobserve(el)}},{threshold:.12});
+    obs.observe(el);return()=>obs.disconnect();
+  },[]);
+  return ref;
+}
+function Reveal({children,className=""}){
+  const ref=useReveal();
+  return h("div",{ref,className:"reveal "+className},children);
+}
+
+/* ══════ COMPONENTS ══════ */
+
+function Countdown(){
+  const[t,sT]=useState(getCD(TRIP));
+  useEffect(()=>{const i=setInterval(()=>sT(getCD(TRIP)),1000);return()=>clearInterval(i)},[]);
+  if(t.passed)return h("div",{className:"villa-open"},"🌴 The villa is open 🌴");
+  return h("div",{className:"cd-wrap"},
+    [{v:t.d,l:"Days"},{v:t.h,l:"Hours"},{v:t.m,l:"Mins"},{v:t.s,l:"Secs"}].map(u=>
+      h("div",{className:"cd-box",key:u.l},h("div",{className:"cd-num"},String(u.v).padStart(2,"0")),h("div",{className:"cd-label"},u.l))
+    )
+  );
+}
+
+function IGotAText(){
+  const[i,sI]=useState(0);
+  const len=IGT_MSGS.length;
+  // Auto-rotate every 5s
+  useEffect(()=>{const id=setInterval(()=>sI(p=>(p+1)%len),5000);return()=>clearInterval(id)},[]);
+  return h("div",{className:"igt",onClick:()=>sI((i+1)%len)},
+    h("div",{className:"igt-icon"},"📱"),
+    h("div",{style:{flex:1,minWidth:0}},
+      h("div",{className:"igt-label"},"I've got a text!"),
+      h("div",{className:"igt-text",key:i,style:{animation:"fadeUp .35s ease"}},IGT_MSGS[i]),
+      h("div",{className:"igt-auto"},
+        Array.from({length:len}).map((_,j)=>h("div",{key:j,className:"igt-dot"+(j===i?" active":"")}))
+      ),
+    )
+  );
+}
+
+function IslanderCarousel(){
+  const[idx,sIdx]=useState(0);
+  const[bombshellFlash,sBombshellFlash]=useState(false);
+  const len=ISLANDERS.length;
+  const goTo=function(newIdx){
+    var isl=ISLANDERS[newIdx];
+    if(isl&&isl.arrives==="Saturday"&&ISLANDERS[idx]&&ISLANDERS[idx].arrives!=="Saturday"){
+      sBombshellFlash(true);
+      setTimeout(function(){sBombshellFlash(false)},800);
+    }
+    sIdx(newIdx);
+  };
+  const prev=()=>goTo((idx-1+len)%len);
+  const next=()=>goTo((idx+1)%len);
+  // Momentum swipe
+  const startX=useRef(0);const startT=useRef(0);
+  const onTS=e=>{startX.current=e.touches[0].clientX;startT.current=Date.now()};
+  const onTE=e=>{
+    const dx=startX.current-e.changedTouches[0].clientX;
+    const dt=Date.now()-startT.current;
+    const vel=Math.abs(dx)/dt;
+    if(Math.abs(dx)>50||vel>0.3){dx>0?next():prev()}
+  };
+
+  return h(Reveal,null,
+    bombshellFlash&&h("div",{className:"bombshell-flash"}),
+    h("div",{className:"carousel",onTouchStart:onTS,onTouchEnd:onTE},
+      h("div",{className:"carousel-track",style:{transform:"translateX(-"+idx*100+"%)"}},
+        ISLANDERS.map((isl,i)=>
+          h("div",{className:"carousel-slide",key:isl.name},
+            h("div",{className:"isle-card",style:{borderColor:isl.color+"44",boxShadow:"0 0 24px "+isl.color+"33, 0 0 60px "+isl.color+"11"}},
+              h("div",{className:"isle-top",style:{background:isl.bg}},
+                h("div",{className:"isle-emoji"},isl.emoji),
+                h("div",{className:"isle-name"},isl.name),
+                h("div",{className:"isle-role",style:{color:"rgba(255,255,255,.65)"}},isl.role),
+              ),
+              h("div",{className:"isle-bottom"},
+                h("div",{className:"isle-tagline"},"\u201C"+isl.tagline+"\u201D"),
+                h("div",{className:"isle-detail"},isl.detail),
+                isl.arrives==="Saturday"&&h("div",{className:"bombshell-badge"},"Bombshell"),
+              h("div",{className:"isle-arrives",style:{
+                  color:isl.arrives==="Saturday"?"var(--teal)":"var(--peach)",
+                  background:isl.arrives==="Saturday"?"rgba(0,212,170,.12)":"rgba(255,170,123,.12)"}},
+                  isl.arrives==="Saturday"?"Casa Amor — Saturday":"OG — Friday"),
+              ),
+            )
+          )
+        )
+      )
+    ),
+    h("div",{className:"carousel-nav"},
+      h("button",{className:"carousel-arrow",onClick:prev,"aria-label":"Previous"},"\u2039"),
+      h("div",{className:"carousel-dots"},
+        ISLANDERS.map((_,i)=>h("div",{key:i,className:"carousel-dot"+(i===idx?" active":""),onClick:()=>sIdx(i)}))
+      ),
+      h("button",{className:"carousel-arrow",onClick:next,"aria-label":"Next"},"\u203A"),
+    ),
+  );
+}
+
+function DayBlock({day,active,onClick}){
+  return h("div",null,
+    h("button",{className:"day-btn"+(active?" active":""),onClick},
+      h("div",{style:{display:"flex",justifyContent:"space-between",alignItems:"center"}},
+        h("div",null,h("div",{className:"day-label"},day.day+" \u2014 "+day.date),h("div",{className:"day-ep"},day.ep)),
+        h("div",{className:"day-arrow"},"\u203A")
+      )
+    ),
+    active&&h("div",{className:"day-detail"},
+      h("div",{className:"day-islanders"},"Islanders: "+day.islanders.join(", ")),
+      h("div",{className:"day-vibe"},day.vibe),
+      day.events.map((ev,i)=>h("div",{className:"ev",key:i},
+        h("div",{className:"ev-icon"},ev.icon),
+        h("div",{style:{flex:1,minWidth:0}},
+          h("div",{className:"ev-time"},ev.time),
+          h("div",{className:"ev-title"},ev.title),
+          h("div",{className:"ev-desc"},ev.desc),
+          ev.tip&&h("div",{className:"ev-tip"},"\uD83D\uDCA1 "+ev.tip)
+        )
+      ))
+    )
+  );
+}
+
+// Venue addresses moved here so VenueCard can access them
+var VENUE_ADDRESSES={
+  "At Random":"2501 S Delaware Ave, Milwaukee, WI",
+  "Lost Whale":"2151 S Kinnickinnic Ave, Milwaukee, WI",
+  "Boone & Crockett":"818 S Water St, Milwaukee, WI",
+  "La Cage":"801 S 2nd St, Milwaukee, WI",
+  "Pink Agave":"1234 N Water St, Milwaukee, WI",
+  "Revel":"108 N Milwaukee St, Milwaukee, WI",
+  "Elsa's on the Park":"833 N Jefferson St, Milwaukee, WI",
+  "Taylor's":"795 N Jefferson St, Milwaukee, WI",
+  "Foy's":"754 N Milwaukee St, Milwaukee, WI",
+  "Sophie":"815 N Old World 3rd St, Milwaukee, WI",
+  "Station 1846":"701 N Milwaukee St, Milwaukee, WI",
+  "Colectivo Coffee":"2211 S Kinnickinnic Ave, Milwaukee, WI",
+  "Stone Creek Coffee":"2266 S Kinnickinnic Ave, Milwaukee, WI",
+  "Interval":"2199 S Kinnickinnic Ave, Milwaukee, WI",
+  "Honeypie Cafe":"2643 S Kinnickinnic Ave, Milwaukee, WI",
+  "SmallPie":"2504 S Kinnickinnic Ave, Milwaukee, WI",
+  "Room Service":"2663 S Kinnickinnic Ave, Milwaukee, WI",
+  "The Outsider":"316 N Milwaukee St, Milwaukee, WI",
+};
+
+function VenueCard({v}){
+  var addr=VENUE_ADDRESSES[v.name];
+  var mapUrl=addr?"https://maps.apple.com/?q="+encodeURIComponent(v.name+", "+addr):null;
+  return h("div",{className:"venue"},
+    h("div",{className:"venue-head"},
+      h("div",{style:{flex:1,minWidth:0}},
+        h("div",{className:"venue-cat",style:{color:v.color}},v.cat),
+        h("div",{className:"venue-name"},v.name),
+      ),
+      v.vibe&&h("div",{className:"venue-vibe"},v.vibe),
+    ),
+    h("div",{className:"venue-desc"},v.desc),
+    v.tags&&h("div",{className:"venue-tags"},v.tags.map(function(t){return h("span",{className:"vtag",key:t},t)})),
+    mapUrl&&h("a",{className:"venue-map",href:mapUrl,target:"_blank",rel:"noopener"},"\uD83D\uDCCD Directions"),
+  );
+}
+
+function PackSection({title,emoji,items}){
+  const[checked,sChecked]=useState({});
+  const[copied,sCopied]=useState(false);
+  const total=items.length;
+  const done=Object.values(checked).filter(Boolean).length;
+  const pct=total?Math.round(done/total*100):0;
+  const toggle=function(item){sChecked(function(p){var n=Object.assign({},p);n[item]=!n[item];return n})};
+  const copyList=function(){
+    var unchecked=items.filter(function(item){return!checked[item]});
+    var text=emoji+" "+title+":\n"+unchecked.map(function(i){return"\u25A1 "+i}).join("\n");
+    navigator.clipboard.writeText(text).then(function(){sCopied(true);setTimeout(function(){sCopied(false)},2000)});
+  };
+  return h("div",{className:"pack-section"},
+    h("div",{className:"pack-header"},
+      h("span",{className:"pack-emoji"},emoji),
+      h("div",{className:"pack-title"},title),
+      h("div",{className:"pack-prog"},done+"/"+total),
+    ),
+    h("div",{className:"pack-bar"},h("div",{className:"pack-fill",style:{width:pct+"%"}})),
+    h("div",{className:"checklist"},items.map(function(item){
+      return h("div",{key:item,className:"chk"+(checked[item]?" checked":""),onClick:function(){toggle(item)}},
+        h("div",{className:"chk-box"},checked[item]?"\u2713":""),
+        item
+      )
+    })),
+    h("button",{onClick:copyList,style:{background:"var(--glass2)",border:"1px solid rgba(255,255,255,.08)",borderRadius:"100px",padding:"8px 16px",color:copied?"var(--teal)":"var(--text-dim)",fontSize:"clamp(.6rem,1.8vw,.68rem)",fontWeight:600,cursor:"pointer",marginTop:"8px",fontFamily:"var(--sans)",transition:"all .2s"}},copied?"\u2713 Copied!":"\uD83D\uDCCB Copy unchecked to Notes"),
+  );
+}
+
+// Weather - uses Open-Meteo free API (no key needed), Milwaukee coords
+// Historical Milwaukee mid-June averages as fallback
+var MKE_HISTORICAL=[
+  {date:"2026-06-12",high:78,low:60,desc:"Mostly Sunny",emoji:"\u2600\uFE0F",note:"Avg high 78\u00B0 based on 30-year Milwaukee data"},
+  {date:"2026-06-13",high:79,low:61,desc:"Partly Cloudy",emoji:"\u26C5",note:"Afternoon showers possible (~30% chance in mid-June)"},
+  {date:"2026-06-14",high:77,low:59,desc:"Warm & Sunny",emoji:"\uD83C\uDF24\uFE0F",note:"Typical mid-June \u2014 warm days, cooler lakefront evenings"},
+];
+function WeatherWidget(){
+  var[wx,sWx]=useState(null);
+  var[isHistorical,sIsHistorical]=useState(false);
+  useEffect(function(){
+    // Milwaukee: 43.0389, -87.9065
+    fetch("https://api.open-meteo.com/v1/forecast?latitude=43.04&longitude=-87.91&daily=temperature_2m_max,temperature_2m_min,weathercode&temperature_unit=fahrenheit&timezone=America/Chicago&start_date=2026-06-12&end_date=2026-06-14")
+      .then(function(r){return r.json()})
+      .then(function(d){
+        if(d.daily&&d.daily.time&&d.daily.time.length>0){
+          var days=d.daily.time.map(function(t,i){
+            return{date:t,high:Math.round(d.daily.temperature_2m_max[i]),low:Math.round(d.daily.temperature_2m_min[i]),code:d.daily.weathercode[i]}
+          });
+          sWx(days);
+        }else{sWx(MKE_HISTORICAL);sIsHistorical(true)}
+      })
+      .catch(function(){sWx(MKE_HISTORICAL);sIsHistorical(true)});
+  },[]);
+
+  var codeToEmoji=function(c){
+    if(c<=1)return"\u2600\uFE0F";if(c<=3)return"\u26C5";if(c<=48)return"\uD83C\uDF2B\uFE0F";
+    if(c<=57)return"\uD83C\uDF27\uFE0F";if(c<=67)return"\uD83C\uDF27\uFE0F";if(c<=77)return"\u2744\uFE0F";
+    if(c<=82)return"\uD83C\uDF26\uFE0F";if(c<=86)return"\u2744\uFE0F";return"\u26C8\uFE0F";
+  };
+  var codeToDesc=function(c){
+    if(c<=1)return"Sunny";if(c<=3)return"Partly cloudy";if(c<=48)return"Cloudy/fog";
+    if(c<=57)return"Drizzle";if(c<=67)return"Rain";if(c<=77)return"Snow";
+    if(c<=82)return"Showers";return"Storms";
+  };
+  var dayNames=["Fri","Sat","Sun"];
+
+  if(!wx)return h("div",{className:"wx-loading"},"Loading Milwaukee forecast...");
+  return h("div",null,
+    isHistorical&&h("div",{className:"wx-hist-badge",style:{background:"linear-gradient(135deg,rgba(255,45,135,.15),rgba(0,212,170,.1))",border:"1px solid rgba(255,45,135,.2)",borderRadius:"var(--r)",padding:"clamp(10px,2.5vw,14px)",marginBottom:"16px",textAlign:"center",color:"var(--text-mid)",fontSize:"clamp(.72rem,2vw,.82rem)",lineHeight:1.5}},
+      "\uD83D\uDCC5 Based on historical Milwaukee mid-June averages. Live forecast will appear ~2 weeks before the trip!"
+    ),
+    h("div",{className:"weather-grid"},
+      wx.map(function(d,i){
+        var isHist=!!d.desc;
+        return h("div",{className:"wx-day",key:d.date},
+          h("div",{className:"wx-label"},dayNames[i]||d.date),
+          h("div",{className:"wx-icon"},isHist?d.emoji:codeToEmoji(d.code)),
+          h("div",{className:"wx-temp"},d.high+"\u00B0"),
+          h("div",{className:"wx-desc"},isHist?d.desc:codeToDesc(d.code)),
+          h("div",{style:{fontSize:"clamp(.5rem,1.4vw,.58rem)",color:"var(--text-dim)",marginTop:"2px"}},"Low: "+d.low+"\u00B0"),
+          isHist&&d.note&&h("div",{style:{fontSize:"clamp(.48rem,1.3vw,.55rem)",color:"var(--text-dim)",marginTop:"4px",fontStyle:"italic"}},d.note),
+        )
+      })
+    ),
+    h("div",{className:"wx-note"},isHistorical?"Historical averages \u2014 real forecast updates daily via Open-Meteo as we get closer. Pack layers for cooler evenings!":"Forecast updates daily via Open-Meteo. Pack layers for cooler evenings."),
+  );
+}
+
+// Scotty section data
+var SCOTTY_DATA=[
+  {q:"Love Island type on paper:",a:"Dramatic. Funny. Loud. Thinks the whole villa revolves around him. And honestly? He might be right."},
+  {q:"The origin story:",a:"They knew of each other in high school but never dated. Then Country Thunder happened. Sometimes the universe just picks the right moment."},
+  {q:"If Scotty entered the villa right now:",a:"He'd walk in like he owned the place, talk to every single person about himself, and somehow make everyone love him anyway. The Scotty Show doesn't have an off switch."},
+  {q:"Compatibility score:",a:"\uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \u2014 He's a lot. But he's Al's kind of a lot. And that's what matters."},
+  {q:"His one true love (besides Al):",a:"\uD83C\uDFCC\uFE0F Golf. It's not a hobby \u2014 it's a personality trait. If he's not texting Al back, check the course."},
+  {q:"What he's probably doing this weekend:",a:"Golfing. Talking about golfing. Showing someone a video of his last round. Checking the group chat for updates. Then golfing again."},
+  {q:"The Scotty Show, explained:",a:"He lives for attention. He's dramatic. He'd absolutely thrive on actual Love Island. Production would give him the most screen time and he'd deserve every second."},
+  {q:"Fun facts the villa should know:",a:"Plumber by trade. Dog dad to Zeke and Luli. Would 100% talk about his golf handicap in a Love Island confessional."},
+];
+
+function ConfessionalFAB(){
+  const[open,sOpen]=useState(false);
+  const[i,sI]=useState(Math.floor(Math.random()*CONFESSIONALS.length));
+  return h(React.Fragment,null,
+    open&&h("div",{className:"fab-panel"},
+      h("div",{className:"fab-label"},"Confessional Booth"),
+      h("div",{className:"fab-prompt"},CONFESSIONALS[i]),
+      h("button",{className:"fab-next",onClick:function(e){e.stopPropagation();sI((i+1)%CONFESSIONALS.length)}},"Next prompt \u2192"),
+      h(ConfessionalVideo),
+    ),
+    h("button",{className:"fab",onClick:function(){sOpen(!open)},"aria-label":"Confessional"},open?"\u2715":"\uD83C\uDF99\uFE0F"),
+  );
+}
+
+/* ══════ NEW FEATURES ══════ */
+
+// ── Scotty text messages for the ticker ──
+var SCOTTY_TEXTS=[
+  "How's the weather there? Perfect golf weather here btw",
+  "Miss you already. Zeke and Luli say hi",
+  "Is anyone talking about me?",
+  "Just shot an 82. Thought you should know",
+  "Do you think Al has mentioned me yet?",
+  "Tell Al I said hi. Actually tell everyone I said hi",
+  "Luli won't stop sitting on your pillow",
+  "I'm not jealous of the tiki boat. I'm not. (I am)",
+  "Zeke just looked at me like he knows you're gone",
+  "Just so you know, I could totally be on Love Island",
+  "Send pics of the food. For research",
+  "The house is too quiet. The Scotty Show needs an audience",
+];
+
+// ── Couple of the Day pairings & blurbs ──
+var COTD_BLURBS=[
+  {p:[0,1],b:"The bride and her right hand. Unbreakable coupling. Production wouldn't dare split them."},
+  {p:[0,2],b:"Main character meets wild card. The villa's most unpredictable alliance."},
+  {p:[1,3],b:"Head of Villa meets the Bookstore Bombshell. The brains of this operation."},
+  {p:[2,4],b:"The Wild Card and The Loyal One. Chaos meets calm. It works somehow."},
+  {p:[3,5],b:"Two new moms out on release. This coupling runs on caffeine and freedom."},
+  {p:[1,4],b:"Head of Villa and The Loyal One. The backbone of the whole weekend."},
+  {p:[0,5],b:"The bride and The Super Mom. Mutual respect, maximum energy."},
+  {p:[6,7],b:"The Casa Amor bombshells. They arrived together. They stay together."},
+  {p:[1,2],b:"Head of Villa and The Wild Card. Ashley plans it. Lori destroys the plan. Balance."},
+  {p:[0,6],b:"The bride welcomes a bombshell. Saturday just got interesting."},
+  {p:[4,5],b:"The Loyal One and The Super Mom. Heart and hustle. Unstoppable duo."},
+  {p:[3,7],b:"Bookstore Bombshell meets Casa Amor energy. Plot twist we didn't see coming."},
+];
+
+function CoupleOfTheDay(){
+  // Deterministic "random" based on day of year
+  var dayOfYear=Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/(1000*60*60*24));
+  var pair=COTD_BLURBS[dayOfYear%COTD_BLURBS.length];
+  var a=ISLANDERS[pair.p[0]],b=ISLANDERS[pair.p[1]];
+  return h("div",{className:"cotd"},
+    h("div",{className:"cotd-inner"},
+      h("div",{style:{fontSize:"clamp(.5rem,1.5vw,.58rem)",letterSpacing:"2.5px",textTransform:"uppercase",fontWeight:700,color:"var(--pink)",marginBottom:"6px"}},"Today's Coupling"),
+      h("div",{className:"cotd-emoji"},a.emoji+" \u2764\uFE0F\u200D\uD83D\uDD25 "+b.emoji),
+      h("div",{className:"cotd-names"},a.name+" & "+b.name),
+      h("div",{className:"cotd-blurb"},pair.b),
+    ),
+  );
+}
+
+function ScottyTicker(){
+  var[idx,sIdx]=useState(0);
+  useEffect(function(){
+    var id=setInterval(function(){sIdx(function(i){return(i+1)%SCOTTY_TEXTS.length})},8000);
+    return function(){clearInterval(id)};
+  },[]);
+  return h("div",{className:"scotty-ticker"},
+    h("div",{className:"scotty-avi"},"\uD83E\uDD35"),
+    h("div",{style:{flex:1,minWidth:0}},
+      h("div",{className:"scotty-label"},"The Scotty Show \u00B7 Live"),
+      h("div",{className:"scotty-msg",key:idx,style:{animation:"fadeUp .4s ease"}},"\u201C"+SCOTTY_TEXTS[idx]+"\u201D"),
+    ),
+  );
+}
+
+// ── Hydration reminders (only during trip dates) ──
+function HydrationToast(){
+  var[show,sShow]=useState(false);
+  var[msg,sMsg]=useState("");
+  var msgs=["Hydrate, islander \uD83D\uDCA7","Water check! Stay gorgeous \u2728","Drink some water bestie \uD83D\uDCA6","H2O break \u2014 villa rules \uD83C\uDFDD\uFE0F","Hydration station \uD83D\uDEB0"];
+  useEffect(function(){
+    var now=new Date();
+    var tripStart=new Date("2026-06-12T16:00:00");
+    var tripEnd=new Date("2026-06-14T23:59:59");
+    if(now<tripStart||now>tripEnd)return;
+    var show90=function(){
+      sMsg(msgs[Math.floor(Math.random()*msgs.length)]);
+      sShow(true);
+      setTimeout(function(){sShow(false)},4000);
+    };
+    var id=setInterval(show90,90*60*1000);
+    // Show first one after 30 min
+    var first=setTimeout(show90,30*60*1000);
+    return function(){clearInterval(id);clearTimeout(first)};
+  },[]);
+  if(!show)return null;
+  return h("div",{className:"hydrate-toast"},"\uD83D\uDCA7 ",msg);
+}
+
+// ── Morning After Recap (shows on Sat/Sun morning of trip) ──
+function MorningRecap(){
+  var now=new Date();
+  var satMorning=new Date("2026-06-13T06:00:00");
+  var satNoon=new Date("2026-06-13T12:00:00");
+  var sunMorning=new Date("2026-06-14T06:00:00");
+  var sunNoon=new Date("2026-06-14T14:00:00");
+
+  var recapEvents=null;var recapTitle="";
+  if(now>=satMorning&&now<=satNoon){
+    recapTitle="Previously on Casa Al-Mor...";
+    recapEvents=["OGs arrived at the villa","Cocktails at At Random","Dinner at Room Service","Late night at Lost Whale"];
+  }else if(now>=sunMorning&&now<=sunNoon){
+    recapTitle="Previously on Casa Al-Mor...";
+    recapEvents=["Full squad assembled \u2014 bombshells Melissa & Vanessa entered","Tiki boat at 12:30","Dinner at The Outsider \u2014 all 8 islanders","Cathedral Square bar crawl: Elsa's \u2192 Taylor's \u2192 Foy's \u2192 Sophie"];
+  }
+  if(!recapEvents)return null;
+  return h("div",{className:"recap-card"},
+    h("div",{className:"recap-label"},"\uD83C\uDFAC Episode Recap"),
+    h("div",{className:"recap-title"},recapTitle),
+    h("div",{className:"recap-items"},
+      recapEvents.map(function(e,i){return h("div",{className:"recap-item",key:i},e)})
+    ),
+  );
+}
+
+// ── Confessional Video option ──
+function ConfessionalVideo(){
+  var[recording,sRecording]=useState(false);
+  var[supported]=useState(typeof navigator!=="undefined"&&!!navigator.mediaDevices);
+  var startRec=function(){
+    if(!supported){alert("Video recording needs camera access. Open this page in Safari or Chrome.");return}
+    navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true}).then(function(stream){
+      sRecording(true);
+      var chunks=[];
+      var mr=new MediaRecorder(stream);
+      mr.ondataavailable=function(e){chunks.push(e.data)};
+      mr.onstop=function(){
+        var blob=new Blob(chunks,{type:"video/mp4"});
+        var url=URL.createObjectURL(blob);
+        var a=document.createElement("a");a.href=url;a.download="confessional-"+Date.now()+".mp4";a.click();
+        URL.revokeObjectURL(url);
+        stream.getTracks().forEach(function(t){t.stop()});
+        sRecording(false);
+      };
+      mr.start();
+      // Auto-stop after 15 seconds
+      setTimeout(function(){if(mr.state==="recording")mr.stop()},15000);
+    }).catch(function(){alert("Camera access denied. Check your browser settings.")});
+  };
+  return h("div",{style:{marginTop:"12px"}},
+    h("button",{
+      className:"fab-next",
+      onClick:startRec,
+      style:recording?{background:"rgba(255,45,135,.3)",color:"var(--pink)"}:{}
+    },recording?"\uD83D\uDD34 Recording... (15s max)":"\uD83C\uDFA5 Record a Video Confessional"),
+    h("div",{style:{fontSize:"clamp(.58rem,1.6vw,.65rem)",color:"var(--text-dim)",marginTop:"6px"}},"Records 15 seconds. Saves to camera roll. Drop it in the shared album."),
+  );
+}
+
+/* ══════ APP ══════ */
+// ── Floating tropical particles ──
+var TROPIC_GLYPHS=["\uD83C\uDF34","\uD83C\uDF3A","\uD83C\uDF78","\uD83C\uDF79","\uD83C\uDF4D","\u2728","\uD83D\uDC9E","\uD83C\uDF3B","\uD83C\uDF36\uFE0F","\uD83D\uDD25","\uD83C\uDF45","\uD83E\uDD65"];
+function TropicalParticles(){
+  var[bits]=useState(function(){
+    return Array.from({length:14}).map(function(_,i){
+      return{
+        k:i,
+        glyph:TROPIC_GLYPHS[Math.floor(Math.random()*TROPIC_GLYPHS.length)],
+        left:Math.random()*100,
+        delay:-Math.random()*18,
+        dur:14+Math.random()*14,
+        driftX:(Math.random()-.5)*120+"px",
+        driftR:((Math.random()-.5)*60)+"deg",
+        size:.9+Math.random()*.9,
+        hue:Math.floor(Math.random()*60)-30,
+      };
+    });
+  });
+  return h("div",{className:"tropics"},
+    bits.map(function(b){
+      return h("div",{
+        key:b.k,
+        className:"tropic",
+        style:{
+          left:b.left+"%",
+          animationDelay:b.delay+"s",
+          animationDuration:b.dur+"s",
+          "--drift-x":b.driftX,
+          "--drift-r":b.driftR,
+          fontSize:"calc(1.6rem * "+b.size+")",
+          filter:"drop-shadow(0 0 14px rgba(255,45,135,.45)) hue-rotate("+b.hue+"deg)",
+        },
+      },b.glyph);
+    })
+  );
+}
+
+// ── Confetti ──
+function Confetti(){
+  var[show,sShow]=useState(true); // Start with confetti on load
+  // Expose trigger globally
+  if(typeof window!=="undefined")window._confetti=function(){sShow(true);setTimeout(function(){sShow(false)},3000)};
+  // Auto-dismiss the initial confetti after 3s
+  useEffect(function(){var t=setTimeout(function(){sShow(false)},3000);return function(){clearTimeout(t)}},[]);
+  if(!show)return null;
+  var colors=["#ff2d87","#ffc857","#00d4aa","#ff6b5b","#a855f7","#00c2ff","#ec4899","#f97316"];
+  return h("div",{className:"confetti-wrap"},
+    Array.from({length:60}).map(function(_,i){
+      var left=Math.random()*100;var delay=Math.random()*2;var dur=2+Math.random()*2;var size=6+Math.random()*8;
+      var col=colors[Math.floor(Math.random()*colors.length)];
+      return h("div",{key:i,className:"confetti-piece",style:{left:left+"%",animationDelay:delay+"s",animationDuration:dur+"s",width:size+"px",height:size+"px",background:col,borderRadius:Math.random()>.5?"50%":"2px"}})
+    })
+  );
+}
+
+// ── Mr. & Mrs. Quiz ──
+var QUIZ_QS=[
+  {q:"Where did Al and Scotty first get together?",opts:["A wedding","Country Thunder","A friend's birthday","Instagram DMs"],answer:1,note:"Country Thunder \u2014 they knew of each other in high school but it took a music festival to make it happen."},
+  {q:"What is Scotty's #1 hobby?",opts:["Cooking","Working on cars","Golf","Watching reality TV"],answer:2,note:"\uD83C\uDFCC\uFE0F Golf. It's not even close. It's his whole personality."},
+  {q:"What are Al and Scotty's dogs named?",opts:["Max & Luna","Zeke & Luli","Bear & Daisy","Cooper & Bella"],answer:1,note:"Zeke and Luli \u2014 the real villa residents."},
+  {q:"What does Scotty do for work?",opts:["Electrician","Firefighter","Plumber","Construction"],answer:2,note:"He's a plumber. Keeps things flowing. (Sorry.)"},
+  {q:"What is 'The Scotty Show'?",opts:["A podcast he wants to start","His dramatic, attention-loving personality","His fantasy golf league name","A bit he does at parties"],answer:1,note:"If you know, you know. The Scotty Show is always on. There is no off switch."},
+  {q:"If Scotty were on Love Island, what would he do first?",opts:["Make everyone laugh","Talk about golf","Make it about himself somehow","All of the above"],answer:3,note:"The correct answer is always 'all of the above' with Scotty."},
+  {q:"What would Scotty be doing right now during the bachelorette?",opts:["Golfing","Talking about golfing","Checking the group chat","All three simultaneously"],answer:3,note:"He's on the course, phone in one hand, club in the other, refreshing the group chat for updates."},
+];
+
+function MrMrsQuiz(){
+  var[qi,sQi]=useState(0);
+  var[picked,sPicked]=useState(-1);
+  var[score,sScore]=useState(0);
+  var[done,sDone]=useState(false);
+
+  var q=QUIZ_QS[qi];
+  var pick=function(idx){
+    if(picked>=0)return;
+    sPicked(idx);
+    if(idx===q.answer)sScore(function(s){return s+1});
+    setTimeout(function(){
+      if(qi<QUIZ_QS.length-1){sQi(function(i){return i+1});sPicked(-1)}
+      else{sDone(true);if(typeof window._confetti==="function")window._confetti()}
+    },1500);
+  };
+  var reset=function(){sQi(0);sPicked(-1);sScore(0);sDone(false)};
+
+  if(done){
+    var pct=Math.round(score/QUIZ_QS.length*100);
+    var msg=pct>=80?"Villa-certified soulmates.":pct>=50?"Not bad. The couple survives.":"Oof. Someone needs a recoupling.";
+    return h("div",{className:"quiz-result"},
+      h("div",{className:"quiz-score"},score+"/"+QUIZ_QS.length),
+      h("div",{style:{fontSize:"clamp(.9rem,2.8vw,1rem)",color:"#fff",fontWeight:700,marginBottom:"4px"}},msg),
+      h("div",{style:{marginBottom:"16px"}},"Compatibility level: "+pct+"%"),
+      h("button",{className:"fab-next",onClick:reset},"Play again"),
+    );
+  }
+
+  return h("div",null,
+    h("div",{style:{fontSize:"clamp(.6rem,1.8vw,.68rem)",color:"var(--text-dim)",marginBottom:"12px"}},"Question "+(qi+1)+" of "+QUIZ_QS.length),
+    h("div",{className:"quiz-q"},
+      h("div",{className:"quiz-prompt"},q.q),
+      h("div",{className:"quiz-opts"},
+        q.opts.map(function(opt,idx){
+          var cls="quiz-opt";
+          if(picked>=0){
+            if(idx===q.answer)cls+=" correct";
+            else if(idx===picked)cls+=" wrong";
+          }
+          return h("div",{key:idx,className:cls,onClick:function(){pick(idx)}},opt);
+        })
+      ),
+      picked>=0&&h("div",{style:{fontSize:"clamp(.72rem,2vw,.78rem)",color:"var(--text-dim)",fontStyle:"italic",marginTop:"10px"}},q.note),
+    ),
+  );
+}
+
+// ── Live "Now Playing" tracker (activates during trip) ──
+function NowPlaying(){
+  var now=new Date();
+  var tripStart=new Date("2026-06-12T16:00:00");
+  var tripEnd=new Date("2026-06-14T23:59:59");
+  if(now<tripStart||now>tripEnd)return null;
+
+  // Flatten all events with rough times
+  var allEvents=[];
+  SCHEDULE.forEach(function(day,di){
+    day.events.forEach(function(ev,ei){
+      var d=new Date("2026-06-"+(12+di));
+      // Rough time mapping
+      var hour=12;
+      if(ev.time.match(/4 PM/))hour=16;
+      else if(ev.time.match(/6 PM/))hour=18;
+      else if(ev.time.match(/8 PM/))hour=20;
+      else if(ev.time.match(/Late/i))hour=22;
+      else if(ev.time.match(/Morning/i))hour=9;
+      else if(ev.time.match(/Late AM/i))hour=10;
+      else if(ev.time.match(/12:30/))hour=12.5;
+      else if(ev.time.match(/3 PM/))hour=15;
+      else if(ev.time.match(/7 PM/))hour=19;
+      else if(ev.time.match(/10 PM/))hour=22;
+      else if(ev.time.match(/Later/i))hour=11;
+      d.setHours(Math.floor(hour),hour%1*60,0);
+      allEvents.push({time:d,title:ev.title,desc:ev.desc,icon:ev.icon});
+    });
+  });
+
+  // Find current/next
+  var current=null,next=null;
+  for(var i=0;i<allEvents.length;i++){
+    if(allEvents[i].time<=now){current=allEvents[i]}
+    if(allEvents[i].time>now&&!next){next=allEvents[i]}
+  }
+
+  if(!current&&!next)return null;
+  return h("div",{className:"now-playing"},
+    h("div",{className:"np-label"},h("div",{className:"np-dot"}),"Now in the villa"),
+    current&&h("div",null,
+      h("div",{className:"np-event"},current.icon+" "+current.title),
+      h("div",{className:"np-desc"},current.desc),
+    ),
+    next&&h("div",{className:"np-next"},"Up next: "+next.icon+" "+next.title),
+  );
+}
+
+// ── Install Prompt ──
+function InstallBanner(){
+  var[show,sShow]=useState(true);
+  var[isIOS]=useState(/iPhone|iPad/.test(navigator.userAgent));
+  if(!show)return null;
+  return h("div",{className:"install-banner",onClick:function(){if(!isIOS)return;alert("Tap the share button (box with arrow) at the bottom of Safari, then tap 'Add to Home Screen'")}},
+    h("div",{className:"install-icon"},"\uD83D\uDCF2"),
+    h("div",{className:"install-text"},h("strong",null,"Add to Home Screen")," \u2014 "+(isIOS?"Tap share \u2192 Add to Home Screen":"for the full villa experience")),
+    h("button",{className:"install-dismiss",onClick:function(e){e.stopPropagation();sShow(false)}},"\u2715"),
+  );
+}
+
+function App(){
+  const[activeDay,sAD]=useState(0);
+  const[venueTab,sVT]=useState("nightlife");
+  const[activeNav,sAN]=useState("home");
+  var handlePalm=function(){
+    if(typeof window._confetti==="function")window._confetti();
+    if(typeof window._startVillaMusic==="function")window._startVillaMusic();
+  };
+
+  const sectionRefs={home:useRef(),islanders:useRef(),schedule:useRef(),spots:useRef(),weather:useRef(),more:useRef()};
+
+  useEffect(function(){
+    var handler=function(){
+      var y=window.scrollY+140;
+      var entries=Object.entries(sectionRefs);
+      for(var i=entries.length-1;i>=0;i--){
+        var id=entries[i][0],ref=entries[i][1];
+        if(ref.current&&ref.current.offsetTop<=y){sAN(id);break}
+      }
+    };
+    window.addEventListener("scroll",handler,{passive:true});
+    return function(){window.removeEventListener("scroll",handler)};
+  },[]);
+
+  var scrollTo=function(id){
+    var ref=sectionRefs[id];
+    if(ref&&ref.current){ref.current.scrollIntoView({behavior:"smooth",block:"start"})}
+  };
+
+  var vtabs=[{id:"nightlife",label:"Bars & Nightlife"},{id:"cathedral",label:"Cathedral Sq"},{id:"coffee",label:"Coffee"},{id:"breakfast",label:"Breakfast"}];
+
+  return h("div",null,
+    h(Confetti),
+    h(HydrationToast),
+    h(TropicalParticles),
+
+    /* ═══ HERO ═══ */
+    h("div",{ref:sectionRefs.home,className:"hero-bg"},
+      h("div",{className:"neon-scan"}),
+      h("div",{className:"sec sec-hero"},
+        h(InstallBanner),
+        h("div",{className:"palm-wrap"},
+          h("div",{className:"hero-palm",onClick:handlePalm,style:{cursor:"pointer"}},"\uD83C\uDF34"),
+          h("div",{className:"palm-bubble"},"Volume Up and Tap The Palm Tree First"),
+        ),
+        h("div",{className:"tag"},"Al's Last Recoupling"),
+        h("h1",{className:"hero-title"},"Casa ",h("span",null,"Al-Mor")),
+        h("div",{className:"hero-tagline"},"Three days in the villa. One bride. Zero eliminations."),
+        h("div",{className:"hero-loc"},"Milwaukee \u00B7 June 12\u201314, 2026"),
+        h(Countdown),
+        h(MorningRecap),
+        h(NowPlaying),
+
+
+        h(IGotAText),
+        h(ScottyTicker),
+
+        h("div",{style:{textAlign:"left",marginBottom:"10px"}},
+          h("div",{className:"tag"},"This weekend"),
+        ),
+        h("div",{className:"scroll-row-wrap"},
+          h("div",{className:"scroll-row"},
+            // Original set
+            h("div",{className:"prev-card c1"},h("div",{className:"pc-emoji"},"\uD83C\uDFE0"),h("div",{className:"pc-title"},"The Villa Opens"),h("div",{className:"pc-desc"},"Friday 4 PM. OGs arrive in Bay View.")),
+            h("div",{className:"prev-card c2"},h("div",{className:"pc-emoji"},"\uD83D\uDEA4"),h("div",{className:"pc-title"},"Tiki Boat"),h("div",{className:"pc-desc"},"Saturday 12:30. Drinks on the water.")),
+            h("div",{className:"prev-card c3"},h("div",{className:"pc-emoji"},"\uD83D\uDCA3"),h("div",{className:"pc-title"},"Bombshell Arrivals"),h("div",{className:"pc-desc"},"Melissa & Vanessa enter Saturday.")),
+            h("div",{className:"prev-card c4"},h("div",{className:"pc-emoji"},"\uD83C\uDF03"),h("div",{className:"pc-title"},"Cathedral Square"),h("div",{className:"pc-desc"},"Saturday night. Bars, martinis, chaos.")),
+            // Duplicate set for seamless loop
+            h("div",{className:"prev-card c1"},h("div",{className:"pc-emoji"},"\uD83C\uDFE0"),h("div",{className:"pc-title"},"The Villa Opens"),h("div",{className:"pc-desc"},"Friday 4 PM. OGs arrive in Bay View.")),
+            h("div",{className:"prev-card c2"},h("div",{className:"pc-emoji"},"\uD83D\uDEA4"),h("div",{className:"pc-title"},"Tiki Boat"),h("div",{className:"pc-desc"},"Saturday 12:30. Drinks on the water.")),
+            h("div",{className:"prev-card c3"},h("div",{className:"pc-emoji"},"\uD83D\uDCA3"),h("div",{className:"pc-title"},"Bombshell Arrivals"),h("div",{className:"pc-desc"},"Melissa & Vanessa enter Saturday.")),
+            h("div",{className:"prev-card c4"},h("div",{className:"pc-emoji"},"\uD83C\uDF03"),h("div",{className:"pc-title"},"Cathedral Square"),h("div",{className:"pc-desc"},"Saturday night. Bars, martinis, chaos.")),
+          ),
+        ),
+
+        h("div",{className:"stats"},
+          [{n:"3",l:"Days"},{n:"8",l:"Islanders"},{n:"\u221E",l:"Memories"}].map(function(s){
+            return h("div",{className:"stat",key:s.l},h("div",{className:"stat-num"},s.n),h("div",{className:"stat-label"},s.l))
+          })
+        ),
+
+        h("div",{className:"welcome"},
+          h("p",null,"Welcome to ",h("strong",null,"Casa Al-Mor")," \u2014 the villa where Al has her last recoupling before she's permanently off the market. Three days of Bay View mornings, tiki boat afternoons, Cathedral Square nights, and everything in between. The itinerary is loose. The only rule is to have fun.")
+        ),
+      )
+    ),
+
+    /* ═══ ISLANDERS ═══ */
+    h("div",{ref:sectionRefs.islanders,className:"sec sec-band-1"},
+      h(Reveal,null,
+        h("div",{className:"tag"},"Meet the"),
+        h("div",{className:"sec-title"},h("i",null,"Islanders")),
+        h("div",{className:"sec-sub"},"6 OGs arrive Friday. 2 bombshells walk in Saturday. Swipe through."),
+      ),
+      h(IslanderCarousel),
+    ),
+
+    /* ═══ SCHEDULE ═══ */
+    h("div",{ref:sectionRefs.schedule,className:"sec sec-band-2"},
+      h(Reveal,null,
+        h("div",{className:"tag"},"The Poolside Agenda"),
+        h("div",{className:"sec-title"},"Weekend ",h("i",null,"Schedule")),
+        h("div",{className:"sec-sub"},"Three episodes. Tap a day for the lineup. Nothing mandatory \u2014 it's a guide, not homework."),
+      ),
+      h(Reveal,null,
+        h("div",{style:{display:"flex",flexDirection:"column",gap:"4px"}},
+          SCHEDULE.map(function(day,i){return h(DayBlock,{key:day.day,day:day,active:activeDay===i,onClick:function(){sAD(activeDay===i?-1:i)}})})
+        ),
+        h("div",{style:{height:"12px"}}),
+        h("div",{className:"card",style:{borderColor:"rgba(255,45,135,.1)"}},
+          h("div",{style:{color:"var(--text-mid)",lineHeight:1.6}},
+            "\uD83D\uDCA1 ",h("strong",{style:{color:"#fff"}},"Outfit vibes")," \u2014 Friday: cute casual. Saturday day: tiki-ready. Saturday night: your best look. Sunday: whatever you woke up in."
+          )
+        ),
+      ),
+    ),
+
+    /* ═══ SPOTS ═══ */
+    h("div",{ref:sectionRefs.spots,className:"sec sec-band-3"},
+      h(Reveal,null,
+        h("div",{className:"tag"},"Villa Intel"),
+        h("div",{className:"sec-title"},"Where We're ",h("i",null,"Going")),
+        h("div",{className:"sec-sub"},"Every spot on the list \u2014 plus coffee and breakfast recs."),
+      ),
+      h("div",{className:"vtab-row"},
+        vtabs.map(function(t){return h("button",{key:t.id,className:"vtab"+(venueTab===t.id?" active":""),onClick:function(){sVT(t.id)}},t.label)})
+      ),
+      (VENUES[venueTab]||[]).map(function(v){return h(VenueCard,{key:v.name,v:v})}),
+    ),
+
+    /* ═══ WEATHER ═══ */
+    h("div",{ref:sectionRefs.weather,className:"sec sec-band-4"},
+      h(Reveal,null,
+        h("div",{className:"tag"},"Villa Forecast"),
+        h("div",{className:"sec-title"},"Milwaukee ",h("i",null,"Weather")),
+        h("div",{className:"sec-sub"},"What to expect June 12\u201314. Updates daily as we get closer."),
+      ),
+      h(Reveal,null,h(WeatherWidget)),
+    ),
+
+    /* ═══ SCOTTY ═══ */
+    h("div",{className:"sec sec-band-1"},
+      h(Reveal,null,
+        h("div",{className:"tag"},"The One She's Going Home To"),
+        h("div",{className:"sec-title"},"About ",h("i",null,"Scotty")),
+        h("div",{className:"sec-sub"},"He's not in the villa this weekend \u2014 but he's the reason we're celebrating."),
+      ),
+      h(Reveal,null,
+        h("div",{className:"card",style:{background:"linear-gradient(135deg,rgba(255,200,87,.12),rgba(255,200,87,.04))",borderColor:"rgba(255,200,87,.15)",textAlign:"center"}},
+          h("div",{style:{fontSize:"2rem",marginBottom:"8px"}},"\uD83E\uDD35"),
+          h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(1.1rem,3.5vw,1.3rem)",fontWeight:700,color:"#fff",marginBottom:"4px"}},"Scotty"),
+          h("div",{style:{fontSize:"clamp(.72rem,2vw,.8rem)",color:"var(--gold)",letterSpacing:"2px",textTransform:"uppercase",fontWeight:600}},"The Groom \u00B7 Permanently Coupled Up"),
+        ),
+        SCOTTY_DATA.map(function(s,i){
+          return h("div",{className:"card",key:i,style:{marginBottom:"10px"}},
+            h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(.88rem,2.6vw,.95rem)",fontWeight:700,color:"#fff",marginBottom:"6px"}},s.q),
+            h("div",{style:{fontSize:"clamp(.8rem,2.3vw,.86rem)",color:"var(--text-mid)",lineHeight:1.6,fontStyle:"italic"}},s.a),
+          )
+        }),
+        h("div",{className:"card",style:{textAlign:"center",borderColor:"rgba(255,45,135,.1)"}},
+          h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(.88rem,2.6vw,1rem)",fontStyle:"italic",color:"var(--text-mid)",lineHeight:1.6}},
+            "\u201CThe public vote is in. Al and Scotty \u2014 you are the winners of Casa Al-Mor.\u201D"
+          ),
+          h("div",{style:{fontSize:"clamp(.6rem,1.8vw,.68rem)",color:"var(--text-dim)",marginTop:"8px"}},"\u2014 The Villa"),
+        ),
+      ),
+    ),
+
+    /* ═══ MR & MRS QUIZ ═══ */
+    h("div",{className:"sec sec-band-2"},
+      h(Reveal,null,
+        h("div",{className:"tag"},"Villa Challenge"),
+        h("div",{className:"sec-title"},"Mr. & Mrs. ",h("i",null,"Quiz")),
+        h("div",{className:"sec-sub"},"How well do you know Al and Scotty? Test your compatibility knowledge. Wrong answers may result in drinks."),
+      ),
+      h(Reveal,null,h(MrMrsQuiz)),
+    ),
+
+    /* ═══ SPOTIFY ═══ */
+    h("div",{className:"sec"},
+      h(Reveal,null,
+        h("div",{className:"spotify-card"},
+          h("div",{className:"spotify-icon"},"\uD83C\uDFB6"),
+          h("div",{className:"spotify-title"},"Villa Vibes Playlist"),
+          h("div",{className:"spotify-sub"},"The official Casa Al-Mor soundtrack. Add your songs before the trip. Aux disputes will be settled democratically."),
+          h("a",{href:"https://open.spotify.com/search",target:"_blank",rel:"noopener",style:{textDecoration:"none"}},
+            h("button",{className:"spotify-btn"},"\uD83C\uDFA7 Open Spotify"),
+          ),
+          h("div",{style:{fontSize:"clamp(.6rem,1.8vw,.68rem)",color:"var(--text-dim)",marginTop:"10px"}},"Create a shared playlist and drop the link in the group chat"),
+        ),
+      ),
+    ),
+
+    /* ═══ MORE ═══ */
+    h("div",{ref:sectionRefs.more},
+
+      // Villa Rules
+      h("div",{className:"sec sec-band-4"},
+        h(Reveal,null,
+          h("div",{className:"tag"},"Casa Al-Mor"),
+          h("div",{className:"sec-title"},"Villa ",h("i",null,"Rules")),
+          h("div",{className:"sec-sub"},"A few gentle guidelines for life in the villa."),
+        ),
+        h(Reveal,null,
+          h("div",{className:"rules-list"},
+            VILLA_RULES.map(function(r,i){return h("div",{className:"rule-item",key:i},
+              h("div",{className:"rule-num-badge"},i+1),
+              h("div",{className:"rule-text"},r),
+            )})
+          ),
+        ),
+      ),
+
+      // Packing
+      h("div",{className:"sec sec-band-1"},
+        h(Reveal,null,
+          h("div",{className:"tag"},"Before You Arrive"),
+          h("div",{className:"sec-title"},"Packing ",h("i",null,"List")),
+          h("div",{className:"sec-sub"},"Tap to check off. Nothing mandatory \u2014 just helpful."),
+        ),
+        h(Reveal,null,
+          h(PackSection,{title:"Essentials",emoji:"\uD83D\uDC5C",items:PACKING.essentials.items}),
+          h(PackSection,{title:"Villa Life",emoji:"\uD83C\uDFE0",items:PACKING.villa.items}),
+          h(PackSection,{title:"Tiki Boat Kit",emoji:"\uD83D\uDEA4",items:PACKING.tikiboat.items}),
+          h(PackSection,{title:"Hangover Survival",emoji:"\uD83D\uDC8A",items:PACKING.hangover.items}),
+        ),
+      ),
+
+      // Photos
+      h("div",{className:"sec sec-band-2"},
+        h(Reveal,null,
+          h("div",{className:"tag"},"Capture the Villa"),
+          h("div",{className:"sec-title"},"Photo ",h("i",null,"Ops")),
+          h("div",{className:"sec-sub"},"Moments worth getting."),
+        ),
+        h(Reveal,null,
+          h("div",{className:"photo-grid"},
+            PHOTOS.map(function(p){return h("div",{className:"photo-card",key:p.title},
+              h("div",{className:"photo-emoji"},p.emoji),
+              h("div",{className:"photo-title"},p.title),
+              h("div",{className:"photo-desc"},p.desc),
+            )})
+          ),
+          h("div",{style:{height:"12px"}}),
+          h("div",{
+            className:"card",
+            style:{borderColor:"rgba(0,212,170,.15)",display:"block"}
+          },
+            h("div",{style:{display:"flex",alignItems:"center",gap:"12px"}},
+              h("div",{style:{fontSize:"clamp(1.6rem,5vw,2rem)"}},"\uD83D\uDCF8"),
+              h("div",null,
+                h("div",{style:{color:"var(--text)",fontWeight:600,fontSize:"clamp(.85rem,2.2vw,.95rem)",marginBottom:"4px"}},"Shared Photo Album"),
+                h("div",{style:{color:"var(--text-mid)",fontSize:"clamp(.72rem,1.8vw,.82rem)",lineHeight:1.5}},"A shared Apple Photos album is coming before the villa opens \u2014 link will drop in the group chat."),
+              ),
+            ),
+            h("div",{style:{color:"var(--teal)",fontSize:"clamp(.68rem,1.6vw,.76rem)",marginTop:"8px",fontWeight:500}},"Coming soon \u2728"),
+          ),
+        ),
+      ),
+
+      // The Villa — Airbnb
+      h("div",{className:"sec sec-band-3"},
+        h(Reveal,null,
+          h("div",{className:"tag"},"Home Base"),
+          h("div",{className:"sec-title"},"The ",h("i",null,"Villa")),
+          h("div",{className:"sec-sub"},"Casa Al-Mor. Bay View, Milwaukee. This is where it all goes down."),
+        ),
+        h(Reveal,null,
+          h("a",{
+            href:"https://www.airbnb.com/rooms/48832941?unique_share_id=0f00d734-3a6f-4c18-a1ff-86e7c76d8904&viralityEntryPoint=1&s=76&source_impression_id=p3_1776533548_P3au_HfXxQMi12Kc",
+            target:"_blank",
+            rel:"noopener",
+            style:{textDecoration:"none",display:"block"},
+          },
+            h("div",{className:"card",style:{borderColor:"rgba(255,45,135,.15)",background:"linear-gradient(135deg,rgba(255,45,135,.1),rgba(255,107,91,.06))",cursor:"pointer",transition:"all .25s"}},
+              h("div",{style:{display:"flex",alignItems:"center",gap:"14px",marginBottom:"14px"}},
+                h("div",{style:{fontSize:"clamp(2rem,6vw,2.6rem)"}},"\uD83C\uDFE0"),
+                h("div",null,
+                  h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(1.1rem,3.5vw,1.3rem)",fontWeight:700,color:"#fff"}},"Casa Al-Mor"),
+                  h("div",{style:{fontSize:"clamp(.72rem,2vw,.8rem)",color:"var(--gold)",letterSpacing:"1.5px",textTransform:"uppercase",fontWeight:600,marginTop:"2px"}},"Bay View \u00B7 Milwaukee"),
+                ),
+              ),
+              h("div",{style:{fontSize:"clamp(.8rem,2.3vw,.88rem)",color:"var(--text-mid)",lineHeight:1.65,marginBottom:"14px"}},"The villa for Al\u2019s last recoupling weekend. Check-in Friday at 4 PM. This is home base for three days of Bay View mornings, tiki boat afternoons, and Cathedral Square nights."),
+              h("div",{style:{display:"flex",gap:"clamp(8px,2.5vw,12px)",flexWrap:"wrap",marginBottom:"14px"}},
+                [{icon:"\uD83D\uDECF\uFE0F",text:"Check-in: Fri 4 PM"},{icon:"\uD83D\uDEAA",text:"Checkout: Sunday"},{icon:"\uD83D\uDEB6",text:"Walkable to Bay View spots"},{icon:"\uD83D\uDC51",text:"Bride picks her bed first"}].map(function(d){
+                  return h("div",{key:d.text,style:{display:"flex",alignItems:"center",gap:"6px",fontSize:"clamp(.68rem,2vw,.76rem)",color:"var(--text-mid)"}},
+                    h("span",null,d.icon),d.text
+                  )
+                })
+              ),
+              h("div",{style:{display:"inline-flex",alignItems:"center",gap:"6px",background:"linear-gradient(135deg,var(--pink),var(--coral))",color:"#fff",borderRadius:"100px",padding:"10px 22px",fontSize:"clamp(.72rem,2vw,.8rem)",fontWeight:700}},"\uD83C\uDFE0 View Airbnb Listing"),
+            ),
+          ),
+        ),
+      ),
+
+      // Logistics
+      h("div",{className:"sec sec-band-3"},
+        h(Reveal,null,
+          h("div",{className:"tag"},"Villa Operations"),
+          h("div",{className:"sec-title"},"Need to ",h("i",null,"Know")),
+          h("div",{className:"sec-sub"},"Addresses, logistics, and the practical stuff."),
+        ),
+        h(Reveal,null,
+          [
+            {label:"The Villa",value:"Casa Al-Mor \u2014 Bay View, Milwaukee",note:"Check-in: Friday 4 PM \u00B7 Checkout: Sunday (see listing)"},
+            {label:"Tiki Boat",value:"Saturday at 12:30 PM",note:"Arrive 10\u201315 min early. Pickup location drops in the group chat closer to the date."},
+            {label:"Dinner \u2014 Friday",value:"Room Service \u00B7 Bay View",note:"Walking distance from the villa."},
+            {label:"Dinner \u2014 Saturday",value:"The Outsider",note:"Reservation time drops in the group chat closer to the date."},
+            {label:"Saturday Night",value:"Cathedral Square \u00B7 ~10 PM",note:"Elsa's \u2192 Taylor's \u2192 Foy's \u2192 Sophie. Walkable."},
+            {label:"Getting Around",value:"",note:"Uber/Lyft for anything outside Bay View. Most Friday spots walkable."},
+            {label:"Cash Tip",value:"",note:"At Random is cash only. Bring some just in case."},
+            {label:"Weather",value:"",note:"Mid-June Milwaukee \u2014 warm days, cooler nights. Bring a layer."},
+            {label:"Safety",value:"",note:"Buddy system. Share locations. No islander left behind."},
+            {label:"Splitting Costs",value:"",note:"Venmo or Splitwise. Sort shared costs beforehand."},
+          ].map(function(l,i){return h("div",{className:"log-item",key:i},
+            h("div",{className:"log-label"},l.label),
+            l.value&&h("div",{className:"log-value"},l.value),
+            l.note&&h("div",{className:"log-note"},l.note),
+          )}),
+        ),
+      ),
+    ),
+
+    // Footer
+    h("div",{className:"footer"},
+      h("div",{style:{fontSize:"1.2rem",marginBottom:"6px"}},"\uD83C\uDF39"),
+      h("p",null,"Casa Al-Mor \u00B7 Milwaukee \u00B7 June 2026"),
+      h("p",{style:{marginTop:"4px",opacity:.4}},"Made with love for Al"),
+    ),
+
+    // Confessional FAB
+    h(ConfessionalFAB),
+
+    // Bottom Nav
+    h("div",{className:"bottom-nav"},
+      [{id:"home",icon:"\uD83C\uDFE0",label:"Villa"},
+       {id:"islanders",icon:"\uD83D\uDC65",label:"Islanders"},
+       {id:"schedule",icon:"\uD83D\uDCC5",label:"Schedule"},
+       {id:"spots",icon:"\uD83C\uDF78",label:"Spots"},
+       {id:"weather",icon:"\u2600\uFE0F",label:"Weather"},
+       {id:"more",icon:"\u2726",label:"More"}].map(function(n){
+        return h("button",{key:n.id,className:"bnav-btn"+(activeNav===n.id?" active":""),onClick:function(){scrollTo(n.id)}},
+          h("div",{className:"bnav-icon"},n.icon),
+          h("div",{className:"bnav-label"},n.label),
+        )
+      })
+    ),
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("app")).render(h(App));
+</script>
+
+<script>
+// ═══ MUSIC AUTOPLAY WITH FALLBACK ═══
+(function(){
+  var audio = document.getElementById("villa-audio");
+  if (!audio) return;
+  audio.volume = 0.3;
+  audio.loop = true;
+  audio.preload = "auto";
+  audio.setAttribute("playsinline","");
+
+  // Use the local MP3 bundled next to the HTML
+  audio.src = "yt1s_jBQzYkG.mp3";
+  audio.load();
+
+  // Expose a global starter so any component can kick off playback
+  window._startVillaMusic = function(){
+    var p = audio.play();
+    if (p && typeof p.then === "function") {
+      p.then(function(){
+        document.body.classList.add("music-on");
+      }).catch(function(){
+        // Still blocked — leave listeners in place
+      });
+    }
+  };
+
+  function unlock(){
+    window._startVillaMusic();
+    if (!audio.paused) {
+      ["touchstart","click","keydown","pointerdown"].forEach(function(e){
+        document.removeEventListener(e, unlock, true);
+      });
+    }
+  }
+
+  // Try autoplay immediately (will almost certainly be blocked by browser policy)
+  var attempt = audio.play();
+  if (attempt && typeof attempt.then === "function") {
+    attempt.then(function(){
+      document.body.classList.add("music-on");
+    }).catch(function(){
+      // Wait for ANY real user gesture — capture phase so we catch it
+      // before React's onClick swallows it.
+      ["touchstart","click","keydown","pointerdown"].forEach(function(e){
+        document.addEventListener(e, unlock, true);
+      });
+    });
+  }
+
+  // ── Mute/Unmute FAB ──
+  var btn = document.createElement("button");
+  btn.id = "mute-fab";
+  btn.innerHTML = "🔊";
+  btn.title = "Mute / Unmute";
+  btn.style.cssText = "position:fixed;top:12px;right:16px;z-index:300;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;box-shadow:0 2px 12px rgba(0,0,0,.3)";
+  btn.addEventListener("click", function(e) {
+    e.stopPropagation();
+    if (audio.paused) {
+      audio.play().catch(function(){});
+      btn.innerHTML = "🔊";
+      btn.style.borderColor = "rgba(255,45,135,.3)";
+      btn.style.background = "rgba(255,45,135,.15)";
+    } else {
+      audio.pause();
+      btn.innerHTML = "🔇";
+      btn.style.borderColor = "rgba(255,255,255,.15)";
+      btn.style.background = "rgba(255,255,255,.1)";
+    }
+  });
+  // Sync icon when audio starts playing
+  audio.addEventListener("play", function() {
+    btn.innerHTML = "🔊";
+    btn.style.borderColor = "rgba(255,45,135,.3)";
+    btn.style.background = "rgba(255,45,135,.15)";
+  });
+  document.body.appendChild(btn);
+})();
+</script>
+</body>
+</html>

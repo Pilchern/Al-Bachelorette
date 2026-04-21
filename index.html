@@ -852,17 +852,118 @@ function WeatherWidget(){
   );
 }
 
-// Scotty section data
+// Al & Scotty section data
 var SCOTTY_DATA=[
-  {q:"Love Island type on paper:",a:"Dramatic. Funny. Loud. Thinks the whole villa revolves around him. And honestly? He might be right."},
   {q:"The origin story:",a:"They knew of each other in high school but never dated. Then Country Thunder happened. Sometimes the universe just picks the right moment."},
-  {q:"If Scotty entered the villa right now:",a:"He'd walk in like he owned the place, talk to every single person about himself, and somehow make everyone love him anyway. The Scotty Show doesn't have an off switch."},
-  {q:"Compatibility score:",a:"\uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \u2014 He's a lot. But he's Al's kind of a lot. And that's what matters."},
-  {q:"His one true love (besides Al):",a:"\uD83C\uDFCC\uFE0F Golf. It's not a hobby \u2014 it's a personality trait. If he's not texting Al back, check the course."},
-  {q:"What he's probably doing this weekend:",a:"Golfing. Talking about golfing. Showing someone a video of his last round. Checking the group chat for updates. Then golfing again."},
-  {q:"The Scotty Show, explained:",a:"He lives for attention. He's dramatic. He'd absolutely thrive on actual Love Island. Production would give him the most screen time and he'd deserve every second."},
-  {q:"Fun facts the villa should know:",a:"Plumber by trade. Dog dad to Zeke and Luli. Would 100% talk about his golf handicap in a Love Island confessional."},
+  {q:"Their Love Island type on paper:",a:"The main character and her loud, dramatic, attention-loving match. She's the villa owner. He's the Scotty Show. Somehow it just works."},
+  {q:"How they balance each other:",a:"Al keeps the villa running. Scotty keeps it entertaining. She's the plan, he's the plot twist \u2014 and neither of them would have it any other way."},
+  {q:"Compatibility score:",a:"\uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \u2014 He's a lot. But he's Al's kind of a lot. Permanently coupled up."},
+  {q:"Their shared loves:",a:"\uD83D\uDC36 Zeke and Luli \u2014 the real villa residents. \uD83C\uDFCC\uFE0F Golf (his). \uD83D\uDC51 Being the main characters of any room they walk into (both)."},
+  {q:"What he's doing while she's in the villa:",a:"Golfing. Talking about golfing. Showing someone a video of his last round. Refreshing the group chat for Al updates. Missing her loudly."},
+  {q:"Why they work:",a:"She's the one who can handle the Scotty Show and love him through it. He's the one who looks at her like she hung the moon. That's the whole thing."},
+  {q:"What this weekend is really about:",a:"Celebrating Al before she becomes Mrs. Scotty. Plumber by trade, dog dad by heart, soon-to-be husband by June. The finale is almost here."},
 ];
+
+function ScottyFactsCarousel(){
+  const[idx,sIdx]=useState(0);
+  const len=SCOTTY_DATA.length;
+  const prev=function(){sIdx((idx-1+len)%len)};
+  const next=function(){sIdx((idx+1)%len)};
+  const startX=useRef(0);const startT=useRef(0);
+  const onTS=function(e){startX.current=e.touches[0].clientX;startT.current=Date.now()};
+  const onTE=function(e){
+    const dx=startX.current-e.changedTouches[0].clientX;
+    const dt=Date.now()-startT.current;
+    const vel=Math.abs(dx)/dt;
+    if(Math.abs(dx)>50||vel>0.3){dx>0?next():prev()}
+  };
+  return h(React.Fragment,null,
+    h("div",{className:"carousel",onTouchStart:onTS,onTouchEnd:onTE},
+      h("div",{className:"carousel-track",style:{transform:"translateX(-"+idx*100+"%)"}},
+        SCOTTY_DATA.map(function(s,i){
+          return h("div",{className:"carousel-slide",key:i},
+            h("div",{className:"card",style:{width:"100%",minHeight:"150px",display:"flex",flexDirection:"column",justifyContent:"center"}},
+              h("div",{style:{fontSize:"clamp(.52rem,1.5vw,.58rem)",color:"var(--gold)",letterSpacing:"1.5px",textTransform:"uppercase",fontWeight:700,marginBottom:"8px"}},"Fact "+(i+1)+" / "+len),
+              h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(.9rem,2.7vw,1rem)",fontWeight:700,color:"#fff",marginBottom:"8px"}},s.q),
+              h("div",{style:{fontSize:"clamp(.8rem,2.3vw,.86rem)",color:"var(--text-mid)",lineHeight:1.6,fontStyle:"italic"}},s.a),
+            )
+          )
+        })
+      )
+    ),
+    h("div",{className:"carousel-nav"},
+      h("button",{className:"carousel-arrow",onClick:prev,"aria-label":"Previous"},"\u2039"),
+      h("div",{className:"carousel-dots"},
+        SCOTTY_DATA.map(function(_,i){return h("div",{key:i,className:"carousel-dot"+(i===idx?" active":""),onClick:function(){sIdx(i)}})})
+      ),
+      h("button",{className:"carousel-arrow",onClick:next,"aria-label":"Next"},"\u203A"),
+    ),
+  );
+}
+
+function OutfitVibesModal(){
+  const[open,sOpen]=useState(false);
+  useEffect(function(){
+    var handler=function(){sOpen(true)};
+    window.addEventListener("openOutfitVibes",handler);
+    return function(){window.removeEventListener("openOutfitVibes",handler)};
+  },[]);
+  return h(React.Fragment,null,
+    open&&ReactDOM.createPortal(
+      h("div",{
+        onClick:function(){sOpen(false)},
+        style:{
+          position:"fixed",top:0,left:0,right:0,bottom:0,zIndex:9999,
+          background:"rgba(10,6,18,.88)",backdropFilter:"blur(12px)",WebkitBackdropFilter:"blur(12px)",
+          display:"flex",alignItems:"flex-start",justifyContent:"center",
+          padding:"clamp(16px,4vw,24px)",
+          animation:"fadeUp .3s ease",
+          overflowY:"auto",
+        }
+      },
+        h("div",{
+          onClick:function(e){e.stopPropagation()},
+          style:{
+            maxWidth:"520px",width:"100%",marginTop:"clamp(8px,3vw,24px)",
+            background:"var(--bg2)",
+            border:"1px solid rgba(255,200,87,.3)",
+            borderRadius:"var(--r-lg)",
+            padding:"clamp(16px,4vw,22px)",
+            boxShadow:"0 12px 60px rgba(0,0,0,.7),0 0 40px rgba(255,45,135,.15)",
+            position:"relative",
+          }
+        },
+          h("button",{
+            onClick:function(){sOpen(false)},
+            "aria-label":"Close",
+            style:{
+              position:"absolute",top:"10px",right:"10px",zIndex:2,
+              width:"36px",height:"36px",borderRadius:"50%",
+              background:"rgba(255,255,255,.1)",border:"1px solid rgba(255,255,255,.15)",
+              color:"#fff",fontSize:"1rem",cursor:"pointer",
+              display:"flex",alignItems:"center",justifyContent:"center",
+            }
+          },"\u2715"),
+          h("div",{style:{fontSize:"clamp(.52rem,1.5vw,.58rem)",color:"var(--gold)",letterSpacing:"2.5px",textTransform:"uppercase",fontWeight:700,marginBottom:"6px",textAlign:"center"}},"Saturday's Vibe"),
+          h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(1.3rem,4vw,1.6rem)",fontWeight:700,color:"#fff",marginBottom:"10px",textAlign:"center"}},"Outfit Inspo \u2728"),
+          h("div",{style:{fontSize:"clamp(.8rem,2.3vw,.88rem)",color:"var(--text-mid)",lineHeight:1.6,marginBottom:"14px",textAlign:"center",fontStyle:"italic"}},"Tropical cocktails. Rooftop sunsets. Bright jewel tones. Main character in Milwaukee energy \uD83C\uDF34\uD83D\uDC8B"),
+          h("img",{
+            src:"outfit-vibes-saturday.png",
+            alt:"Saturday outfit vibes",
+            style:{width:"100%",height:"auto",borderRadius:"var(--r)",display:"block",boxShadow:"0 8px 30px rgba(0,0,0,.5)"}
+          }),
+          h("div",{style:{display:"flex",flexWrap:"wrap",gap:"6px",marginTop:"14px",justifyContent:"center"}},
+            ["Tropical","Bright","Summer","Jewel tones","Main character"].map(function(tag){
+              return h("div",{key:tag,style:{fontSize:"clamp(.6rem,1.8vw,.68rem)",color:"var(--text)",background:"rgba(255,45,135,.15)",border:"1px solid rgba(255,45,135,.25)",padding:"5px 11px",borderRadius:"100px",fontWeight:600}},tag)
+            })
+          ),
+          h("div",{style:{fontSize:"clamp(.62rem,1.8vw,.7rem)",color:"var(--text-dim)",marginTop:"14px",textAlign:"center"}},"Tap anywhere outside to close"),
+        ),
+      ),
+      document.body
+    ),
+  );
+}
 
 function ConfessionalFAB(){
   const[open,sOpen]=useState(false);
@@ -1250,6 +1351,49 @@ function App(){
         h("div",{className:"hero-tagline"},"Three days in the villa. One bride. Zero eliminations."),
         h("div",{className:"hero-loc"},"Milwaukee \u00B7 June 12\u201314, 2026"),
         h(Countdown),
+
+        /* Quick Links */
+        h("div",{style:{margin:"clamp(18px,4.5vw,26px) 0 clamp(6px,1.5vw,10px)"}},
+          h("div",{className:"card",style:{background:"linear-gradient(135deg,rgba(255,45,135,.1),rgba(255,200,87,.05))",borderColor:"rgba(255,200,87,.2)",padding:"clamp(14px,3.5vw,18px)"}},
+            h("div",{style:{fontSize:"clamp(.52rem,1.5vw,.58rem)",color:"var(--gold)",letterSpacing:"2.5px",textTransform:"uppercase",fontWeight:700,marginBottom:"10px",textAlign:"center"}},"Quick Links \u00B7 Save These"),
+            h("div",{style:{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"8px"}},
+              [
+                {href:"https://www.airbnb.com/rooms/48832941?unique_share_id=0f00d734-3a6f-4c18-a1ff-86e7c76d8904&viralityEntryPoint=1&s=76&source_impression_id=p3_1776533548_P3au_HfXxQMi12Kc",emoji:"\uD83C\uDFE0",label:"The Villa",sub:"Airbnb",color:"rgba(255,45,135,.18)"},
+                {href:"https://www.icloud.com/sharedalbum/#B1x5Uzl7VJsnLzP",emoji:"\uD83D\uDCF8",label:"Photos",sub:"iCloud Album",color:"rgba(0,212,170,.22)"},
+                {href:"https://open.spotify.com/search",emoji:"\uD83C\uDFB5",label:"Playlist",sub:"Spotify",color:"rgba(30,215,96,.22)"},
+                {action:"outfit",emoji:"\uD83D\uDC57",label:"Outfit Vibes",sub:"Saturday",color:"rgba(255,200,87,.3)"},
+                {href:"https://www.splitwise.com/join/HTW6UUkqy4H+1j1asl?v=e",emoji:"\uD83D\uDCB8",label:"Split the Tab",sub:"Splitwise \u00B7 Join the group",color:"rgba(28,194,159,.3)",wide:true,tagline:"Snacks, Ubers, tiki boat \u2014 we settle up at the end"},
+              ].map(function(q){
+                var shared={key:q.label,style:{textDecoration:"none",background:q.wide?"linear-gradient(135deg,rgba(28,194,159,.14),rgba(0,212,170,.06))":"var(--glass2)",border:"1px solid "+q.color,borderRadius:"14px",padding:"clamp(10px,3vw,14px) 6px",textAlign:"center",display:"block",transition:"all .2s",cursor:"pointer",fontFamily:"var(--sans)",width:"100%",gridColumn:q.wide?"span 2":"auto"}};
+                var children;
+                if(q.wide){
+                  children=[
+                    h("div",{key:"row",style:{display:"flex",alignItems:"center",gap:"12px",justifyContent:"center",padding:"4px 8px"}},
+                      h("div",{key:"e",style:{fontSize:"clamp(1.6rem,5vw,2rem)",lineHeight:1}},q.emoji),
+                      h("div",{key:"t",style:{textAlign:"left",flex:"0 1 auto"}},
+                        h("div",{style:{fontSize:"clamp(.82rem,2.3vw,.9rem)",color:"#fff",fontWeight:700}},q.label),
+                        h("div",{style:{fontSize:"clamp(.6rem,1.7vw,.68rem)",color:"var(--text-mid)",marginTop:"2px",lineHeight:1.35}},q.tagline),
+                      ),
+                      h("div",{key:"a",style:{fontSize:"clamp(.9rem,2.6vw,1.05rem)",color:"#1cc29f",fontWeight:700}},"\u2192"),
+                    ),
+                    h("div",{key:"s",style:{fontSize:"clamp(.52rem,1.5vw,.58rem)",color:"#1cc29f",letterSpacing:"1.5px",textTransform:"uppercase",marginTop:"6px",fontWeight:700}},q.sub),
+                  ];
+                }else{
+                  children=[
+                    h("div",{key:"e",style:{fontSize:"clamp(1.4rem,4.5vw,1.7rem)",marginBottom:"4px",lineHeight:1}},q.emoji),
+                    h("div",{key:"l",style:{fontSize:"clamp(.74rem,2vw,.82rem)",color:"#fff",fontWeight:700,marginTop:"4px"}},q.label),
+                    h("div",{key:"s",style:{fontSize:"clamp(.54rem,1.5vw,.6rem)",color:"var(--text-dim)",letterSpacing:"1.2px",textTransform:"uppercase",marginTop:"3px",fontWeight:600}},q.sub),
+                  ];
+                }
+                if(q.action==="outfit"){
+                  return h("button",Object.assign({},shared,{onClick:function(){window.dispatchEvent(new Event("openOutfitVibes"))}}),children);
+                }
+                return h("a",Object.assign({},shared,{href:q.href,target:"_blank",rel:"noopener"}),children);
+              })
+            ),
+          ),
+        ),
+
         h(MorningRecap),
         h(NowPlaying),
 
@@ -1312,8 +1456,19 @@ function App(){
         h("div",{className:"card",style:{borderColor:"rgba(255,45,135,.1)"}},
           h("div",{style:{color:"var(--text-mid)",lineHeight:1.6}},
             "\uD83D\uDCA1 ",h("strong",{style:{color:"#fff"}},"Outfit vibes")," \u2014 Friday: cute casual. Saturday day: tiki-ready. Saturday night: your best look. Sunday: whatever you woke up in."
-          )
+          ),
+          h("button",{
+            onClick:function(){window.dispatchEvent(new Event("openOutfitVibes"))},
+            style:{
+              marginTop:"10px",background:"rgba(255,200,87,.12)",border:"1px solid rgba(255,200,87,.3)",
+              color:"var(--gold)",fontFamily:"var(--sans)",fontWeight:700,
+              fontSize:"clamp(.68rem,2vw,.76rem)",letterSpacing:".5px",
+              padding:"8px 14px",borderRadius:"100px",cursor:"pointer",
+              display:"inline-flex",alignItems:"center",gap:"6px",
+            }
+          },"\uD83D\uDC57 Peek Saturday's inspo \u2192"),
         ),
+        h(OutfitVibesModal),
       ),
     ),
 
@@ -1340,25 +1495,30 @@ function App(){
       h(Reveal,null,h(WeatherWidget)),
     ),
 
-    /* ═══ SCOTTY ═══ */
+    /* ═══ AL & SCOTTY ═══ */
     h("div",{className:"sec sec-band-1"},
       h(Reveal,null,
-        h("div",{className:"tag"},"The One She's Going Home To"),
-        h("div",{className:"sec-title"},"About ",h("i",null,"Scotty")),
-        h("div",{className:"sec-sub"},"He's not in the villa this weekend \u2014 but he's the reason we're celebrating."),
+        h("div",{className:"tag"},"The Couple We're Celebrating"),
+        h("div",{className:"sec-title"},"About ",h("i",null,"Al & Scotty")),
+        h("div",{className:"sec-sub"},"He's not in the villa this weekend \u2014 but this whole bachelorette is for them."),
       ),
       h(Reveal,null,
-        h("div",{className:"card",style:{background:"linear-gradient(135deg,rgba(255,200,87,.12),rgba(255,200,87,.04))",borderColor:"rgba(255,200,87,.15)",textAlign:"center"}},
-          h("div",{style:{fontSize:"2rem",marginBottom:"8px"}},"\uD83E\uDD35"),
-          h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(1.1rem,3.5vw,1.3rem)",fontWeight:700,color:"#fff",marginBottom:"4px"}},"Scotty"),
-          h("div",{style:{fontSize:"clamp(.72rem,2vw,.8rem)",color:"var(--gold)",letterSpacing:"2px",textTransform:"uppercase",fontWeight:600}},"The Groom \u00B7 Permanently Coupled Up"),
+        h("div",{className:"card",style:{background:"linear-gradient(135deg,rgba(255,45,135,.12),rgba(255,200,87,.06))",borderColor:"rgba(255,200,87,.2)",textAlign:"center",padding:"0",overflow:"hidden"}},
+          h("div",{style:{position:"relative",width:"100%",aspectRatio:"4/5",maxHeight:"480px",overflow:"hidden"}},
+            h("img",{
+              src:"al-and-scotty.jpg",
+              alt:"Al and Scotty \u2014 engaged",
+              style:{width:"100%",height:"100%",objectFit:"cover",display:"block"}
+            }),
+            h("div",{style:{position:"absolute",inset:0,background:"linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(10,6,18,.85) 100%)",pointerEvents:"none"}}),
+            h("div",{style:{position:"absolute",left:0,right:0,bottom:0,padding:"clamp(14px,4vw,20px)",textAlign:"center"}},
+              h("div",{style:{fontSize:"clamp(1.1rem,3.5vw,1.4rem)",marginBottom:"6px",lineHeight:1}},"\uD83D\uDC8D"),
+              h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(1.2rem,3.8vw,1.5rem)",fontWeight:700,color:"#fff",marginBottom:"4px",textShadow:"0 2px 12px rgba(0,0,0,.8)"}},"Al & Scotty"),
+              h("div",{style:{fontSize:"clamp(.68rem,2vw,.78rem)",color:"var(--gold)",letterSpacing:"2px",textTransform:"uppercase",fontWeight:700,textShadow:"0 2px 8px rgba(0,0,0,.9)"}},"Permanently Coupled Up"),
+            ),
+          ),
         ),
-        SCOTTY_DATA.map(function(s,i){
-          return h("div",{className:"card",key:i,style:{marginBottom:"10px"}},
-            h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(.88rem,2.6vw,.95rem)",fontWeight:700,color:"#fff",marginBottom:"6px"}},s.q),
-            h("div",{style:{fontSize:"clamp(.8rem,2.3vw,.86rem)",color:"var(--text-mid)",lineHeight:1.6,fontStyle:"italic"}},s.a),
-          )
-        }),
+        h(ScottyFactsCarousel),
         h("div",{className:"card",style:{textAlign:"center",borderColor:"rgba(255,45,135,.1)"}},
           h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(.88rem,2.6vw,1rem)",fontStyle:"italic",color:"var(--text-mid)",lineHeight:1.6}},
             "\u201CThe public vote is in. Al and Scotty \u2014 you are the winners of Casa Al-Mor.\u201D"
@@ -1444,18 +1604,21 @@ function App(){
             )})
           ),
           h("div",{style:{height:"12px"}}),
-          h("div",{
+          h("a",{
+            href:"https://www.icloud.com/sharedalbum/#B1x5Uzl7VJsnLzP",
+            target:"_blank",
+            rel:"noopener",
             className:"card",
-            style:{borderColor:"rgba(0,212,170,.15)",display:"block"}
+            style:{borderColor:"rgba(0,212,170,.25)",display:"block",textDecoration:"none",cursor:"pointer"}
           },
             h("div",{style:{display:"flex",alignItems:"center",gap:"12px"}},
               h("div",{style:{fontSize:"clamp(1.6rem,5vw,2rem)"}},"\uD83D\uDCF8"),
               h("div",null,
                 h("div",{style:{color:"var(--text)",fontWeight:600,fontSize:"clamp(.85rem,2.2vw,.95rem)",marginBottom:"4px"}},"Shared Photo Album"),
-                h("div",{style:{color:"var(--text-mid)",fontSize:"clamp(.72rem,1.8vw,.82rem)",lineHeight:1.5}},"A shared Apple Photos album is coming before the villa opens \u2014 link will drop in the group chat."),
+                h("div",{style:{color:"var(--text-mid)",fontSize:"clamp(.72rem,1.8vw,.82rem)",lineHeight:1.5}},"Tap to open the iCloud album \u2014 drop your villa pics and videos here all weekend."),
               ),
             ),
-            h("div",{style:{color:"var(--teal)",fontSize:"clamp(.68rem,1.6vw,.76rem)",marginTop:"8px",fontWeight:500}},"Coming soon \u2728"),
+            h("div",{style:{color:"var(--teal)",fontSize:"clamp(.68rem,1.6vw,.76rem)",marginTop:"8px",fontWeight:600}},"Open iCloud album \u2192"),
           ),
         ),
       ),

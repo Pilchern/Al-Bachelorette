@@ -243,20 +243,6 @@ body > *{position:relative;z-index:1}
 .rule-num-badge{min-width:clamp(28px,8vw,34px);height:clamp(28px,8vw,34px);border-radius:10px;background:linear-gradient(135deg,var(--pink),var(--wine));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:clamp(.75rem,2.2vw,.88rem);font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 0 12px rgba(255,45,135,.25)}
 .rule-text{font-size:clamp(.82rem,2.4vw,.88rem);color:var(--text-mid);line-height:1.6;padding-top:3px}
 
-/* ── Packing ── */
-.pack-section{margin-bottom:clamp(18px,4.5vw,24px)}
-.pack-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.pack-emoji{font-size:clamp(1rem,3vw,1.2rem)}
-.pack-title{font-weight:700;font-size:clamp(.82rem,2.4vw,.9rem);color:#fff;flex:1}
-.pack-prog{font-size:clamp(.6rem,1.8vw,.68rem);color:var(--teal);font-weight:600}
-.pack-bar{height:3px;background:rgba(255,255,255,.06);border-radius:3px;margin-bottom:10px;overflow:hidden}
-.pack-fill{height:100%;background:linear-gradient(90deg,var(--pink),var(--teal));border-radius:3px;transition:width .4s ease}
-.checklist{display:flex;flex-direction:column;gap:5px}
-.chk{display:flex;align-items:center;gap:10px;padding:clamp(10px,2.5vw,12px) clamp(12px,3vw,14px);background:var(--glass);border-radius:10px;border:1px solid rgba(255,255,255,.04);cursor:pointer;transition:all .2s;font-size:clamp(.8rem,2.3vw,.88rem);color:var(--text-mid);min-height:44px}
-.chk.checked{opacity:.35;text-decoration:line-through}
-.chk-box{width:22px;height:22px;border-radius:6px;border:2px solid rgba(255,45,135,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.7rem;transition:all .2s}
-.chk.checked .chk-box{background:var(--pink);border-color:var(--pink);color:#fff}
-
 /* ── Photo Ops ── */
 .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(8px,2.5vw,12px)}
 .photo-card{background:var(--glass);border-radius:var(--r);padding:clamp(12px,3.5vw,18px);border:1px solid rgba(255,255,255,.04);text-align:center}
@@ -343,33 +329,12 @@ body > *{position:relative;z-index:1}
 .spotify-btn{display:inline-flex;align-items:center;gap:6px;background:#1DB954;color:#fff;border:none;border-radius:100px;padding:10px 22px;font-size:clamp(.72rem,2vw,.8rem);font-weight:700;cursor:pointer;font-family:var(--sans);min-height:44px;transition:all .2s}
 .spotify-btn:active{transform:scale(.95)}
 
-/* ── Install Banner ── */
-.install-banner{background:var(--glass);border:1px solid rgba(255,45,135,.1);border-radius:var(--r);padding:14px 18px;display:flex;align-items:center;gap:12px;margin-bottom:20px;cursor:pointer}
-.install-banner:active{transform:scale(.98)}
-.install-icon{font-size:1.3rem;flex-shrink:0}
-.install-text{font-size:clamp(.76rem,2.2vw,.84rem);color:var(--text-mid);flex:1}
-.install-text strong{color:#fff}
-.install-dismiss{background:none;border:none;color:var(--text-dim);font-size:.9rem;cursor:pointer;padding:4px}
-
 /* ── Quick Links ── */
 .quick-links{display:flex;gap:clamp(8px,2.5vw,10px);justify-content:center;flex-wrap:wrap;margin-bottom:clamp(20px,5vw,28px)}
 .ql-btn{display:flex;align-items:center;gap:6px;background:var(--glass2);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:10px 18px;font-size:clamp(.68rem,2vw,.76rem);color:#fff;font-weight:600;cursor:pointer;transition:all .25s;text-decoration:none;font-family:var(--sans);min-height:40px}
 .ql-btn:active{transform:scale(.95);background:rgba(255,45,135,.15);border-color:rgba(255,45,135,.3)}
 
-/* ── Couple of the Day ── */
-.cotd{background:linear-gradient(135deg,rgba(255,45,135,.12),rgba(168,85,247,.08));border:1px solid rgba(255,45,135,.15);border-radius:var(--r-lg);padding:clamp(18px,4.5vw,24px);text-align:center;margin-bottom:clamp(16px,4vw,22px);position:relative;overflow:hidden}
-.cotd::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:conic-gradient(from 0deg,transparent,rgba(255,45,135,.05),transparent,rgba(168,85,247,.05),transparent);animation:cotdSpin 8s linear infinite}
 @keyframes cotdSpin{to{transform:rotate(360deg)}}
-.cotd-inner{position:relative;z-index:1}
-.cotd-emoji{font-size:clamp(2rem,6vw,2.6rem);margin-bottom:6px}
-.cotd-names{font-family:var(--serif);font-size:clamp(1.1rem,3.5vw,1.3rem);font-weight:700;color:#fff;margin-bottom:4px}
-.cotd-blurb{font-size:clamp(.76rem,2.2vw,.84rem);color:var(--text-mid);font-style:italic;line-height:1.5}
-
-/* ── Scotty Ticker ── */
-.scotty-ticker{background:linear-gradient(135deg,rgba(255,200,87,.1),rgba(255,200,87,.04));border:1px solid rgba(255,200,87,.12);border-radius:var(--r);padding:clamp(12px,3vw,16px) clamp(14px,3.5vw,18px);display:flex;align-items:center;gap:10px;margin-bottom:clamp(16px,4vw,20px);overflow:hidden}
-.scotty-avi{font-size:clamp(1.4rem,4vw,1.8rem);flex-shrink:0}
-.scotty-msg{font-size:clamp(.76rem,2.2vw,.84rem);color:var(--text-mid);font-style:italic;line-height:1.45;flex:1;min-width:0}
-.scotty-label{font-size:clamp(.52rem,1.5vw,.58rem);color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;font-weight:700;margin-bottom:2px}
 
 /* ── Bombshell Alert ── */
 .bombshell-flash{position:fixed;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle,rgba(255,45,135,.3),transparent 70%);z-index:300;pointer-events:none;animation:bombFlash .8s ease forwards}
@@ -464,7 +429,7 @@ const SCHEDULE=[
       {time:"Late",title:"Lost Whale",desc:"Tropical bar with good vibes to end night one.",icon:"🐋",tip:"Also in Bay View. Easy walk home."},
       {time:"If we're feeling it",title:"La Cage",desc:"Night club energy. Only if the squad still has it.",icon:"💃",tip:"Optional. No pressure."},
     ]},
-  {day:"Saturday",date:"June 13",ep:"Episode 2 — Casa Amor",
+  {day:"Saturday",date:"June 13",ep:"Episode 2 — The Main Event",
     islanders:["Al","Ashley","Lori","Del","Eva","Melissa","Vanessa"],
     vibe:"Full squad. Market morning, tiki boat afternoon, villa time, dinner, and Cathedral Square after dark.",
     events:[
@@ -474,7 +439,7 @@ const SCHEDULE=[
       {time:"~3 PM",title:"Back to the Villa",desc:"Snacks, refresh, games.",icon:"🎲",tip:"Regroup before the second half."},
       {time:"5 PM",title:"Tarot Cards & Palm Readings",desc:"The universe has thoughts. Let's hear them.",icon:"🔮",tip:"At the villa. Bring an open mind."},
       {time:"8:30 PM",title:"Dinner at The Outsider",desc:"All 7 islanders together. Saturday night dinner.",icon:"🍽️"},
-      {time:"Late",title:"Cathedral Square",desc:"Elsa's for martinis → Taylor's patio → Foy's → Sophie.",icon:"🌃",tip:"Walkable cluster. No strict order — just flow."},
+      {time:"Late",title:"Cathedral Square",desc:"Taylor's patio, Foy's, Sophie, Elsa's — all walkable.",icon:"🌃",tip:"Walkable cluster. No strict order — just flow."},
     ]},
   {day:"Sunday",date:"June 14",ep:"Episode 3 — The Final",
     islanders:["Everyone"],
@@ -495,7 +460,7 @@ const VENUES={
     {name:"La Cage",cat:"Dance · Night Club",desc:"Raised surfaces, good sound. When the group wants to dance.",tags:["Dancing","Late Night"],color:"var(--gold)",vibe:"💃💃💃"},
   ],
   cathedral:[
-    {name:"Elsa's on the Park",cat:"Martinis",desc:"Classic martini spot. Glamour inside, patio outside.",tags:["Martinis","First Stop"],color:"var(--pool)",vibe:"🍸🍸🍸"},
+    {name:"Elsa's on the Park",cat:"Martinis",desc:"Classic martini spot. Glamour inside, patio outside.",tags:["Martinis"],color:"var(--pool)",vibe:"🍸🍸🍸"},
     {name:"Taylor's",cat:"Patio",desc:"Great outdoor seating. Warm nights, people-watching.",tags:["Patio","Casual"],color:"var(--coral)",vibe:"🌅🌅"},
     {name:"Foy's",cat:"Bar Hop Stop",desc:"Pop in for one round, stay two.",tags:["Dive-ish","Fun"],color:"var(--gold)",vibe:"🍻🍻"},
     {name:"Sophie",cat:"Bar",desc:"Another solid Cathedral Square option.",tags:["Cathedral Sq"],color:"var(--pink)",vibe:"✨✨"},
@@ -524,25 +489,17 @@ const VILLA_RULES=[
   "If someone says 'I've got a text,' everyone stops and listens.",
   "Naps are not only allowed, they're respected.",
   "No one gets left behind on a night out.",
-  "The maid of honor's word is final on logistics.",
   "Confessionals are mandatory at least once.",
   "Hydrate between episodes. Zero judgment.",
   "Have fun. That's the only real rule.",
 ];
-
-const PACKING={
-  essentials:{items:["Sunscreen","Sunglasses","Walking shoes","Going-out outfit(s)","Charger / portable charger","Cash (some bars are cash only)","ID"]},
-  villa:{items:["Swimsuit(s)","Coverup / sundress","Sandals / slides","Cozy villa outfit","Hair tools to share","Speaker"]},
-  tikiboat:{items:["Swimsuit you can wear out","Sunscreen (reapply)","Sunglasses","Towel","Waterproof phone pouch"]},
-  hangover:{items:["Advil / Tylenol","Liquid IV / electrolytes","Eye mask","Hair ties","Good snacks"]},
-};
 
 const IGT_MSGS=[
   "The villa opens Friday at 3 PM. Don't be late, islanders.",
   "Saturday's tiki boat departs at 12:30. Be ready by noon.",
   "Melissa and Vanessa enter the villa Saturday. Bombshell energy.",
   "At Random is cash only. Plan accordingly.",
-  "Saturday night: Cathedral Square. Martinis at Elsa's first.",
+  "Saturday night: Cathedral Square bar crawl. Flow at will.",
   "Join the Villa Vibes playlist on Spotify. Queue up your favorites before we land.",
   "Drop your pics in the shared iCloud album all weekend.",
   "Join the Splitwise group — snacks, Ubers, boat tabs — so we can settle up at the end.",
@@ -679,7 +636,7 @@ function IslanderCarousel(){
           h("div",{className:"carousel-slide",key:isl.name},
             h("div",{className:"isle-card",style:{borderColor:isl.color+"44",boxShadow:"0 0 24px "+isl.color+"33, 0 0 60px "+isl.color+"11"}},
               isl.photo
-                ? h("div",{className:"isle-top",style:{padding:0,position:"relative",height:"clamp(280px,70vw,340px)",backgroundImage:"url("+isl.photo+")",backgroundSize:"cover",backgroundPosition:"center top"}},
+                ? h("div",{className:"isle-top",role:"img","aria-label":isl.name+", "+isl.role,style:{padding:0,position:"relative",height:"clamp(280px,70vw,340px)",backgroundImage:"url("+isl.photo+")",backgroundSize:"cover",backgroundPosition:"center top"}},
                     h("div",{style:{position:"absolute",left:0,right:0,bottom:0,padding:"clamp(16px,4vw,22px)",background:"linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.55) 50%, rgba(0,0,0,0) 100%)",textAlign:"center"}},
                       h("div",{style:{fontSize:"clamp(1.4rem,4.5vw,1.8rem)",marginBottom:"2px"}},isl.emoji),
                       h("div",{className:"isle-name"},isl.name),
@@ -781,35 +738,6 @@ function VenueCard({v}){
   );
 }
 
-function PackSection({title,emoji,items}){
-  const[checked,sChecked]=useState({});
-  const[copied,sCopied]=useState(false);
-  const total=items.length;
-  const done=Object.values(checked).filter(Boolean).length;
-  const pct=total?Math.round(done/total*100):0;
-  const toggle=function(item){sChecked(function(p){var n=Object.assign({},p);n[item]=!n[item];return n})};
-  const copyList=function(){
-    var unchecked=items.filter(function(item){return!checked[item]});
-    var text=emoji+" "+title+":\n"+unchecked.map(function(i){return"\u25A1 "+i}).join("\n");
-    navigator.clipboard.writeText(text).then(function(){sCopied(true);setTimeout(function(){sCopied(false)},2000)});
-  };
-  return h("div",{className:"pack-section"},
-    h("div",{className:"pack-header"},
-      h("span",{className:"pack-emoji"},emoji),
-      h("div",{className:"pack-title"},title),
-      h("div",{className:"pack-prog"},done+"/"+total),
-    ),
-    h("div",{className:"pack-bar"},h("div",{className:"pack-fill",style:{width:pct+"%"}})),
-    h("div",{className:"checklist"},items.map(function(item){
-      return h("div",{key:item,className:"chk"+(checked[item]?" checked":""),onClick:function(){toggle(item)}},
-        h("div",{className:"chk-box"},checked[item]?"\u2713":""),
-        item
-      )
-    })),
-    h("button",{onClick:copyList,style:{background:"var(--glass2)",border:"1px solid rgba(255,255,255,.08)",borderRadius:"100px",padding:"8px 16px",color:copied?"var(--teal)":"var(--text-dim)",fontSize:"clamp(.6rem,1.8vw,.68rem)",fontWeight:600,cursor:"pointer",marginTop:"8px",fontFamily:"var(--sans)",transition:"all .2s"}},copied?"\u2713 Copied!":"\uD83D\uDCCB Copy unchecked to Notes"),
-  );
-}
-
 // Weather - uses Open-Meteo free API (no key needed), Milwaukee coords
 // Historical Milwaukee mid-June averages as fallback
 var MKE_HISTORICAL=[
@@ -873,10 +801,10 @@ function WeatherWidget(){
 var SCOTTY_DATA=[
   {q:"First glance \u2014 2012:",a:"High school spin class. A few looks across the room. Zero conversation. Casting just setting up the pieces for later."},
   {q:"The real first episode \u2014 2016:",a:"Country Thunder, summer 2016. A rainstorm rolls in. They end up sheltering under the same canopy. The universe finally presses play."},
-  {q:"The harmless little fib:",a:"Scotty told Al she'd already agreed to a date \u2014 her pick of time and place. She had no memory of this deal. He eventually admitted he fibbed. She went anyway."},
+  {q:"The harmless little fib:",a:"Scotty told Al she'd already agreed to a date \u2014 her pick of time and place. She had no memory of this deal, but she went anyway. Afterward, he admitted he'd fibbed."},
   {q:"Their Love Island type on paper:",a:"The main character and her loud, loveable, attention-loving match. She's the villa owner. He's the plot twist. Somehow it just works."},
   {q:"The proposal:",a:"A hike. A ring. A grin she couldn't wipe off her face. The kind of yes that shows up in every photo since."},
-  {q:"Their shared loves:",a:"\uD83D\uDC36 Zeke and Luli \u2014 the real villa residents. \uD83C\uDFCC\uFE0F Golf (his). \uD83D\uDC51 Being the main characters of any room they walk into (both)."},
+  {q:"Their shared loves:",a:"\uD83D\uDC36 Zeke and Luli \u2014 the real villa residents. \uD83C\uDFCC\uFE0F Golf (his). \uD83C\uDF7D\uFE0F A good meal and good company (both)."},
   {q:"Compatibility score:",a:"\uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \u2014 He's a lot. But he's Al's kind of a lot. Permanently coupled up."},
   {q:"The finale \u2014 July 18, 2026:",a:"Weaverville, North Carolina. The mountains, the vows, the whole thing. This bachelorette is the episode right before the wedding finale."},
 ];
@@ -993,70 +921,6 @@ function ConfessionalFAB(){
       h(ConfessionalVideo),
     ),
     h("button",{className:"fab",onClick:function(){sOpen(!open)},"aria-label":"Confessional"},open?"\u2715":"\uD83C\uDF99\uFE0F"),
-  );
-}
-
-/* ══════ NEW FEATURES ══════ */
-
-// ── Scotty text messages for the ticker ──
-var SCOTTY_TEXTS=[
-  "How's the weather there? Perfect golf weather here btw",
-  "Miss you already. Zeke and Luli say hi",
-  "Is anyone talking about me?",
-  "Just shot an 82. Thought you should know",
-  "Do you think Al has mentioned me yet?",
-  "Tell Al I said hi. Actually tell everyone I said hi",
-  "Luli won't stop sitting on your pillow",
-  "I'm not jealous of the tiki boat. I'm not. (I am)",
-  "Zeke just looked at me like he knows you're gone",
-  "Just so you know, I could totally be on Love Island",
-  "Send pics of the food. For research",
-  "The house is too quiet. The Scotty Show needs an audience",
-];
-
-// ── Couple of the Day pairings & blurbs ──
-var COTD_BLURBS=[
-  {p:[0,1],b:"The bride and her right hand. Unbreakable coupling. Production wouldn't dare split them."},
-  {p:[0,2],b:"Main character meets wild card. The villa's most unpredictable alliance."},
-  {p:[1,3],b:"Head of Villa meets the Bookstore Bombshell. The brains of this operation."},
-  {p:[2,4],b:"The Wild Card and The Loyal One. Chaos meets calm. It works somehow."},
-  {p:[3,5],b:"Two new moms out on release. This coupling runs on caffeine and freedom."},
-  {p:[1,4],b:"Head of Villa and The Loyal One. The backbone of the whole weekend."},
-  {p:[0,5],b:"The bride and The Super Mom. Mutual respect, maximum energy."},
-  {p:[6,7],b:"The Casa Amor bombshells. They arrived together. They stay together."},
-  {p:[1,2],b:"Head of Villa and The Wild Card. Ashley plans it. Lori destroys the plan. Balance."},
-  {p:[0,6],b:"The bride welcomes a bombshell. Saturday just got interesting."},
-  {p:[4,5],b:"The Loyal One and The Super Mom. Heart and hustle. Unstoppable duo."},
-  {p:[3,7],b:"Bookstore Bombshell meets Casa Amor energy. Plot twist we didn't see coming."},
-];
-
-function CoupleOfTheDay(){
-  // Deterministic "random" based on day of year
-  var dayOfYear=Math.floor((new Date()-new Date(new Date().getFullYear(),0,0))/(1000*60*60*24));
-  var pair=COTD_BLURBS[dayOfYear%COTD_BLURBS.length];
-  var a=ISLANDERS[pair.p[0]],b=ISLANDERS[pair.p[1]];
-  return h("div",{className:"cotd"},
-    h("div",{className:"cotd-inner"},
-      h("div",{style:{fontSize:"clamp(.5rem,1.5vw,.58rem)",letterSpacing:"2.5px",textTransform:"uppercase",fontWeight:700,color:"var(--pink)",marginBottom:"6px"}},"Today's Coupling"),
-      h("div",{className:"cotd-emoji"},a.emoji+" \u2764\uFE0F\u200D\uD83D\uDD25 "+b.emoji),
-      h("div",{className:"cotd-names"},a.name+" & "+b.name),
-      h("div",{className:"cotd-blurb"},pair.b),
-    ),
-  );
-}
-
-function ScottyTicker(){
-  var[idx,sIdx]=useState(0);
-  useEffect(function(){
-    var id=setInterval(function(){sIdx(function(i){return(i+1)%SCOTTY_TEXTS.length})},8000);
-    return function(){clearInterval(id)};
-  },[]);
-  return h("div",{className:"scotty-ticker"},
-    h("div",{className:"scotty-avi"},"\uD83E\uDD35"),
-    h("div",{style:{flex:1,minWidth:0}},
-      h("div",{className:"scotty-label"},"The Scotty Show \u00B7 Live"),
-      h("div",{className:"scotty-msg",key:idx,style:{animation:"fadeUp .4s ease"}},"\u201C"+SCOTTY_TEXTS[idx]+"\u201D"),
-    ),
   );
 }
 
@@ -1309,18 +1173,6 @@ function NowPlaying(){
   );
 }
 
-// ── Install Prompt ──
-function InstallBanner(){
-  var[show,sShow]=useState(true);
-  var[isIOS]=useState(/iPhone|iPad/.test(navigator.userAgent));
-  if(!show)return null;
-  return h("div",{className:"install-banner",onClick:function(){if(!isIOS)return;alert("Tap the share button (box with arrow) at the bottom of Safari, then tap 'Add to Home Screen'")}},
-    h("div",{className:"install-icon"},"\uD83D\uDCF2"),
-    h("div",{className:"install-text"},h("strong",null,"Add to Home Screen")," \u2014 "+(isIOS?"Tap share \u2192 Add to Home Screen":"for the full villa experience")),
-    h("button",{className:"install-dismiss",onClick:function(e){e.stopPropagation();sShow(false)}},"\u2715"),
-  );
-}
-
 function App(){
   const[activeDay,sAD]=useState(0);
   const[venueTab,sVT]=useState("nightlife");
@@ -1454,7 +1306,7 @@ function App(){
       h(Reveal,null,
         h("div",{className:"tag"},"Meet the"),
         h("div",{className:"sec-title"},h("i",null,"Islanders")),
-        h("div",{className:"sec-sub"},"6 OGs arrive Friday. 2 bombshells walk in Saturday. Swipe through."),
+        h("div",{className:"sec-sub"},"5 OGs arrive Friday. 2 bombshells walk in Saturday. Swipe through."),
       ),
       h(IslanderCarousel),
     ),
@@ -1539,7 +1391,7 @@ function App(){
         h(ScottyFactsCarousel),
         h("div",{className:"card",style:{textAlign:"center",borderColor:"rgba(255,45,135,.1)"}},
           h("div",{style:{fontFamily:"var(--serif)",fontSize:"clamp(.88rem,2.6vw,1rem)",fontStyle:"italic",color:"var(--text-mid)",lineHeight:1.6}},
-            "\u201CThe public vote is in. Al and Scotty \u2014 you are the winners of Casa Al-Mor.\u201D"
+            "\u201CThe public vote is in. Al and Scotty \u2014 you are the winners of Love Island.\u201D"
           ),
           h("div",{style:{fontSize:"clamp(.6rem,1.8vw,.68rem)",color:"var(--text-dim)",marginTop:"8px"}},"\u2014 The Villa"),
         ),

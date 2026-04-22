@@ -445,9 +445,9 @@ const TRIP=new Date("2026-06-12T16:00:00");
 
 const ISLANDERS=[
   {name:"Al",role:"The Bride",emoji:"👑",photo:"al.jpg",tagline:"About to be permanently coupled up. For real this time.",detail:"Villa Owner. The reason this whole villa exists. The main character.",arrives:"Friday",color:"#ff2d87",bg:"linear-gradient(135deg,#ff2d87,#c2185b)"},
-  {name:"Ashley",role:"The Bombshell",emoji:"🌟",tagline:"Maid of honor by title. Bombshell by nature. Probably missing her dogs right now.",detail:"The one holding this whole villa together and looking good doing it. Dog mom at heart.",arrives:"Friday",color:"#ffc857",bg:"linear-gradient(135deg,#ffc857,#e8a020)"},
+  {name:"Ashley",role:"The Bombshell",emoji:"🌟",photo:"ashley.jpg",tagline:"Maid of honor by title. Bombshell by nature. Probably missing her dogs right now.",detail:"The one holding this whole villa together and looking good doing it. Dog mom at heart.",arrives:"Friday",color:"#ffc857",bg:"linear-gradient(135deg,#ffc857,#e8a020)"},
   {name:"Lori",role:"The Wild Card",emoji:"🔥",photo:"lori.jpg",tagline:"You never know what's coming, but you know it's going to be good.",detail:"OG islander. Unpredictable energy. The one the group chat warns you about.",arrives:"Friday",color:"#ff6b5b",bg:"linear-gradient(135deg,#ff6b5b,#d44a3a)"},
-  {name:"Del",role:"The Bookstore Bombshell",emoji:"📚",tagline:"New mom by day. Bombshell by bachelorette weekend.",detail:"Owns a bookstore. Just had a baby. Still showed up. That's the energy.",arrives:"Friday",color:"#a855f7",bg:"linear-gradient(135deg,#a855f7,#7c3aed)"},
+  {name:"Del",role:"The Bookstore Bombshell",emoji:"📚",photo:"del.jpg",tagline:"New mom by day. Bombshell by bachelorette weekend.",detail:"Owns a bookstore. Just had a baby. Still showed up. That's the energy.",arrives:"Friday",color:"#a855f7",bg:"linear-gradient(135deg,#a855f7,#7c3aed)"},
   {name:"Eva",role:"The Loyal One",emoji:"💕",tagline:"Here for the right reasons, every single time.",detail:"100% genuine. Zero game-playing. The one you always want in your corner.",arrives:"Friday",color:"#ec4899",bg:"linear-gradient(135deg,#ec4899,#be185d)"},
   {name:"Dariyan",role:"The Super Mom",emoji:"💪",tagline:"Left the baby, brought the energy. No regrets.",detail:"New mom who said yes to the villa anyway. Respect the commitment.",arrives:"Friday",color:"#f97316",bg:"linear-gradient(135deg,#f97316,#c2410c)"},
   {name:"Melissa",role:"Casa Amor Arrival",emoji:"🌴",tagline:"Saturday surprise. Turning heads the second she walks in.",detail:"Late arrival, immediate impact. The villa won't know what hit it.",arrives:"Saturday",color:"#00d4aa",bg:"linear-gradient(135deg,#00d4aa,#0d9488)"},
@@ -862,14 +862,14 @@ function WeatherWidget(){
 
 // Al & Scotty section data
 var SCOTTY_DATA=[
-  {q:"The origin story:",a:"They knew of each other in high school but never dated. Then Country Thunder happened. Sometimes the universe just picks the right moment."},
-  {q:"Their Love Island type on paper:",a:"The main character and her loud, dramatic, attention-loving match. She's the villa owner. He's the Scotty Show. Somehow it just works."},
-  {q:"How they balance each other:",a:"Al keeps the villa running. Scotty keeps it entertaining. She's the plan, he's the plot twist \u2014 and neither of them would have it any other way."},
-  {q:"Compatibility score:",a:"\uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \u2014 He's a lot. But he's Al's kind of a lot. Permanently coupled up."},
+  {q:"First glance \u2014 2012:",a:"High school spin class. A few looks across the room. Zero conversation. Casting just setting up the pieces for later."},
+  {q:"The real first episode \u2014 2016:",a:"Country Thunder, summer 2016. A rainstorm rolls in. They end up sheltering under the same canopy. The universe finally presses play."},
+  {q:"The harmless little fib:",a:"Scotty told Al she'd already agreed to a date \u2014 her pick of time and place. She had no memory of this deal. He eventually admitted he fibbed. She went anyway."},
+  {q:"Their Love Island type on paper:",a:"The main character and her loud, loveable, attention-loving match. She's the villa owner. He's the plot twist. Somehow it just works."},
+  {q:"The proposal:",a:"A hike. A ring. A grin she couldn't wipe off her face. The kind of yes that shows up in every photo since."},
   {q:"Their shared loves:",a:"\uD83D\uDC36 Zeke and Luli \u2014 the real villa residents. \uD83C\uDFCC\uFE0F Golf (his). \uD83D\uDC51 Being the main characters of any room they walk into (both)."},
-  {q:"What he's doing while she's in the villa:",a:"Golfing. Talking about golfing. Showing someone a video of his last round. Refreshing the group chat for Al updates. Missing her loudly."},
-  {q:"Why they work:",a:"She's the one who can handle the Scotty Show and love him through it. He's the one who looks at her like she hung the moon. That's the whole thing."},
-  {q:"What this weekend is really about:",a:"Celebrating Al before she becomes Mrs. Scotty. Plumber by trade, dog dad by heart, soon-to-be husband by June. The finale is almost here."},
+  {q:"Compatibility score:",a:"\uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \u2014 He's a lot. But he's Al's kind of a lot. Permanently coupled up."},
+  {q:"The finale \u2014 July 18, 2026:",a:"Weaverville, North Carolina. The mountains, the vows, the whole thing. This bachelorette is the episode right before the wedding finale."},
 ];
 
 function ScottyFactsCarousel(){
@@ -1407,7 +1407,6 @@ function App(){
 
 
         h(IGotAText),
-        h(ScottyTicker),
 
         h("div",{style:{textAlign:"left",marginBottom:"10px"}},
           h("div",{className:"tag"},"This weekend"),
@@ -1581,21 +1580,6 @@ function App(){
         ),
       ),
 
-      // Packing
-      h("div",{className:"sec sec-band-1"},
-        h(Reveal,null,
-          h("div",{className:"tag"},"Before You Arrive"),
-          h("div",{className:"sec-title"},"Packing ",h("i",null,"List")),
-          h("div",{className:"sec-sub"},"Tap to check off. Nothing mandatory \u2014 just helpful."),
-        ),
-        h(Reveal,null,
-          h(PackSection,{title:"Essentials",emoji:"\uD83D\uDC5C",items:PACKING.essentials.items}),
-          h(PackSection,{title:"Villa Life",emoji:"\uD83C\uDFE0",items:PACKING.villa.items}),
-          h(PackSection,{title:"Tiki Boat Kit",emoji:"\uD83D\uDEA4",items:PACKING.tikiboat.items}),
-          h(PackSection,{title:"Hangover Survival",emoji:"\uD83D\uDC8A",items:PACKING.hangover.items}),
-        ),
-      ),
-
       // Photos
       h("div",{className:"sec sec-band-2"},
         h(Reveal,null,
@@ -1667,32 +1651,6 @@ function App(){
         ),
       ),
 
-      // Logistics
-      h("div",{className:"sec sec-band-3"},
-        h(Reveal,null,
-          h("div",{className:"tag"},"Villa Operations"),
-          h("div",{className:"sec-title"},"Need to ",h("i",null,"Know")),
-          h("div",{className:"sec-sub"},"Addresses, logistics, and the practical stuff."),
-        ),
-        h(Reveal,null,
-          [
-            {label:"The Villa",value:"Casa Al-Mor \u2014 Bay View, Milwaukee",note:"Check-in: Friday 4 PM \u00B7 Checkout: Sunday (see listing)"},
-            {label:"Tiki Boat",value:"Saturday at 12:30 PM",note:"Arrive 10\u201315 min early. Pickup location drops in the group chat closer to the date."},
-            {label:"Dinner \u2014 Friday",value:"Room Service \u00B7 Bay View",note:"Walking distance from the villa."},
-            {label:"Dinner \u2014 Saturday",value:"The Outsider",note:"Reservation time drops in the group chat closer to the date."},
-            {label:"Saturday Night",value:"Cathedral Square \u00B7 ~10 PM",note:"Elsa's \u2192 Taylor's \u2192 Foy's \u2192 Sophie. Walkable."},
-            {label:"Getting Around",value:"",note:"Uber/Lyft for anything outside Bay View. Most Friday spots walkable."},
-            {label:"Cash Tip",value:"",note:"At Random is cash only. Bring some just in case."},
-            {label:"Weather",value:"",note:"Mid-June Milwaukee \u2014 warm days, cooler nights. Bring a layer."},
-            {label:"Safety",value:"",note:"Buddy system. Share locations. No islander left behind."},
-            {label:"Splitting Costs",value:"",note:"Venmo or Splitwise. Sort shared costs beforehand."},
-          ].map(function(l,i){return h("div",{className:"log-item",key:i},
-            h("div",{className:"log-label"},l.label),
-            l.value&&h("div",{className:"log-value"},l.value),
-            l.note&&h("div",{className:"log-note"},l.note),
-          )}),
-        ),
-      ),
     ),
 
     // Footer

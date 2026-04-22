@@ -449,49 +449,50 @@ const ISLANDERS=[
   {name:"Lori",role:"The Wild Card",emoji:"🔥",photo:"lori.jpg",tagline:"You never know what's coming, but you know it's going to be good.",detail:"OG islander. Unpredictable energy. The one the group chat warns you about.",arrives:"Friday",color:"#ff6b5b",bg:"linear-gradient(135deg,#ff6b5b,#d44a3a)"},
   {name:"Del",role:"The Bookstore Bombshell",emoji:"📚",photo:"del.jpg",tagline:"New mom by day. Bombshell by bachelorette weekend.",detail:"Owns a bookstore. Just had a baby. Still showed up. That's the energy.",arrives:"Friday",color:"#a855f7",bg:"linear-gradient(135deg,#a855f7,#7c3aed)"},
   {name:"Eva",role:"The Loyal One",emoji:"💕",tagline:"Here for the right reasons, every single time.",detail:"100% genuine. Zero game-playing. The one you always want in your corner.",arrives:"Friday",color:"#ec4899",bg:"linear-gradient(135deg,#ec4899,#be185d)"},
-  {name:"Dariyan",role:"The Super Mom",emoji:"💪",tagline:"Left the baby, brought the energy. No regrets.",detail:"New mom who said yes to the villa anyway. Respect the commitment.",arrives:"Friday",color:"#f97316",bg:"linear-gradient(135deg,#f97316,#c2410c)"},
-  {name:"Melissa",role:"Casa Amor Arrival",emoji:"🌴",tagline:"Saturday surprise. Turning heads the second she walks in.",detail:"Late arrival, immediate impact. The villa won't know what hit it.",arrives:"Saturday",color:"#00d4aa",bg:"linear-gradient(135deg,#00d4aa,#0d9488)"},
-  {name:"Vanessa",role:"Casa Amor Arrival",emoji:"✨",tagline:"Fashionably late. Main character energy. No apologies.",detail:"Walked in like she owned the villa. And honestly? She might.",arrives:"Saturday",color:"#00c2ff",bg:"linear-gradient(135deg,#00c2ff,#0284c7)"},
+  {name:"Melissa",role:"Casa Amor Arrival",emoji:"✨",tagline:"Fashionably late. Main character energy. No apologies.",detail:"Walked in like she owned the villa. And honestly? She might.",arrives:"Saturday",color:"#00d4aa",bg:"linear-gradient(135deg,#00d4aa,#0d9488)"},
+  {name:"Vanessa",role:"Casa Amor Arrival",emoji:"🌴",tagline:"Saturday surprise. Turning heads the second she walks in.",detail:"Late arrival, immediate impact. The villa won't know what hit it.",arrives:"Saturday",color:"#00c2ff",bg:"linear-gradient(135deg,#00c2ff,#0284c7)"},
 ];
 
 const SCHEDULE=[
   {day:"Friday",date:"June 12",ep:"Episode 1 — The Arrival",
-    islanders:["Al","Ashley","Lori","Del","Eva","Dariyan"],
+    islanders:["Al","Ashley","Lori","Del","Eva"],
     vibe:"The OGs land. First night out in Bay View — cocktails, dinner, and a nightcap to christen the villa era.",
     events:[
-      {time:"4 PM",title:"Arrive at Casa Al-Mor",desc:"Check in, unpack, explore, claim beds.",icon:"🏠",tip:"The villa is in Bay View — walkable to Friday night spots."},
+      {time:"3 PM",title:"Arrive at Casa Al-Mor",desc:"Check in, unpack, settle in.",icon:"🏠",tip:"The villa is in Bay View — walkable to Friday night spots."},
       {time:"~6 PM",title:"Drinks at At Random",desc:"Dark, moody speakeasy. No menu — tell them what you like.",icon:"🍸",tip:"Cash only. Bring some."},
       {time:"~8 PM",title:"Dinner at Room Service",desc:"Bay View dinner. Group-friendly. Great start.",icon:"🍽️",tip:"Walking distance from the Airbnb."},
       {time:"Late",title:"Lost Whale",desc:"Tropical bar with good vibes to end night one.",icon:"🐋",tip:"Also in Bay View. Easy walk home."},
+      {time:"If we're feeling it",title:"La Cage",desc:"Night club energy. Only if the squad still has it.",icon:"💃",tip:"Optional. No pressure."},
     ]},
   {day:"Saturday",date:"June 13",ep:"Episode 2 — Casa Amor",
-    islanders:["Al","Ashley","Lori","Del","Eva","Dariyan","Melissa","Vanessa"],
+    islanders:["Al","Ashley","Lori","Del","Eva","Melissa","Vanessa"],
     vibe:"Full squad. Market morning, tiki boat afternoon, villa time, dinner, and Cathedral Square after dark.",
     events:[
-      {time:"Morning",title:"Coffee & Breakfast",desc:"No rush. Fuel up for the day.",icon:"☕",tip:"See the Spots section for Bay View coffee recs."},
-      {time:"Late AM",title:"South Shore Farmers Market",desc:"Five-minute walk. Fresh air, flowers, snacks.",icon:"🌻",tip:"Open Saturday mornings. Casual stroll."},
-      {time:"12:30 PM",title:"Tiki Boat",desc:"Tiki bar on the water. Need we say more.",icon:"🚤",tip:"Arrive 10–15 min early. Sunscreen + sunglasses."},
-      {time:"~3 PM",title:"Villa Time",desc:"Snacks, drinks, refresh, naps — whatever you need.",icon:"🎲",tip:"No agenda. Just vibes."},
-      {time:"~7 PM",title:"Dinner at The Outsider",desc:"All 8 islanders together. Saturday night dinner.",icon:"🍽️"},
-      {time:"~10 PM",title:"Cathedral Square",desc:"Elsa's for martinis → Taylor's patio → Foy's → Sophie.",icon:"🌃",tip:"Walkable cluster. No strict order — just flow."},
+      {time:"Morning",title:"Light Breakfast",desc:"At the villa or grab smoothies at Karma Cafe.",icon:"🥤",tip:"Keep it easy — it's going to be a day."},
+      {time:"Late AM",title:"South Shore Farmers Market",desc:"Five-minute walk from the villa. Fresh air, flowers, snacks.",icon:"🌻",tip:"Open Saturday mornings. Casual stroll."},
+      {time:"12:30–2:30 PM",title:"Tiki Boat",desc:"Tiki bar on the water. Two hours of bliss.",icon:"🚤",tip:"Arrive 10–15 min early. Sunscreen + sunglasses."},
+      {time:"~3 PM",title:"Back to the Villa",desc:"Snacks, refresh, games.",icon:"🎲",tip:"Regroup before the second half."},
+      {time:"5 PM",title:"Tarot Cards & Palm Readings",desc:"The universe has thoughts. Let's hear them.",icon:"🔮",tip:"At the villa. Bring an open mind."},
+      {time:"8:30 PM",title:"Dinner at The Outsider",desc:"All 7 islanders together. Saturday night dinner.",icon:"🍽️"},
+      {time:"Late",title:"Cathedral Square",desc:"Elsa's for martinis → Taylor's patio → Foy's → Sophie.",icon:"🌃",tip:"Walkable cluster. No strict order — just flow."},
     ]},
   {day:"Sunday",date:"June 14",ep:"Episode 3 — The Final",
     islanders:["Everyone"],
     vibe:"Morning debrief. Coffee. One more moment. Then back to reality.",
     events:[
-      {time:"Morning",title:"Coffee & Breakfast",desc:"Last morning in the villa. Keep it easy.",icon:"☕"},
+      {time:"Morning",title:"Quick Coffee & Breakfast",desc:"Last morning in the villa. Keep it easy.",icon:"☕"},
       {time:"Later",title:"Head Home",desc:"The villa closes. The group chat lives on.",icon:"💛"},
     ]},
 ];
 
 const VENUES={
   nightlife:[
+    {name:"Room Service",cat:"Dinner · Friday",desc:"Friday night dinner spot. Bay View, group-friendly, walkable from the villa.",tags:["Friday Dinner","Bay View"],color:"var(--pink)",vibe:"🍽️🍽️"},
+    {name:"The Outsider",cat:"Dinner · Saturday",desc:"Saturday night dinner, rooftop vibes, downtown. Reservation at 8:30.",tags:["Saturday Dinner","Rooftop"],color:"var(--coral)",vibe:"🍽️🍽️🍽️"},
     {name:"At Random",cat:"Cocktails",desc:"Dark speakeasy. No menu — describe what you want. A Milwaukee institution.",tags:["Speakeasy","Cash Only"],color:"var(--wine)",vibe:"🍸🍸🍸"},
     {name:"Lost Whale",cat:"Tropical Bar",desc:"Bay View's tropical bar. Tiki drinks, warm lighting, walking distance.",tags:["Tiki","Walk Home"],color:"var(--teal)",vibe:"🌴🌴"},
     {name:"Boone & Crockett",cat:"Waterfront · DJ",desc:"On the water with a DJ, great patio, scenic views.",tags:["Waterfront","DJ","Patio"],color:"var(--coral)",vibe:"🔥🔥🔥"},
-    {name:"La Cage",cat:"Dance · Nightlife",desc:"Raised surfaces, good sound. When the group wants to dance.",tags:["Dancing","Late Night"],color:"var(--gold)",vibe:"💃💃💃"},
-    {name:"Pink Agave",cat:"Nightlife",desc:"Lively, fun, great energy. Solid stop or destination.",tags:["Group Friendly"],color:"var(--pink)",vibe:"🔥🔥"},
-    {name:"Revel",cat:"Hookah · Lounge",desc:"Hookah and lounge vibes. Something different.",tags:["Hookah","Chill"],color:"var(--purple)",vibe:"🌙🌙"},
+    {name:"La Cage",cat:"Dance · Night Club",desc:"Raised surfaces, good sound. When the group wants to dance.",tags:["Dancing","Late Night"],color:"var(--gold)",vibe:"💃💃💃"},
   ],
   cathedral:[
     {name:"Elsa's on the Park",cat:"Martinis",desc:"Classic martini spot. Glamour inside, patio outside.",tags:["Martinis","First Stop"],color:"var(--pool)",vibe:"🍸🍸🍸"},
@@ -501,15 +502,18 @@ const VENUES={
     {name:"Station 1846",cat:"Bar",desc:"Worth a stop. Good drinks, good space.",tags:["Nearby"],color:"var(--teal)",vibe:"🍸🍸"},
   ],
   coffee:[
-    {name:"Colectivo Coffee",cat:"Quick Coffee",desc:"Milwaukee staple. Grab-and-go. Bay View location is close.",tags:["Near Villa","Grab & Go"],color:"var(--peach)",vibe:"☕☕"},
-    {name:"Stone Creek Coffee",cat:"Coffee + Pastries",desc:"Great roasts, nice atmosphere.",tags:["Pastries","Sit Down"],color:"var(--gold)",vibe:"☕☕☕"},
-    {name:"Interval",cat:"Specialty",desc:"For the coffee person. Small, intentional, excellent.",tags:["Specialty"],color:"var(--teal)",vibe:"☕☕☕"},
-    {name:"Farmers Market Coffee",cat:"Saturday Only",desc:"Grab coffee while walking the market.",tags:["Saturday","Market"],color:"var(--coral)",vibe:"☕"},
+    {name:"Discourse Coffee",cat:"Specialty · Aesthetic",desc:"Beautifully designed, serious coffee program. Instagrammable.",tags:["Specialty","Aesthetic"],color:"var(--peach)",vibe:"☕☕☕"},
+    {name:"Likewise",cat:"Coffee · Cafe",desc:"Cozy, warm, a great sit-and-chat morning spot.",tags:["Cafe","Cozy"],color:"var(--gold)",vibe:"☕☕"},
+    {name:"Small Change",cat:"Espresso Bar",desc:"Tiny, intentional, very good espresso. In-and-out.",tags:["Espresso","Quick"],color:"var(--teal)",vibe:"☕☕☕"},
+    {name:"Pilcrow",cat:"Cafe · Pastries",desc:"Lovely cafe with pastries and a good vibe.",tags:["Pastries","Sit Down"],color:"var(--coral)",vibe:"☕☕"},
+    {name:"Vendetta",cat:"Coffee · Bay View",desc:"Bay View favorite. Cool space, great drinks.",tags:["Bay View","Local"],color:"var(--pink)",vibe:"☕☕☕"},
   ],
   breakfast:[
-    {name:"Honeypie Cafe",cat:"Brunch",desc:"Bay View brunch staple. Homemade pastries, hearty plates.",tags:["Bay View","Hangover Cure"],color:"var(--pink)",vibe:"🍳🍳🍳"},
-    {name:"SmallPie",cat:"Bakery · Light",desc:"Pies, quiche, pastries. Cute, lighter start.",tags:["Bakery","Aesthetic"],color:"var(--gold)",vibe:"🥐🥐"},
-    {name:"Classic Diner Energy",cat:"No-Fuss",desc:"Bay View diners. Eggs, coffee, carbs.",tags:["Diner","No Fuss"],color:"var(--coral)",vibe:"🍳🍳"},
+    {name:"Karma Cafe",cat:"Smoothies · Light",desc:"Smoothies and light breakfast. Saturday morning pre-market move.",tags:["Smoothies","Light"],color:"var(--teal)",vibe:"🥤🥤🥤"},
+    {name:"Cafe at the Plaza",cat:"Classic Breakfast",desc:"Cozy, classic breakfast spot with old-Milwaukee charm.",tags:["Classic","Sit Down"],color:"var(--gold)",vibe:"🍳🍳"},
+    {name:"Sweet Diner",cat:"Diner · Brunch",desc:"Cute, chef-driven diner. Great hangover food. Great everything food.",tags:["Diner","Brunch"],color:"var(--pink)",vibe:"🥞🥞🥞"},
+    {name:"Uncle Wolfie's",cat:"Breakfast · Bakery",desc:"Riverwest gem. Pastries, breakfast sandwiches, coffee.",tags:["Bakery","Riverwest"],color:"var(--coral)",vibe:"🥐🥐"},
+    {name:"Axolotl",cat:"Coffee + Food",desc:"Coffee, small plates, pastries — a whole vibe.",tags:["Cafe","Hangout"],color:"var(--peach)",vibe:"🥐☕"},
   ]
 };
 
@@ -520,7 +524,7 @@ const VILLA_RULES=[
   "If someone says 'I've got a text,' everyone stops and listens.",
   "Naps are not only allowed, they're respected.",
   "No one gets left behind on a night out.",
-  "The maid of honor's word is final on logistics. Don't make Ash send a paragraph.",
+  "The maid of honor's word is final on logistics.",
   "Confessionals are mandatory at least once.",
   "Hydrate between episodes. Zero judgment.",
   "Have fun. That's the only real rule.",
@@ -534,14 +538,16 @@ const PACKING={
 };
 
 const IGT_MSGS=[
-  "The villa opens Friday at 4 PM. Don't be late, islanders.",
+  "The villa opens Friday at 3 PM. Don't be late, islanders.",
   "Saturday's tiki boat departs at 12:30. Be ready by noon.",
   "Melissa and Vanessa enter the villa Saturday. Bombshell energy.",
   "At Random is cash only. Plan accordingly.",
   "Saturday night: Cathedral Square. Martinis at Elsa's first.",
-  "The bride has first pick of beds. Villa rules.",
+  "Join the Villa Vibes playlist on Spotify. Queue up your favorites before we land.",
+  "Drop your pics in the shared iCloud album all weekend.",
+  "Join the Splitwise group — snacks, Ubers, boat tabs — so we can settle up at the end.",
   "Farmers market is a 5-minute walk from Casa Al-Mor.",
-  "Confession: someone hasn't packed yet. You know who you are.",
+  "Tarot and palm readings Saturday at 5. Bring the questions.",
 ];
 
 const CONFESSIONALS=[
@@ -735,24 +741,27 @@ function DayBlock({day,active,onClick}){
 
 // Venue addresses moved here so VenueCard can access them
 var VENUE_ADDRESSES={
+  "Room Service":"2626 S Kinnickinnic Ave, Milwaukee, WI",
+  "The Outsider":"310 E Chicago St, Milwaukee, WI",
   "At Random":"2501 S Delaware Ave, Milwaukee, WI",
   "Lost Whale":"2151 S Kinnickinnic Ave, Milwaukee, WI",
   "Boone & Crockett":"818 S Water St, Milwaukee, WI",
   "La Cage":"801 S 2nd St, Milwaukee, WI",
-  "Pink Agave":"1234 N Water St, Milwaukee, WI",
-  "Revel":"108 N Milwaukee St, Milwaukee, WI",
   "Elsa's on the Park":"833 N Jefferson St, Milwaukee, WI",
   "Taylor's":"795 N Jefferson St, Milwaukee, WI",
   "Foy's":"754 N Milwaukee St, Milwaukee, WI",
   "Sophie":"815 N Old World 3rd St, Milwaukee, WI",
   "Station 1846":"701 N Milwaukee St, Milwaukee, WI",
-  "Colectivo Coffee":"2211 S Kinnickinnic Ave, Milwaukee, WI",
-  "Stone Creek Coffee":"2266 S Kinnickinnic Ave, Milwaukee, WI",
-  "Interval":"2199 S Kinnickinnic Ave, Milwaukee, WI",
-  "Honeypie Cafe":"2643 S Kinnickinnic Ave, Milwaukee, WI",
-  "SmallPie":"2504 S Kinnickinnic Ave, Milwaukee, WI",
-  "Room Service":"2663 S Kinnickinnic Ave, Milwaukee, WI",
-  "The Outsider":"316 N Milwaukee St, Milwaukee, WI",
+  "Discourse Coffee":"1118 S 1st St, Milwaukee, WI",
+  "Likewise":"350 E Menomonee St, Milwaukee, WI",
+  "Small Change":"2800 N Oakland Ave, Milwaukee, WI",
+  "Pilcrow":"500 W Mineral St, Milwaukee, WI",
+  "Vendetta":"1633 E Kenilworth Pl, Milwaukee, WI",
+  "Karma Cafe":"2920 S Kinnickinnic Ave, Milwaukee, WI",
+  "Cafe at the Plaza":"1007 N Cass St, Milwaukee, WI",
+  "Sweet Diner":"239 E Chicago St, Milwaukee, WI",
+  "Uncle Wolfie's":"234 E Vine St, Milwaukee, WI",
+  "Axolotl":"2306 N Murray Ave, Milwaukee, WI",
 };
 
 function VenueCard({v}){
@@ -1089,7 +1098,7 @@ function MorningRecap(){
     recapEvents=["OGs arrived at the villa","Cocktails at At Random","Dinner at Room Service","Late night at Lost Whale"];
   }else if(now>=sunMorning&&now<=sunNoon){
     recapTitle="Previously on Casa Al-Mor...";
-    recapEvents=["Full squad assembled \u2014 bombshells Melissa & Vanessa entered","Tiki boat at 12:30","Dinner at The Outsider \u2014 all 8 islanders","Cathedral Square bar crawl: Elsa's \u2192 Taylor's \u2192 Foy's \u2192 Sophie"];
+    recapEvents=["Full squad assembled \u2014 bombshells Melissa & Vanessa entered","Tiki boat at 12:30","Tarot & palm readings at the villa","Dinner at The Outsider \u2014 all 7 islanders","Cathedral Square bar crawl: Elsa's \u2192 Taylor's \u2192 Foy's \u2192 Sophie"];
   }
   if(!recapEvents)return null;
   return h("div",{className:"recap-card"},
@@ -1193,13 +1202,14 @@ function Confetti(){
 
 // ── Mr. & Mrs. Quiz ──
 var QUIZ_QS=[
-  {q:"Where did Al and Scotty first get together?",opts:["A wedding","Country Thunder","A friend's birthday","Instagram DMs"],answer:1,note:"Country Thunder \u2014 they knew of each other in high school but it took a music festival to make it happen."},
-  {q:"What is Scotty's #1 hobby?",opts:["Cooking","Working on cars","Golf","Watching reality TV"],answer:2,note:"\uD83C\uDFCC\uFE0F Golf. It's not even close. It's his whole personality."},
+  {q:"Where did Al and Scotty first cross paths?",opts:["A college party","High school spin class","A friend's wedding","Instagram DMs"],answer:1,note:"High school spin class, 2012. A few glances, zero conversation. The universe was taking its time."},
+  {q:"Where did they actually start dating?",opts:["A friend's birthday","Country Thunder music festival","A Brewers game","Tinder"],answer:1,note:"Country Thunder, summer 2016. A rainstorm, a shared canopy, and the rest is history."},
+  {q:"What little fib did Scotty tell Al to get their first date?",opts:["That he was a pro golfer","That she had already agreed to a date","That he was friends with her best friend","That he could cook"],answer:1,note:"He told Al she'd already agreed to a date. She had no memory of that deal. He admitted he fibbed. She went anyway."},
   {q:"What are Al and Scotty's dogs named?",opts:["Max & Luna","Zeke & Luli","Bear & Daisy","Cooper & Bella"],answer:1,note:"Zeke and Luli \u2014 the real villa residents."},
-  {q:"What does Scotty do for work?",opts:["Electrician","Firefighter","Plumber","Construction"],answer:2,note:"He's a plumber. Keeps things flowing. (Sorry.)"},
-  {q:"What is 'The Scotty Show'?",opts:["A podcast he wants to start","His dramatic, attention-loving personality","His fantasy golf league name","A bit he does at parties"],answer:1,note:"If you know, you know. The Scotty Show is always on. There is no off switch."},
-  {q:"If Scotty were on Love Island, what would he do first?",opts:["Make everyone laugh","Talk about golf","Make it about himself somehow","All of the above"],answer:3,note:"The correct answer is always 'all of the above' with Scotty."},
-  {q:"What would Scotty be doing right now during the bachelorette?",opts:["Golfing","Talking about golfing","Checking the group chat","All three simultaneously"],answer:3,note:"He's on the course, phone in one hand, club in the other, refreshing the group chat for updates."},
+  {q:"Where did Scotty propose?",opts:["At a restaurant","On a hike","On the golf course","At home"],answer:1,note:"On a hike. Mountains behind them, ring on her finger, grin that never went away."},
+  {q:"When is the wedding?",opts:["June 2026","July 2026","August 2026","September 2026"],answer:1,note:"July 18, 2026. Weaverville, North Carolina. The mountains, the vows, the whole thing."},
+  {q:"Where is the wedding?",opts:["Milwaukee, WI","Weaverville, NC","Denver, CO","Nashville, TN"],answer:1,note:"Weaverville, North Carolina. Blue Ridge Mountains backdrop."},
+  {q:"What is Scotty's #1 hobby?",opts:["Cooking","Working on cars","Golf","Watching reality TV"],answer:2,note:"\uD83C\uDFCC\uFE0F Golf. It's not even close. It's his whole personality."},
 ];
 
 function MrMrsQuiz(){
@@ -1264,14 +1274,15 @@ function NowPlaying(){
       var d=new Date("2026-06-"+(12+di));
       // Rough time mapping
       var hour=12;
-      if(ev.time.match(/4 PM/))hour=16;
+      if(ev.time.match(/3 PM/))hour=15;
       else if(ev.time.match(/6 PM/))hour=18;
+      else if(ev.time.match(/8:30/))hour=20.5;
       else if(ev.time.match(/8 PM/))hour=20;
       else if(ev.time.match(/Late/i))hour=22;
       else if(ev.time.match(/Morning/i))hour=9;
       else if(ev.time.match(/Late AM/i))hour=10;
       else if(ev.time.match(/12:30/))hour=12.5;
-      else if(ev.time.match(/3 PM/))hour=15;
+      else if(ev.time.match(/5 PM/i)||ev.time==="5 PM")hour=17;
       else if(ev.time.match(/7 PM/))hour=19;
       else if(ev.time.match(/10 PM/))hour=22;
       else if(ev.time.match(/Later/i))hour=11;
@@ -1339,7 +1350,7 @@ function App(){
     if(ref&&ref.current){ref.current.scrollIntoView({behavior:"smooth",block:"start"})}
   };
 
-  var vtabs=[{id:"nightlife",label:"Bars & Nightlife"},{id:"cathedral",label:"Cathedral Sq"},{id:"coffee",label:"Coffee"},{id:"breakfast",label:"Breakfast"}];
+  var vtabs=[{id:"nightlife",label:"Bars & Restaurants"},{id:"cathedral",label:"Cathedral Sq"},{id:"coffee",label:"Coffee"},{id:"breakfast",label:"Breakfast"}];
 
   return h("div",null,
     h(Confetti),
@@ -1414,12 +1425,12 @@ function App(){
         h("div",{className:"scroll-row-wrap"},
           h("div",{className:"scroll-row"},
             // Original set
-            h("div",{className:"prev-card c1"},h("div",{className:"pc-emoji"},"\uD83C\uDFE0"),h("div",{className:"pc-title"},"The Villa Opens"),h("div",{className:"pc-desc"},"Friday 4 PM. OGs arrive in Bay View.")),
+            h("div",{className:"prev-card c1"},h("div",{className:"pc-emoji"},"\uD83C\uDFE0"),h("div",{className:"pc-title"},"The Villa Opens"),h("div",{className:"pc-desc"},"Friday 3 PM. OGs arrive in Bay View.")),
             h("div",{className:"prev-card c2"},h("div",{className:"pc-emoji"},"\uD83D\uDEA4"),h("div",{className:"pc-title"},"Tiki Boat"),h("div",{className:"pc-desc"},"Saturday 12:30. Drinks on the water.")),
             h("div",{className:"prev-card c3"},h("div",{className:"pc-emoji"},"\uD83D\uDCA3"),h("div",{className:"pc-title"},"Bombshell Arrivals"),h("div",{className:"pc-desc"},"Melissa & Vanessa enter Saturday.")),
             h("div",{className:"prev-card c4"},h("div",{className:"pc-emoji"},"\uD83C\uDF03"),h("div",{className:"pc-title"},"Cathedral Square"),h("div",{className:"pc-desc"},"Saturday night. Bars, martinis, chaos.")),
             // Duplicate set for seamless loop
-            h("div",{className:"prev-card c1"},h("div",{className:"pc-emoji"},"\uD83C\uDFE0"),h("div",{className:"pc-title"},"The Villa Opens"),h("div",{className:"pc-desc"},"Friday 4 PM. OGs arrive in Bay View.")),
+            h("div",{className:"prev-card c1"},h("div",{className:"pc-emoji"},"\uD83C\uDFE0"),h("div",{className:"pc-title"},"The Villa Opens"),h("div",{className:"pc-desc"},"Friday 3 PM. OGs arrive in Bay View.")),
             h("div",{className:"prev-card c2"},h("div",{className:"pc-emoji"},"\uD83D\uDEA4"),h("div",{className:"pc-title"},"Tiki Boat"),h("div",{className:"pc-desc"},"Saturday 12:30. Drinks on the water.")),
             h("div",{className:"prev-card c3"},h("div",{className:"pc-emoji"},"\uD83D\uDCA3"),h("div",{className:"pc-title"},"Bombshell Arrivals"),h("div",{className:"pc-desc"},"Melissa & Vanessa enter Saturday.")),
             h("div",{className:"prev-card c4"},h("div",{className:"pc-emoji"},"\uD83C\uDF03"),h("div",{className:"pc-title"},"Cathedral Square"),h("div",{className:"pc-desc"},"Saturday night. Bars, martinis, chaos.")),
@@ -1427,7 +1438,7 @@ function App(){
         ),
 
         h("div",{className:"stats"},
-          [{n:"3",l:"Days"},{n:"8",l:"Islanders"},{n:"\u221E",l:"Memories"}].map(function(s){
+          [{n:"3",l:"Days"},{n:"7",l:"Islanders"},{n:"\u221E",l:"Memories"}].map(function(s){
             return h("div",{className:"stat",key:s.l},h("div",{className:"stat-num"},s.n),h("div",{className:"stat-label"},s.l))
           })
         ),
@@ -1462,7 +1473,7 @@ function App(){
         h("div",{style:{height:"12px"}}),
         h("div",{className:"card",style:{borderColor:"rgba(255,45,135,.1)"}},
           h("div",{style:{color:"var(--text-mid)",lineHeight:1.6}},
-            "\uD83D\uDCA1 ",h("strong",{style:{color:"#fff"}},"Outfit vibes")," \u2014 Friday: cute casual. Saturday day: tiki-ready. Saturday night: your best look. Sunday: whatever you woke up in."
+            "\uD83D\uDCA1 ",h("strong",{style:{color:"#fff"}},"Outfit vibes")," \u2014 Friday: cute summer night in the city, but casual. Saturday day: tiki-ready. Saturday night: your best look. Sunday: whatever you woke up in."
           ),
           h("button",{
             onClick:function(){window.dispatchEvent(new Event("openOutfitVibes"))},
@@ -1637,9 +1648,9 @@ function App(){
                   h("div",{style:{fontSize:"clamp(.72rem,2vw,.8rem)",color:"var(--gold)",letterSpacing:"1.5px",textTransform:"uppercase",fontWeight:600,marginTop:"2px"}},"Bay View \u00B7 Milwaukee"),
                 ),
               ),
-              h("div",{style:{fontSize:"clamp(.8rem,2.3vw,.88rem)",color:"var(--text-mid)",lineHeight:1.65,marginBottom:"14px"}},"The villa for Al\u2019s last recoupling weekend. Check-in Friday at 4 PM. This is home base for three days of Bay View mornings, tiki boat afternoons, and Cathedral Square nights."),
+              h("div",{style:{fontSize:"clamp(.8rem,2.3vw,.88rem)",color:"var(--text-mid)",lineHeight:1.65,marginBottom:"14px"}},"The villa for Al\u2019s last recoupling weekend. Check-in Friday at 3 PM. This is home base for three days of Bay View mornings, tiki boat afternoons, and Cathedral Square nights."),
               h("div",{style:{display:"flex",gap:"clamp(8px,2.5vw,12px)",flexWrap:"wrap",marginBottom:"14px"}},
-                [{icon:"\uD83D\uDECF\uFE0F",text:"Check-in: Fri 4 PM"},{icon:"\uD83D\uDEAA",text:"Checkout: Sunday"},{icon:"\uD83D\uDEB6",text:"Walkable to Bay View spots"},{icon:"\uD83D\uDC51",text:"Bride picks her bed first"}].map(function(d){
+                [{icon:"\uD83D\uDECF\uFE0F",text:"Check-in: Fri 3 PM"},{icon:"\uD83D\uDEAA",text:"Checkout: Sunday"},{icon:"\uD83D\uDEB6",text:"Walkable to Bay View spots"},{icon:"\uD83C\uDF34",text:"Bay View · Milwaukee"}].map(function(d){
                   return h("div",{key:d.text,style:{display:"flex",alignItems:"center",gap:"6px",fontSize:"clamp(.68rem,2vw,.76rem)",color:"var(--text-mid)"}},
                     h("span",null,d.icon),d.text
                   )

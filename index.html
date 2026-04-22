@@ -444,9 +444,9 @@ const h=React.createElement,{useState,useEffect,useRef,useCallback}=React;
 const TRIP=new Date("2026-06-12T16:00:00");
 
 const ISLANDERS=[
-  {name:"Al",role:"The Bride",emoji:"👑",tagline:"About to be permanently coupled up. For real this time.",detail:"Villa Owner. The reason this whole villa exists. The main character.",arrives:"Friday",color:"#ff2d87",bg:"linear-gradient(135deg,#ff2d87,#c2185b)"},
+  {name:"Al",role:"The Bride",emoji:"👑",photo:"al.jpg",tagline:"About to be permanently coupled up. For real this time.",detail:"Villa Owner. The reason this whole villa exists. The main character.",arrives:"Friday",color:"#ff2d87",bg:"linear-gradient(135deg,#ff2d87,#c2185b)"},
   {name:"Ashley",role:"The Bombshell",emoji:"🌟",tagline:"Maid of honor by title. Bombshell by nature. Probably missing her dogs right now.",detail:"The one holding this whole villa together and looking good doing it. Dog mom at heart.",arrives:"Friday",color:"#ffc857",bg:"linear-gradient(135deg,#ffc857,#e8a020)"},
-  {name:"Lori",role:"The Wild Card",emoji:"🔥",tagline:"You never know what's coming, but you know it's going to be good.",detail:"OG islander. Unpredictable energy. The one the group chat warns you about.",arrives:"Friday",color:"#ff6b5b",bg:"linear-gradient(135deg,#ff6b5b,#d44a3a)"},
+  {name:"Lori",role:"The Wild Card",emoji:"🔥",photo:"lori.jpg",tagline:"You never know what's coming, but you know it's going to be good.",detail:"OG islander. Unpredictable energy. The one the group chat warns you about.",arrives:"Friday",color:"#ff6b5b",bg:"linear-gradient(135deg,#ff6b5b,#d44a3a)"},
   {name:"Del",role:"The Bookstore Bombshell",emoji:"📚",tagline:"New mom by day. Bombshell by bachelorette weekend.",detail:"Owns a bookstore. Just had a baby. Still showed up. That's the energy.",arrives:"Friday",color:"#a855f7",bg:"linear-gradient(135deg,#a855f7,#7c3aed)"},
   {name:"Eva",role:"The Loyal One",emoji:"💕",tagline:"Here for the right reasons, every single time.",detail:"100% genuine. Zero game-playing. The one you always want in your corner.",arrives:"Friday",color:"#ec4899",bg:"linear-gradient(135deg,#ec4899,#be185d)"},
   {name:"Dariyan",role:"The Super Mom",emoji:"💪",tagline:"Left the baby, brought the energy. No regrets.",detail:"New mom who said yes to the villa anyway. Respect the commitment.",arrives:"Friday",color:"#f97316",bg:"linear-gradient(135deg,#f97316,#c2410c)"},
@@ -672,11 +672,19 @@ function IslanderCarousel(){
         ISLANDERS.map((isl,i)=>
           h("div",{className:"carousel-slide",key:isl.name},
             h("div",{className:"isle-card",style:{borderColor:isl.color+"44",boxShadow:"0 0 24px "+isl.color+"33, 0 0 60px "+isl.color+"11"}},
-              h("div",{className:"isle-top",style:{background:isl.bg}},
-                h("div",{className:"isle-emoji"},isl.emoji),
-                h("div",{className:"isle-name"},isl.name),
-                h("div",{className:"isle-role",style:{color:"rgba(255,255,255,.65)"}},isl.role),
-              ),
+              isl.photo
+                ? h("div",{className:"isle-top",style:{padding:0,position:"relative",height:"clamp(280px,70vw,340px)",backgroundImage:"url("+isl.photo+")",backgroundSize:"cover",backgroundPosition:"center top"}},
+                    h("div",{style:{position:"absolute",left:0,right:0,bottom:0,padding:"clamp(16px,4vw,22px)",background:"linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.55) 50%, rgba(0,0,0,0) 100%)",textAlign:"center"}},
+                      h("div",{style:{fontSize:"clamp(1.4rem,4.5vw,1.8rem)",marginBottom:"2px"}},isl.emoji),
+                      h("div",{className:"isle-name"},isl.name),
+                      h("div",{className:"isle-role",style:{color:"rgba(255,255,255,.75)"}},isl.role),
+                    )
+                  )
+                : h("div",{className:"isle-top",style:{background:isl.bg}},
+                    h("div",{className:"isle-emoji"},isl.emoji),
+                    h("div",{className:"isle-name"},isl.name),
+                    h("div",{className:"isle-role",style:{color:"rgba(255,255,255,.65)"}},isl.role),
+                  ),
               h("div",{className:"isle-bottom"},
                 h("div",{className:"isle-tagline"},"\u201C"+isl.tagline+"\u201D"),
                 h("div",{className:"isle-detail"},isl.detail),
@@ -1360,7 +1368,7 @@ function App(){
               [
                 {href:"https://www.airbnb.com/rooms/48832941?unique_share_id=0f00d734-3a6f-4c18-a1ff-86e7c76d8904&viralityEntryPoint=1&s=76&source_impression_id=p3_1776533548_P3au_HfXxQMi12Kc",emoji:"\uD83C\uDFE0",label:"The Villa",sub:"Airbnb",color:"rgba(255,45,135,.18)"},
                 {href:"https://www.icloud.com/sharedalbum/#B1x5Uzl7VJsnLzP",emoji:"\uD83D\uDCF8",label:"Photos",sub:"iCloud Album",color:"rgba(0,212,170,.22)"},
-                {href:"https://open.spotify.com/search",emoji:"\uD83C\uDFB5",label:"Playlist",sub:"Spotify",color:"rgba(30,215,96,.22)"},
+                {href:"https://open.spotify.com/playlist/2pbOvOxoh34wsDuSGlV9rd?si=huuxi9E2Qyis9XeBMJzRXQ&pi=0qy1NvW2R-2aI",emoji:"\uD83C\uDFB5",label:"Playlist",sub:"Spotify",color:"rgba(30,215,96,.22)"},
                 {action:"outfit",emoji:"\uD83D\uDC57",label:"Outfit Vibes",sub:"Saturday",color:"rgba(255,200,87,.3)"},
                 {href:"https://www.splitwise.com/join/HTW6UUkqy4H+1j1asl?v=e",emoji:"\uD83D\uDCB8",label:"Split the Tab",sub:"Splitwise \u00B7 Join the group",color:"rgba(28,194,159,.3)",wide:true,tagline:"Snacks, Ubers, tiki boat \u2014 we settle up at the end"},
               ].map(function(q){
@@ -1545,7 +1553,7 @@ function App(){
           h("div",{className:"spotify-icon"},"\uD83C\uDFB6"),
           h("div",{className:"spotify-title"},"Villa Vibes Playlist"),
           h("div",{className:"spotify-sub"},"The official Casa Al-Mor soundtrack. Add your songs before the trip. Aux disputes will be settled democratically."),
-          h("a",{href:"https://open.spotify.com/search",target:"_blank",rel:"noopener",style:{textDecoration:"none"}},
+          h("a",{href:"https://open.spotify.com/playlist/2pbOvOxoh34wsDuSGlV9rd?si=huuxi9E2Qyis9XeBMJzRXQ&pi=0qy1NvW2R-2aI",target:"_blank",rel:"noopener",style:{textDecoration:"none"}},
             h("button",{className:"spotify-btn"},"\uD83C\uDFA7 Open Spotify"),
           ),
           h("div",{style:{fontSize:"clamp(.6rem,1.8vw,.68rem)",color:"var(--text-dim)",marginTop:"10px"}},"Create a shared playlist and drop the link in the group chat"),

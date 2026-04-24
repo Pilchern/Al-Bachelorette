@@ -659,7 +659,7 @@ function IslanderCarousel(){
               h("div",{className:"isle-arrives",style:{
                   color:isl.arrives==="Saturday"?"var(--teal)":"var(--peach)",
                   background:isl.arrives==="Saturday"?"rgba(0,212,170,.12)":"rgba(255,170,123,.12)"}},
-                  isl.arrives==="Saturday"?"Groom's Sister":"OG — Friday"),
+                  isl.arrives==="Saturday"?"Saturday Arrival":"OG — Friday"),
               ),
             )
           )
@@ -1319,7 +1319,7 @@ function App(){
     /* ═══ SCHEDULE ═══ */
     h("div",{ref:sectionRefs.schedule,className:"sec sec-band-2"},
       h(Reveal,null,
-        h("div",{className:"tag"},"The Weekend Agenda"),
+        h("div",{className:"tag"},"The Villa Agenda"),
         h("div",{className:"sec-title"},"Weekend ",h("i",null,"Schedule")),
         h("div",{className:"sec-sub"},"Three episodes. Tap a day for the lineup. Nothing mandatory \u2014 it's a guide, not homework."),
       ),

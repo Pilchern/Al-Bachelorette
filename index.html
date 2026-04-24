@@ -980,36 +980,76 @@ function MorningRecap(){
 }
 
 // ── Confessional Video option ──
+// Opens native iPhone camera, then pops the iOS share sheet so guests can
+// tap the Casa Al-Mor shared album to add the video directly. No re-upload.
 function ConfessionalVideo(){
-  var[recording,sRecording]=useState(false);
-  var[supported]=useState(typeof navigator!=="undefined"&&!!navigator.mediaDevices);
-  var startRec=function(){
-    if(!supported){alert("Video recording needs camera access. Open this page in Safari or Chrome.");return}
-    navigator.mediaDevices.getUserMedia({video:{facingMode:"user"},audio:true}).then(function(stream){
-      sRecording(true);
-      var chunks=[];
-      var mr=new MediaRecorder(stream);
-      mr.ondataavailable=function(e){chunks.push(e.data)};
-      mr.onstop=function(){
-        var blob=new Blob(chunks,{type:"video/mp4"});
-        var url=URL.createObjectURL(blob);
+  var[status,sStatus]=useState("idle"); // idle | sharing | done | error
+  var inputRef=useRef(null);
+
+  var openCamera=function(){
+    if(inputRef.current){inputRef.current.click()}
+  };
+
+  var onFile=function(e){
+    var file=e.target.files&&e.target.files[0];
+    // Reset input so the same file can be selected again later
+    e.target.value="";
+    if(!file)return;
+
+    var shareData={files:[file],title:"Casa Al-Mor Confessional",text:"My Love Island confessional \uD83C\uDF99\uFE0F"};
+    if(navigator.canShare&&navigator.canShare(shareData)&&navigator.share){
+      sStatus("sharing");
+      navigator.share(shareData).then(function(){
+        sStatus("done");
+        setTimeout(function(){sStatus("idle")},5000);
+      }).catch(function(err){
+        // AbortError = user cancelled the share sheet; go back to idle quietly
+        if(err&&err.name==="AbortError"){sStatus("idle");return}
+        sStatus("error");
+        setTimeout(function(){sStatus("idle")},5000);
+      });
+    }else{
+      // Fallback for browsers without file-sharing support: download the file
+      try{
+        var url=URL.createObjectURL(file);
         var a=document.createElement("a");a.href=url;a.download="confessional-"+Date.now()+".mp4";a.click();
         URL.revokeObjectURL(url);
-        stream.getTracks().forEach(function(t){t.stop()});
-        sRecording(false);
-      };
-      mr.start();
-      // Auto-stop after 15 seconds
-      setTimeout(function(){if(mr.state==="recording")mr.stop()},15000);
-    }).catch(function(){alert("Camera access denied. Check your browser settings.")});
+        sStatus("done");
+        setTimeout(function(){sStatus("idle")},5000);
+      }catch(err){sStatus("error");setTimeout(function(){sStatus("idle")},5000)}
+    }
   };
+
+  var btnLabel=status==="sharing"?"\uD83D\uDCE4 Waiting for share sheet...":
+               status==="done"?"\u2705 Sent! Record another?":
+               status==="error"?"\u274C Something broke \u2014 try again":
+               "\uD83C\uDFA5 Record a Video Confessional";
+
+  var helpText=status==="sharing"?"In the share sheet, tap the Casa Al-Mor shared album to add it.":
+               status==="done"?"Nice. Your confessional is in the shared album.":
+               status==="error"?"Camera or sharing didn't work. Try Safari if you're not already.":
+               "Opens your camera. Record it, then pick the Casa Al-Mor shared album in the share sheet to post it.";
+
+  var btnStyle=status==="sharing"?{background:"rgba(255,45,135,.3)",color:"var(--pink)"}:
+               status==="done"?{background:"rgba(52,211,153,.2)",color:"#34d399"}:
+               status==="error"?{background:"rgba(239,68,68,.2)",color:"#f87171"}:{};
+
   return h("div",{style:{marginTop:"12px"}},
+    h("input",{
+      ref:inputRef,
+      type:"file",
+      accept:"video/*",
+      capture:"user",
+      onChange:onFile,
+      style:{display:"none"},
+    }),
     h("button",{
       className:"fab-next",
-      onClick:startRec,
-      style:recording?{background:"rgba(255,45,135,.3)",color:"var(--pink)"}:{}
-    },recording?"\uD83D\uDD34 Recording... (15s max)":"\uD83C\uDFA5 Record a Video Confessional"),
-    h("div",{style:{fontSize:"clamp(.58rem,1.6vw,.65rem)",color:"var(--text-dim)",marginTop:"6px"}},"Records 15 seconds. Saves to camera roll. Drop it in the shared album."),
+      onClick:openCamera,
+      disabled:status==="sharing",
+      style:btnStyle,
+    },btnLabel),
+    h("div",{style:{fontSize:"clamp(.58rem,1.6vw,.65rem)",color:"var(--text-dim)",marginTop:"6px"}},helpText),
   );
 }
 

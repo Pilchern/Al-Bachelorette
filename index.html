@@ -414,8 +414,8 @@ const ISLANDERS=[
   {name:"Lori",role:"The Wild Card",emoji:"🔥",photo:"lori.jpg",tagline:"You never know what's coming, but you know it's going to be good.",detail:"OG islander. Unpredictable energy. The one the group chat warns you about.",arrives:"Friday",color:"#ff6b5b",bg:"linear-gradient(135deg,#ff6b5b,#d44a3a)"},
   {name:"Del",role:"The Bookstore Bombshell",emoji:"📚",photo:"del.jpg",tagline:"New mom by day. Bombshell by bachelorette weekend.",detail:"Owns a bookstore. Just had a baby. Still showed up. That's the energy.",arrives:"Friday",color:"#a855f7",bg:"linear-gradient(135deg,#a855f7,#7c3aed)"},
   {name:"Eva",role:"The Loyal One",emoji:"💕",photo:"eva.jpg",tagline:"Here for the right reasons, every single time.",detail:"100% genuine. Zero game-playing. The one you always want in your corner.",arrives:"Friday",color:"#ec4899",bg:"linear-gradient(135deg,#ec4899,#be185d)"},
-  {name:"Melissa",role:"Saturday Arrival",emoji:"✨",photo:"melissa.jpg",tagline:"Worth the wait. The villa gets a whole new energy the minute she walks in.",detail:"Rolls in Saturday with the kind of vibe that instantly lifts a room. Main character, minus the fuss.",arrives:"Saturday",color:"#00d4aa",bg:"linear-gradient(135deg,#00d4aa,#0d9488)"},
-  {name:"Vanessa",role:"Saturday Arrival",emoji:"🌴",photo:"vanessa.jpg",tagline:"Shows up Saturday and somehow everything gets better.",detail:"A Saturday addition who fits right in \u2014 easygoing, fun, and down for whatever the villa throws at her.",arrives:"Saturday",color:"#00c2ff",bg:"linear-gradient(135deg,#00c2ff,#0284c7)"},
+  {name:"Melissa",role:"The Groom's Sister",emoji:"✨",photo:"melissa.jpg",tagline:"Worth the wait. The villa gets a whole new energy the minute she walks in.",detail:"Scotty's sister. Rolls in Saturday with the kind of vibe that instantly lifts a room \u2014 family, but make it fun.",arrives:"Saturday",color:"#00d4aa",bg:"linear-gradient(135deg,#00d4aa,#0d9488)"},
+  {name:"Vanessa",role:"The Groom's Sister",emoji:"🌴",photo:"vanessa.jpg",tagline:"Shows up Saturday and somehow everything gets better.",detail:"Scotty's sister. A Saturday addition who fits right in \u2014 easygoing, fun, and down for whatever the villa throws at her.",arrives:"Saturday",color:"#00c2ff",bg:"linear-gradient(135deg,#00c2ff,#0284c7)"},
 ];
 
 const SCHEDULE=[
@@ -440,7 +440,7 @@ const SCHEDULE=[
       {time:"~3 PM",title:"Back to the Villa",desc:"Snacks, refresh, games.",icon:"🎲",tip:"Regroup before the second half."},
       {time:"5 PM",title:"Tarot Cards & Palm Readings",desc:"The universe has thoughts. Let's hear them.",icon:"🔮",tip:"At the villa. Bring an open mind."},
       {time:"8:30 PM",title:"Dinner at Cafe Benelux",desc:"All 7 islanders together. Saturday night dinner in the Third Ward.",icon:"🍽️"},
-      {time:"Late",title:"Cathedral Square",desc:"Taylor's patio, Foy's, Sophie — all walkable.",icon:"🌃",tip:"Walkable cluster. No strict order — just flow."},
+      {time:"Late",title:"Cathedral Square",desc:"Elsa's martinis, Taylor's patio, Foy's, Sophie — all walkable.",icon:"🌃",tip:"Walkable cluster. No strict order — just flow."},
     ]},
   {day:"Sunday",date:"June 14",ep:"Episode 3 — The Final",
     islanders:["Everyone"],
@@ -464,6 +464,7 @@ const VENUES={
     {name:"Tied House",cat:"Bar · Restaurant",desc:"Laid-back bar/restaurant. Easy drinks, easy food, easy good time.",tags:["Bar","Casual"],color:"var(--teal)",vibe:"🍻🍻"},
   ],
   cathedral:[
+    {name:"Elsa's on the Park",cat:"Martinis",desc:"Classic martini spot. Glamour inside, patio outside.",tags:["Martinis"],color:"var(--pool)",vibe:"🍸🍸🍸"},
     {name:"Taylor's",cat:"Patio",desc:"Great outdoor seating. Warm nights, people-watching.",tags:["Patio","Casual"],color:"var(--coral)",vibe:"🌅🌅"},
     {name:"Foy's",cat:"Bar Hop Stop",desc:"Pop in for one round, stay two.",tags:["Dive-ish","Fun"],color:"var(--gold)",vibe:"🍻🍻"},
     {name:"Sophie",cat:"Bar",desc:"Another solid Cathedral Square option.",tags:["Cathedral Sq"],color:"var(--pink)",vibe:"✨✨"},
@@ -658,7 +659,7 @@ function IslanderCarousel(){
               h("div",{className:"isle-arrives",style:{
                   color:isl.arrives==="Saturday"?"var(--teal)":"var(--peach)",
                   background:isl.arrives==="Saturday"?"rgba(0,212,170,.12)":"rgba(255,170,123,.12)"}},
-                  isl.arrives==="Saturday"?"Saturday Arrival":"OG — Friday"),
+                  isl.arrives==="Saturday"?"Groom's Sister":"OG — Friday"),
               ),
             )
           )
@@ -708,6 +709,7 @@ var VENUE_ADDRESSES={
   "Lost Whale":"2151 S Kinnickinnic Ave, Milwaukee, WI",
   "Boone & Crockett":"818 S Water St, Milwaukee, WI",
   "La Cage":"801 S 2nd St, Milwaukee, WI",
+  "Elsa's on the Park":"833 N Jefferson St, Milwaukee, WI",
   "Taylor's":"795 N Jefferson St, Milwaukee, WI",
   "Foy's":"754 N Milwaukee St, Milwaukee, WI",
   "Sophie":"815 N Old World 3rd St, Milwaukee, WI",
@@ -807,7 +809,7 @@ var SCOTTY_DATA=[
   {q:"The harmless little fib:",a:"Scotty told Al she'd already agreed to a date \u2014 her pick of time and place. She had no memory of this deal, but she went anyway. She showed up at Dockers, and afterward he admitted he'd lied the whole time."},
   {q:"Their Love Island type on paper:",a:"The calm main character and her loud, loveable, big-personality match. She's the villa owner \u2014 grounded, low-drama. He's the plot twist who keeps things interesting. Somehow it just works."},
   {q:"The proposal:",a:"A hike. A ring. A grin she couldn't wipe off her face. The kind of yes that shows up in every photo since."},
-  {q:"Their shared loves:",a:"\uD83D\uDC36 Zeke and Luli \u2014 the real villa residents. \u26F7\uFE0F Skiing, \uD83E\uDD7E hiking, \uD83C\uDFC4 paddle boarding, and \uD83D\uDEFB four-wheeling \u2014 always outside, always together. \uD83C\uDF7D\uFE0F A good meal and good company to cap it off."},
+  {q:"Their shared loves:",a:"\uD83D\uDC36 Zeke and Luli \u2014 the real villa residents. \u26F7\uFE0F Skiing, \uD83E\uDD7E hiking, \uD83C\uDFC4 paddle boarding, and \uD83D\uDEFB four-wheeling \u2014 always outside, always together."},
   {q:"Compatibility score:",a:"\uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \uD83D\uDC9A \u2014 He's a lot. But he's Al's kind of a lot. Permanently coupled up."},
   {q:"The finale \u2014 July 18, 2026:",a:"Weaverville, North Carolina. The mountains, the vows, the whole thing. This bachelorette is the episode right before the wedding finale."},
 ];
@@ -965,7 +967,7 @@ function MorningRecap(){
     recapEvents=["OGs arrived at the villa","Cocktails at At Random","Dinner at Room Service","Late night at Lost Whale"];
   }else if(now>=sunMorning&&now<=sunNoon){
     recapTitle="Previously on Casa Al-Mor...";
-    recapEvents=["Full squad assembled \u2014 Melissa & Vanessa arrived","Tiki boat at 12:30","Tarot & palm readings at the villa","Dinner at Cafe Benelux \u2014 all 7 islanders","Cathedral Square bar crawl: Taylor's \u2192 Foy's \u2192 Sophie"];
+    recapEvents=["Full squad assembled \u2014 Melissa & Vanessa arrived","Tiki boat at 12:30","Tarot & palm readings at the villa","Dinner at Cafe Benelux \u2014 all 7 islanders","Cathedral Square bar crawl: Elsa's \u2192 Taylor's \u2192 Foy's \u2192 Sophie"];
   }
   if(!recapEvents)return null;
   return h("div",{className:"recap-card"},
@@ -1283,12 +1285,12 @@ function App(){
             h("div",{className:"prev-card c1"},h("div",{className:"pc-emoji"},"\uD83C\uDFE0"),h("div",{className:"pc-title"},"The Villa Opens"),h("div",{className:"pc-desc"},"Friday 3 PM. OGs arrive in Bay View.")),
             h("div",{className:"prev-card c2"},h("div",{className:"pc-emoji"},"\uD83D\uDEA4"),h("div",{className:"pc-title"},"Tiki Boat"),h("div",{className:"pc-desc"},"Saturday 12:30. Drinks on the water.")),
             h("div",{className:"prev-card c3"},h("div",{className:"pc-emoji"},"\uD83D\uDCA3"),h("div",{className:"pc-title"},"Bombshell Arrivals"),h("div",{className:"pc-desc"},"Melissa & Vanessa enter Saturday.")),
-            h("div",{className:"prev-card c4"},h("div",{className:"pc-emoji"},"\uD83C\uDF03"),h("div",{className:"pc-title"},"Cathedral Square"),h("div",{className:"pc-desc"},"Saturday night. Bars, drinks, chaos.")),
+            h("div",{className:"prev-card c4"},h("div",{className:"pc-emoji"},"\uD83C\uDF03"),h("div",{className:"pc-title"},"Cathedral Square"),h("div",{className:"pc-desc"},"Saturday night. Bars, martinis, chaos.")),
             // Duplicate set for seamless loop
             h("div",{className:"prev-card c1"},h("div",{className:"pc-emoji"},"\uD83C\uDFE0"),h("div",{className:"pc-title"},"The Villa Opens"),h("div",{className:"pc-desc"},"Friday 3 PM. OGs arrive in Bay View.")),
             h("div",{className:"prev-card c2"},h("div",{className:"pc-emoji"},"\uD83D\uDEA4"),h("div",{className:"pc-title"},"Tiki Boat"),h("div",{className:"pc-desc"},"Saturday 12:30. Drinks on the water.")),
             h("div",{className:"prev-card c3"},h("div",{className:"pc-emoji"},"\uD83D\uDCA3"),h("div",{className:"pc-title"},"Bombshell Arrivals"),h("div",{className:"pc-desc"},"Melissa & Vanessa enter Saturday.")),
-            h("div",{className:"prev-card c4"},h("div",{className:"pc-emoji"},"\uD83C\uDF03"),h("div",{className:"pc-title"},"Cathedral Square"),h("div",{className:"pc-desc"},"Saturday night. Bars, drinks, chaos.")),
+            h("div",{className:"prev-card c4"},h("div",{className:"pc-emoji"},"\uD83C\uDF03"),h("div",{className:"pc-title"},"Cathedral Square"),h("div",{className:"pc-desc"},"Saturday night. Bars, martinis, chaos.")),
           ),
         ),
 
@@ -1317,7 +1319,7 @@ function App(){
     /* ═══ SCHEDULE ═══ */
     h("div",{ref:sectionRefs.schedule,className:"sec sec-band-2"},
       h(Reveal,null,
-        h("div",{className:"tag"},"The Poolside Agenda"),
+        h("div",{className:"tag"},"The Weekend Agenda"),
         h("div",{className:"sec-title"},"Weekend ",h("i",null,"Schedule")),
         h("div",{className:"sec-sub"},"Three episodes. Tap a day for the lineup. Nothing mandatory \u2014 it's a guide, not homework."),
       ),
